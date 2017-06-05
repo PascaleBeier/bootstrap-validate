@@ -53,6 +53,17 @@ The second argument is a string of rules, whereas:
 
 Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](#contributing).
 
+## Download
+
+### Manually
+
+You can download the latest Release here: https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.0/dist/bootstrap-validate.js.
+
+### npm
+
+`npm i bootstrap-validate`
+
+
 ## Contributing
 
 Contributing is easy as pie. 
@@ -67,4 +78,4 @@ Contributing is easy as pie.
 
 ## License
 
-Licensed under the MIT License, see [LICENSE.md](LICENSE).
+Licensed under the MIT License, see [LICENSE](LICENSE.md).
