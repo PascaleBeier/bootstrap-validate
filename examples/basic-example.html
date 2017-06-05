@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            min-height: 24em;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="text">Enter Text between 10 and 50 characters</label>
+            <input id="text" class="form-control">
+        </div>
+    </form>
+</div>
+
+
+<script src="../dist/bootstrap-validate.js"></script>
+<script>
+    bootstrapValidate(
+        document.getElementsByTagName('input')[0],
+        'min:10:Enter at least 10 Characters!|max:50:You must not enter more than 50 Characters!'
+    );
+</script>
+</body>
+</html>
