@@ -70,15 +70,18 @@ You can download the latest Release here: https://cdn.rawgit.com/PascaleBeier/bo
 
 ## Contributing
 
-Contributing is easy as pie. 
+Contributing is easy as pie.
 
 1. Fork this Repository
 2. run `npm i` inside of the repository
-3. run `npm run dev` to view changes
-4. run `npm run build` to build for production
+3. run `npm dev` to view changes
+4. run `npm build` to build for production
 5. Commit your changes, push these to your fork and submit a PR
 
 (You can use or create new files below `examples` until I got tests ready)
+
+You will be notified of styling errors - also you can `npm check-style` and `npm fix-style` respectively to check or fix
+code styling.
 
 ## License
 
