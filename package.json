@@ -1,9 +1,18 @@
 {
   "name": "bootstrap-validate",
-  "version": "1.0.0",
+  "description": "A simple Form Validation Utility for Bootstrap which does not depend on jQuery",
+  "version": "1.0.1",
   "main": "dist/bootstrap-validate.js",
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
   "author": "Pascale Beier <mail@pascalebeier.de>",
+  "keywords": [
+    "bootstrap",
+    "validation",
+    "form",
+    "validate",
+    "bootstrap3",
+    "form-validation"
+  ],
   "license": "MIT",
   "scripts": {
     "dev": "webpack -w",

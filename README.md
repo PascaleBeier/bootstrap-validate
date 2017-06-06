@@ -63,6 +63,10 @@ You can download the latest Release here: https://cdn.rawgit.com/PascaleBeier/bo
 
 `npm i bootstrap-validate`
 
+### bower
+
+`bower install bootstrap-validate --save`
+
 
 ## Contributing
 
