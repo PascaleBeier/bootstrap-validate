@@ -16,12 +16,18 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack -w",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "check-style": "eslint webpack.config.js src/",
+    "fix-style": "eslint --fix webpack.config.js src/"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.3.0",
     "webpack": "2"
   }
 }
