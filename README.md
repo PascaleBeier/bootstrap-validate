@@ -50,6 +50,7 @@ The second argument is a string of rules, whereas:
 - Input Elements
   - `min`: (number) Minimal Number of Characters
   - `max`: (number) Maximal Number of Characters
+  - `email`: Requires a valid E-Mail Address (thanks to [@cmckenzie6](https://github.com/cmckenzie6))
 
 Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](#contributing).
 
