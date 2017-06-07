@@ -1,0 +1,18 @@
+{
+  "name": "bootstrap-validate-docs",
+  "version": "1.0.5",
+  "description": "Documentation for bootstrap-validate",
+  "main": "index.js",
+  "author": "Pascale Beier <mail@pascalebeier.de>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  },
+  "devDependencies": {
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
+    "pug": "^2.0.0-rc.2",
+    "pug-html-loader": "^1.1.5",
+    "webpack": "^2.6.1"
+  }
+}
