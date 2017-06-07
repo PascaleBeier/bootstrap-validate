@@ -41,5 +41,8 @@
     "karma-jasmine": "^1.1.0",
     "karma-webpack": "^2.0.3",
     "webpack": "2"
+  },
+  "dependencies": {
+    "classlist.js": "git+https://github.com/eligrey/classList.js"
   }
 }

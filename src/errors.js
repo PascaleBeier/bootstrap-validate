@@ -4,7 +4,7 @@ import nativeRules from './native-rules';
 module.exports = (input, rule, isValid, text) => {
   const isNative = nativeRules.includes(rule) && typeof document.createElement('input').checkValidity === 'function';
   const specificErrorClass = `has-error-${rule}`;
-  let specificHelpBlock = input.parentElement.getElementsByClassName(specificErrorClass)[0];
+  let specificHelpBlock = input.parentElement.querySelector(`.${specificErrorClass}`);
 
   if (isValid) {
     // Element is valid, continue

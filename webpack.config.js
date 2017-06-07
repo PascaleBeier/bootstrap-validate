@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/bootstrap-validate.js',
+  entry: [
+    './src/polyfills.js',
+    './src/bootstrap-validate.js',
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bootstrap-validate.js',

@@ -87,6 +87,9 @@ You can download the latest Release from [rawgit](https://cdn.rawgit.com/Pascale
 
 `bower install bootstrap-validate --save`
 
+## Browser Support
+
+Works in all recent browsers, and IE 8, may not work below.
 
 ## Contributing
 
