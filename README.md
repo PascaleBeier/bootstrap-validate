@@ -103,6 +103,7 @@ code styling.
 
 ## Testing
 
+Tests are located under `spec/`.
 After installing all dependencies with `npm i` you may run `npm test` to spin up [Karma](https://karma-runner.github.io/1.0/index.html)-powered tests.
 
 ## License
