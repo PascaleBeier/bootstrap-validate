@@ -58,7 +58,7 @@ Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](
 
 ### Manually
 
-You can download the latest Release from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.3/dist/bootstrap-validate.js).
+You can download the latest Release from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.4/dist/bootstrap-validate.js).
 
 ### npm
 

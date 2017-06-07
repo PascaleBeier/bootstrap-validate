@@ -3,12 +3,12 @@ module.exports = {
      * @param input HTMLInputElement
      * @param min number
      */
-  min: (input, min) => input.value.length >= min,
+  min: (input, min) => input.value.length >= parseInt(min, 10),
     /**
      * @param input HTMLInputElement
      * @param max number
      */
-  max: (input, max) => input.value.length <= max,
+  max: (input, max) => input.value.length <= parseInt(max, 10),
     /**
      * @param input HTMLInputElement
      */
