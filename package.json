@@ -17,18 +17,29 @@
   "scripts": {
     "dev": "webpack -w",
     "build": "webpack -p",
-    "check-style": "eslint webpack.config.js src/",
-    "fix-style": "eslint --fix webpack.config.js src/"
+    "check-style": "eslint webpack.config.js src/ spec/",
+    "fix-style": "eslint --fix webpack.config.js src/ spec/",
+    "karma": "cross-env NODE_ENV=test node node_modules/karma/bin/karma start",
+    "test": "karma"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-env": "^1.5.1",
+    "cross-env": "^5.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-import": "^2.3.0",
+    "jasmine": "^2.6.0",
+    "jasmine-core": "^2.6.2",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-webpack": "^2.0.3",
     "webpack": "2"
   }
 }

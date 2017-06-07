@@ -1,4 +1,9 @@
 {
   "presets": ["env"],
-  "plugins": ["array-includes"]
+  "plugins": ["array-includes"],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
 }

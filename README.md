@@ -33,6 +33,19 @@ Now you want a Name to be at max 30 characters long and add the following:
 </script>
 ```
 
+Validating an email address couldn't be easier! We make use of native validation whenever possible.
+
+```html
+<div class="form-group">
+  <label for="email" class="control-label">Enter your E-Mail</label>
+  <div class="input" id="email">
+</div>
+
+<script>
+bootstrapValidate(document.getElementById('email'), 'email');
+</script>
+```
+
 ## API
 
 the first argument of bootstrapValidate is your element to be validated.
@@ -41,6 +54,7 @@ The second argument is a string of rules, whereas:
 - A Rule starts with its name, see [Available Rules](#available-rules).
 - The following arguments are the required rule parameters: `max` only requires a number.
 - The last argument is the string to be displayed when validation fails.
+- You should not add a custom text to [native rules](#native-rules).
 - Single Rule Options are separated by a colon :.
 
 `min:1:Enter a character|max:2:Enter at max 2 characters`
@@ -50,9 +64,14 @@ The second argument is a string of rules, whereas:
 - Input Elements
   - `min`: (number) Minimal Number of Characters
   - `max`: (number) Maximal Number of Characters
-  - `email`: Requires a valid E-Mail Address (thanks to [@cmckenzie6](https://github.com/cmckenzie6))
+  - `email (**native**)`: Requires a valid E-Mail Address (thanks to [@cmckenzie6](https://github.com/cmckenzie6))
 
 Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](#contributing).
+
+## Native Rules
+
+Whenever possible we make use of native browser side validation. You should not add a custom error string
+to these methods, as browsers have these localized and bullet-proof.
 
 ## Download
 
@@ -79,10 +98,12 @@ Contributing is easy as pie.
 4. run `npm build` to build for production
 5. Commit your changes, push these to your fork and submit a PR
 
-(You can use or create new files below `examples` until I got tests ready)
-
 You will be notified of styling errors - also you can `npm check-style` and `npm fix-style` respectively to check or fix
 code styling.
+
+## Testing
+
+After installing all dependencies with `npm i` you may run `npm test` to spin up [Karma](https://karma-runner.github.io/1.0/index.html)-powered tests.
 
 ## License
 

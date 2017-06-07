@@ -12,7 +12,8 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.js$/,
-        exclude: '/node_modules/',
+        include: path.join(__dirname, 'src'),
+        exclude: path.join(__dirname, 'node_modules'),
         loader: 'eslint-loader',
         options: {
           emitWarning: true,
@@ -20,7 +21,8 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: /src/,
+        include: path.join(__dirname, 'src'),
+        exclude: path.join(__dirname, 'node_modules'),
         loader: 'babel-loader',
       },
     ],
