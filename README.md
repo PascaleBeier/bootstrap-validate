@@ -77,7 +77,7 @@ to these methods, as browsers have these localized and bullet-proof.
 
 ### Manually
 
-You can download the latest Release from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.4/dist/bootstrap-validate.js).
+You can download the latest Release from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.6/dist/bootstrap-validate.js).
 
 ### npm
 
