@@ -18,7 +18,7 @@
 <div class="container">
     <form>
         <div class="form-group">
-            <label for="text">Enter Text between 10 and 50 characters</label>
+            <label for="text">The Text below needs to be an email and between 10 and 300 characters.</label>
             <input id="text" class="form-control">
         </div>
     </form>
@@ -29,7 +29,7 @@
 <script>
     bootstrapValidate(
         document.getElementsByTagName('input')[0],
-        'email|min:255:Enter at least 255 Characters|max:300:Enter at max 300 chars'
+        'email|min:10:Enter at least 10 Characters|max:300:Enter at max 300 chars'
     );
 </script>
 </body>

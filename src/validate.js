@@ -1,8 +1,8 @@
 import availableRules from './rules';
 import errors from './errors';
-import ruleFormatter from './rule-formatter';
-import optionFormatter from './option-formatter';
-import ruleArgumentFormatter from './rule-argument-formatter';
+import ruleFormatter from './formatters/rule-formatter';
+import optionFormatter from './formatters/option-formatter';
+import ruleArgumentFormatter from './formatters/rule-argument-formatter';
 
 /**
  * @param input HTMLInputElementesl

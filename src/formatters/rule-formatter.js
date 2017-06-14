@@ -1,11 +1,11 @@
-import constants from './constants';
+import { SEPARATOR_RULE } from '../utils/constants';
 
 /**
  * @param rulesString string
  * @returns {Array}
  */
 module.exports = (rulesString) => {
-  const splitRuleString = rulesString.split(constants.SEPARATOR_RULE);
+  const splitRuleString = rulesString.split(SEPARATOR_RULE);
 
   // If this equals 1, only one rule is provided and we can hand out the rule as is.
   if (splitRuleString.length === 1) {

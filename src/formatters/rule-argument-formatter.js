@@ -1,4 +1,4 @@
-import availableRules from './rules';
+import availableRules from '../rules';
 
 /**
  * @param options Array
