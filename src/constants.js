@@ -4,4 +4,5 @@ module.exports = {
   CLASS_HELP_BLOCK: 'help-block',
   SEPARATOR_RULE: '|',
   SEPARATOR_OPTION: ':',
+  CLASS_LABEL: 'control-label',
 };

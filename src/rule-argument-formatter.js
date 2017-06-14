@@ -1,8 +1,6 @@
 import availableRules from './rules';
 
 /**
- *
- * @param input HTMLInputElement
  * @param options Array
  * @returns {[*,*]}
  */

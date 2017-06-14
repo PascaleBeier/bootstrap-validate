@@ -4,19 +4,31 @@ import nativeRules from './native-rules';
 module.exports = (input, rule, isValid, text) => {
   const isNative = nativeRules.includes(rule) && typeof document.createElement('input').checkValidity === 'function';
   const specificErrorClass = `has-error-${rule}`;
-  let specificHelpBlock = input.parentElement.querySelector(`.${specificErrorClass}`);
+  const parent = input.parentNode;
+  const label = parent.querySelector('label');
+  let specificHelpBlock = parent.querySelector(`.${specificErrorClass}`);
 
   if (isValid) {
     // Element is valid, continue
     if (specificHelpBlock) {
-      // Element already has an error element, continue
+      // Element already has an error element which we can safely remove.
       input.parentNode.classList.remove(constants.CLASS_ERROR);
       input.parentNode.removeChild(specificHelpBlock);
     }
   } else {
-    if (!input.parentNode.classList.contains(constants.CLASS_ERROR)) {
-      input.parentNode.classList.add(constants.CLASS_ERROR);
-    }// Element is not valid, continue
+    // Not Valid!
+    if (label) {
+      // Element does have a label
+      if (!label.classList.contains(constants.CLASS_LABEL)) {
+        // Which doesn't contain the formatting class, so we'll add it.
+        label.classList.add(constants.CLASS_LABEL);
+      }
+    }
+    // The parent Element needs to contain the error class.
+    if (!parent.classList.contains(constants.CLASS_ERROR)) {
+      // So we'll just add the class if it is absent.
+      parent.classList.add(constants.CLASS_ERROR);
+    }
     if (specificHelpBlock) {
       // Element also has an error element.
       if (isNative) {
