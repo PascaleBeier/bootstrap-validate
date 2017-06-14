@@ -18,7 +18,7 @@ module.exports = (input, rule, isValid, text) => {
       input.parentNode.classList.add(constants.CLASS_ERROR);
     }// Element is not valid, continue
     if (specificHelpBlock) {
-        // Element also has an error element.
+      // Element also has an error element.
       if (isNative) {
         specificHelpBlock.textContent = input.validationMessage;
       } else {

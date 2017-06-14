@@ -19,7 +19,7 @@ module.exports = (input, rule) => {
       const ruleArgsAndErrorText = ruleArgumentFormatter(optionFormatter(singleRule));
 
       errors(input, options[0], availableRules[options[0]](input, ...ruleArgsAndErrorText[0]),
-          ruleArgsAndErrorText[1]);
+        ruleArgsAndErrorText[1]);
     }
   });
 };
