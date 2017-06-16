@@ -1,9 +1,6 @@
 import { CLASS_ERROR, CLASS_LABEL, CLASS_HELP_BLOCK, ELEMENT_HELP_BLOCK } from './utils/constants';
-import hasNative from './utils/supports-native';
-import nativeRules from './native-rules';
 
 module.exports = (input, rule, isValid, text) => {
-  const isNative = nativeRules.includes(rule) && hasNative;
   const specificErrorClass = `has-error-${rule}`;
   const parent = input.parentNode;
   const label = parent.querySelector('label');
@@ -32,20 +29,12 @@ module.exports = (input, rule, isValid, text) => {
     }
     if (specificHelpBlock) {
       // Element also has an error element.
-      if (isNative) {
-        specificHelpBlock.textContent = input.validationMessage;
-      } else {
-        specificHelpBlock.textContent = text;
-      }
+      specificHelpBlock.textContent = text;
     } else {
       specificHelpBlock = document.createElement(ELEMENT_HELP_BLOCK);
       input.parentNode.appendChild(specificHelpBlock);
       specificHelpBlock.classList.add(CLASS_HELP_BLOCK, specificErrorClass);
-      if (isNative) {
-        specificHelpBlock.textContent = input.validationMessage;
-      } else {
-        specificHelpBlock.textContent = text;
-      }
+      specificHelpBlock.textContent = text;
     }
   }
 };

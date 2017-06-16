@@ -42,7 +42,7 @@ Validating an email address couldn't be easier! We make use of native validation
 </div>
 
 <script>
-bootstrapValidate(document.getElementById('email'), 'email');
+bootstrapValidate(document.getElementById('email'), 'email:Enter a valid email address');
 </script>
 ```
 
@@ -54,7 +54,6 @@ The second argument is a string of rules, whereas:
 - A Rule starts with its name, see [Available Rules](#available-rules).
 - The following arguments are the required rule parameters: `max` only requires a number.
 - The last argument is the string to be displayed when validation fails.
-- You should not add a custom text to [native rules](#native-rules).
 - Single Rule Options are separated by a colon :.
 
 `min:1:Enter a character|max:2:Enter at max 2 characters`
@@ -64,14 +63,9 @@ The second argument is a string of rules, whereas:
 - Input Elements
   - `min`: (number) Minimal Number of Characters
   - `max`: (number) Maximal Number of Characters
-  - `email (**native**)`: Requires a valid E-Mail Address (thanks to [@cmckenzie6](https://github.com/cmckenzie6))
+  - `email`: Requires a valid E-Mail Address (thanks to [@cmckenzie6](https://github.com/cmckenzie6))
 
 Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](#contributing).
-
-## Native Rules
-
-Whenever possible we make use of native browser side validation. You should not add a custom error string
-to these methods, as browsers have these localized and bullet-proof.
 
 ## Download
 
