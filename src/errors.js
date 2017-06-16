@@ -11,7 +11,7 @@ module.exports = (input, rule, isValid, text) => {
     if (specificHelpBlock) {
       // Element already has an error element which we can safely remove.
       input.parentNode.classList.remove(CLASS_ERROR);
-      input.parentNode.removeChild(specificHelpBlock);
+      specificHelpBlock.style.display = 'none';
     }
   } else {
     // Not Valid!
@@ -22,19 +22,20 @@ module.exports = (input, rule, isValid, text) => {
         label.classList.add(CLASS_LABEL);
       }
     }
-    // The parent Element needs to contain the error class.
-    if (!parent.classList.contains(CLASS_ERROR)) {
-      // So we'll just add the class if it is absent.
-      parent.classList.add(CLASS_ERROR);
-    }
     if (specificHelpBlock) {
       // Element also has an error element.
       specificHelpBlock.textContent = text;
+      specificHelpBlock.style.display = 'block';
     } else {
       specificHelpBlock = document.createElement(ELEMENT_HELP_BLOCK);
       input.parentNode.appendChild(specificHelpBlock);
       specificHelpBlock.classList.add(CLASS_HELP_BLOCK, specificErrorClass);
       specificHelpBlock.textContent = text;
+    }
+    // The parent Element needs to contain the error class.
+    if (!parent.classList.contains(CLASS_ERROR)) {
+      // So we'll just add the class if it is absent.
+      parent.classList.add(CLASS_ERROR);
     }
   }
 };

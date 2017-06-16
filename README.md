@@ -54,9 +54,10 @@ The second argument is a string of rules, whereas:
 - A Rule starts with its name, see [Available Rules](#available-rules).
 - The following arguments are the required rule parameters: `max` only requires a number.
 - The last argument is the string to be displayed when validation fails.
+- If a rule takes no additional arguments, you give the error message as only option.
 - Single Rule Options are separated by a colon :.
 
-`min:1:Enter a character|max:2:Enter at max 2 characters`
+`min:1:Enter a character|max:2:Enter at max 2 characters|email:Enter a valid email`
 
 ## Available Rules
 
@@ -64,6 +65,7 @@ The second argument is a string of rules, whereas:
   - `min`: (number) Minimal Number of Characters
   - `max`: (number) Maximal Number of Characters
   - `email`: Requires a valid E-Mail Address (thanks to [@cmckenzie6](https://github.com/cmckenzie6))
+  - `required`: Requires an input to be filled
 
 Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](#contributing).
 
@@ -71,7 +73,7 @@ Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](
 
 ### Manually
 
-You can download the latest Release from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.6/dist/bootstrap-validate.js).
+You can download the latest Release from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.7/dist/bootstrap-validate.js).
 
 ### npm
 
