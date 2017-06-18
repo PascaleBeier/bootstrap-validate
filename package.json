@@ -34,7 +34,7 @@
     "eslint-loader": "^1.8.0",
     "eslint-plugin-import": "^2.3.0",
     "jasmine": "^2.6.0",
-    "jasmine-core": "^2.6.3",
+    "jasmine-core": "^2.6.4",
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.1.1",
     "karma-coverage": "^1.1.1",
