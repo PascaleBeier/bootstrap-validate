@@ -33,7 +33,7 @@ Now you want a Name to be at max 30 characters long and add the following:
 </script>
 ```
 
-Validating an email address couldn't be easier! We make use of native validation whenever possible.
+Validating an email address couldn't be easier!
 
 ```html
 <div class="form-group">
@@ -45,6 +45,11 @@ Validating an email address couldn't be easier! We make use of native validation
 bootstrapValidate(document.getElementById('email'), 'email:Enter a valid email address');
 </script>
 ```
+
+## Documentation
+
+You can find the Work in Progress Documentation at [bootstrap-validate.js.org](https://bootstrap-validate.js.org)
+which resides below `docs`.
 
 ## API
 
@@ -99,6 +104,12 @@ Contributing is easy as pie.
 
 You will be notified of styling errors - also you can `npm check-style` and `npm fix-style` respectively to check or fix
 code styling.
+
+### Building the documentation
+
+1. Navigate to `docs`
+2. run `npm i`
+3. run `webpack -w` to watch changes
 
 ## Testing
 
