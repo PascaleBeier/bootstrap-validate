@@ -9,6 +9,8 @@ html(lang='en')
       integrity='sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=' crossorigin='anonymous')
     title bootstrap-validate
     meta(name='description' content='The easiest way to validate your Bootstrap forms. Maybe.')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js')
+    link(href='https://cdn.rawgit.com/isagalaev/highlight.js/master/src/styles/github.css' rel='stylesheet')
 body
   header.docs-header
     include ../partials/header
@@ -17,4 +19,5 @@ body
   footer.docs-footer
     include ../partials/footer
   block scripts
-    script(src='resources/assets/js/version.js')
+    script.
+        hljs.initHighlightingOnLoad();

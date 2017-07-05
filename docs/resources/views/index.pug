@@ -16,20 +16,27 @@ block content
 
     section
       h4 HTML:
-      pre.code
-        | &lt;div class="form-group"&gt;
-        |   &lt;label&gt;Enter your E-Mail Address :)&lt;/label&gt;
-        |   &lt;input id="docs-demo" class="form-control"&gt;
-        | &lt;/div&gt;
+      pre
+        code.html
+          | &lt;div class="form-group"&gt;
+          |   &lt;label&gt;Enter your E-Mail Address :)&lt;/label&gt;
+          |   &lt;input id="docs-demo" class="form-control"&gt;
+          | &lt;/div&gt;
 
     section
       h4 JavaScript:
-      pre.code &lt;script&gt;bootstrapValidate(document.getElementById('docs-demo'), 'email');&lt;/script&gt;
+      pre
+        code.javascript &lt;script&gt;bootstrapValidate(document.getElementById('docs-demo'), 'email:Enter a valid E-Mail Address!');&lt;/script&gt;
 
-    p.lead Easy, ain't it?
+    p.lead 
+      | Easy as 
+      i.fa.fa-fw.fa-2x.fa-birthday-cake(aria-hidden=true)
+      |  right?
+      
+      
+    a.btn.btn-lg.btn-primary(style='display: inline-block; margin-bottom: 50px;') Learn how to use it
 
 block append scripts
-  script(src='https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.5/dist/bootstrap-validate.js'
-    integrity='sha384-omuTqXXurpV/Qy7hnNjXEr/NwQnAc9SlGst7LsVOVGXF8yEV/5Foh8nCjVkqZeht' crossorigin='anonymous')
+  script(src='https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.7/dist/bootstrap-validate.js')
   script.
-    bootstrapValidate(document.getElementById('docs-demo'), 'email')
+    bootstrapValidate(document.getElementById('docs-demo'), 'email:Enter a valid E-Mail Address!')

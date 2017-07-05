@@ -7,6 +7,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
     <title>bootstrap-validate</title>
     <meta name="description" content="The easiest way to validate your Bootstrap forms. Maybe.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <link href="https://cdn.rawgit.com/isagalaev/highlight.js/master/src/styles/github.css" rel="stylesheet">
   </head>
 </html>
 <body>
@@ -34,16 +36,17 @@
       <p>Literally a no-brainer!</p>
       <section>
         <h4>HTML:</h4>
-        <pre class="code">&lt;div class="form-group"&gt;
+        <pre><code class="html">&lt;div class="form-group"&gt;
   &lt;label&gt;Enter your E-Mail Address :)&lt;/label&gt;
   &lt;input id="docs-demo" class="form-control"&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
       </section>
       <section>
         <h4>JavaScript:</h4>
-        <pre class="code">&lt;script&gt;bootstrapValidate(document.getElementById('docs-demo'), 'email');&lt;/script&gt;</pre>
+        <pre><code class="javascript">&lt;script&gt;bootstrapValidate(document.getElementById('docs-demo'), 'email:Enter a valid E-Mail Address!');&lt;/script&gt;</code></pre>
       </section>
-      <p class="lead">Easy, ain't it?</p>
+      <p class="lead">
+         Easy as <i class="fa fa-fw fa-2x fa-birthday-cake" aria-hidden></i> right?</p><a class="btn btn-lg btn-primary" style="display: inline-block; margin-bottom: 50px;">Learn how to use it</a>
     </div>
   </main>
   <footer class="docs-footer">
@@ -51,7 +54,7 @@
       <p>Brought to you with loads of Love and Coffee by @PascaleBeier and Contributors.</p>
     </div>
   </footer>
-  <script src="resources/assets/js/version.js"></script>
-  <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.5/dist/bootstrap-validate.js" integrity="sha384-omuTqXXurpV/Qy7hnNjXEr/NwQnAc9SlGst7LsVOVGXF8yEV/5Foh8nCjVkqZeht" crossorigin="anonymous"></script>
-  <script>bootstrapValidate(document.getElementById('docs-demo'), 'email')</script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.7/dist/bootstrap-validate.js"></script>
+  <script>bootstrapValidate(document.getElementById('docs-demo'), 'email:Enter a valid E-Mail Address!')</script>
 </body>
