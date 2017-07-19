@@ -29,18 +29,18 @@
     "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-env": "^1.5.2",
     "cross-env": "^5.0.1",
-    "eslint": "^4.0.0",
+    "eslint": "^4.2.0",
     "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-loader": "^1.8.0",
-    "eslint-plugin-import": "^2.3.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
     "jasmine": "^2.6.0",
     "jasmine-core": "^2.6.4",
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.1.1",
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
-    "karma-webpack": "^2.0.3",
-    "webpack": "^3.0.0"
+    "karma-webpack": "^2.0.4",
+    "webpack": "^3.3.0"
   },
   "dependencies": {
     "classlist.js": "git+https://github.com/eligrey/classList.js"
