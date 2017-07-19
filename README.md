@@ -56,12 +56,25 @@ Therefore, you pass any string as you would for [document.querySelector](https:/
 For those lazy guys out there :p
 
 The second argument is a string of rules, whereas:
-- Multiple Rules are separated by an amount sign |.
-- A Rule starts with its name, see [Available Rules](#available-rules).
+- Rules are separated by an amount sign **|**
+
+`rule1|rule2|rule3`
+
+- Options are separated by a colon **:**.
+
+`option1:option2:option3`
+
+`rule1:option1|rule2:option1:option2|rule3`
+
 - The following arguments are the required rule parameters: `max` only requires a number.
-- The last argument is the string to be displayed when validation fails.
+
+`max:20`
+
+- The last argument is the **error text**
+
+`max:20:Enter no more than 20 characters.`
+
 - If a rule takes no additional arguments, you give the error message as only option.
-- Single Rule Options are separated by a colon :.
 
 `min:1:Enter a character|max:2:Enter at max 2 characters|email:Enter a valid email`
 
@@ -74,6 +87,15 @@ The second argument is a string of rules, whereas:
   - `required`: Requires an input to be filled
 
 Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](#contributing).
+
+## Browser Support
+
+Works in all recent browsers including IE >= 8, may or may not work below.
+
+## Motivation
+
+The main development goal is to provide a super simple API easily usable by non-devs while providing
+decent browser support, build tooling and omitting jQuery. I mean we all love ES6+ right?
 
 ## Download
 
@@ -97,15 +119,6 @@ Please don't use the master branch as it's not supposed to be stable at all time
 
 `bower install bootstrap-validate --save`
 
-## Browser Support
-
-Works in all recent browsers, and IE 8, may not work below.
-
-## Goal
-
-The main development goal is to provide a super simple API easily usable by non-devs while providing
-decent browser support and build tooling. I mean we all love ES6+ right?
-
 ## Contributing
 
 Contributing is easy as pie, no matter if you want to contribute to the upcoming
@@ -117,7 +130,7 @@ This library is built using *node.js* and *webpack*. You will need to setup node
 start contributing.
 
 1. Fork this Repository
-2. Install all dependencies with your favourite node.js package manager (e.g. `yarn install`, `npm i`, ...)
+2. Install all dependencies with your favourite node.js package manager - We recommend [yarn](https://yarnpkg.com) whatsoever.
 3. Checkout a new branch (e.g. `git checkout -b "feature/error-icons"`)
 3. Run `npm run dev` to view changes
 4. Run `npm run build` to build for production
