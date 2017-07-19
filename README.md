@@ -26,10 +26,7 @@ Now you want a Name to be at max 30 characters long and add the following:
 
 ```html
 <script>
-    bootstrapValidate(
-        document.getElementById('name'),
-        'max:30:Your name must not be longer than 30 characters'
-    );
+    bootstrapValidate('#name', 'max:30:Your name must not be longer than 30 characters');
 </script>
 ```
 
@@ -42,7 +39,7 @@ Validating an email address couldn't be easier!
 </div>
 
 <script>
-bootstrapValidate(document.getElementById('email'), 'email:Enter a valid email address');
+bootstrapValidate('#email', 'email:Enter a valid email address');
 </script>
 ```
 
@@ -54,6 +51,10 @@ which resides below `docs`.
 ## API
 
 the first argument of bootstrapValidate is your element to be validated.
+If the first argument is no nodeElement, we try *querySelector*ing it.
+Therefore, you pass any string as you would for [document.querySelector](https://developer.mozilla.org/de/docs/Web/API/Document/querySelector).
+For those lazy guys out there :p
+
 The second argument is a string of rules, whereas:
 - Multiple Rules are separated by an amount sign |.
 - A Rule starts with its name, see [Available Rules](#available-rules).
@@ -78,13 +79,21 @@ Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](
 
 ### Manually
 
-You can download the latest Release from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.7/dist/bootstrap-validate.js).
+You can download the latest Release (tag) from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.8/dist/bootstrap-validate.js).
 
-### npm
+Please don't use the master branch as it's not supposed to be stable at all times.
+
+### With a package manager
+
+#### npm
 
 `npm i bootstrap-validate`
 
-### bower
+#### yarn
+
+`yarn add bootstrap-validate`
+
+#### bower
 
 `bower install bootstrap-validate --save`
 
@@ -126,6 +135,8 @@ Building the documentation is almost the same as building the code.
 
 You only need to run `npm run docs:dev` instead of `npm run dev` and
 `npm run docs:build` instead of `npm run build`.
+
+The docs reside below `docs/` and are built with webpack and pug.
 
 ## Tests
 

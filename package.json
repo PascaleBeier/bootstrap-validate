@@ -22,7 +22,8 @@
     "test": "cross-env NODE_ENV=test node node_modules/karma/bin/karma start",
     "precommit": "lint-staged",
     "check-style": "eslint build/ src/ spec/",
-    "fix-style": "eslint --fix build/ src/ spec/"
+    "fix-style": "eslint --fix build/ src/ spec/",
+    "prod": "npm run build && npm run docs:build"
   },
   "lint-staged": {
     "src/**/*.js": [
