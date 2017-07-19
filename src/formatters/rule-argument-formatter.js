@@ -1,10 +1,10 @@
-import availableRules from '../rules';
+import availableRules from "../rules";
 
 /**
  * @param options Array
  * @returns {[*,*]}
  */
-module.exports = (options) => {
+module.exports = options => {
   const ruleArgs = options;
   const ruleArgC = availableRules[options[0]].length;
   let errorText;
@@ -18,3 +18,5 @@ module.exports = (options) => {
 
   return [ruleArgs, errorText];
 };
+
+export default module.exports;

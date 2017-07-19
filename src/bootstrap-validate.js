@@ -1,7 +1,9 @@
-import validate from './validate';
+import validate from "./validate";
 
 module.exports = (input, rules) => {
-  input.addEventListener('input', () => {
+  input.addEventListener("input", () => {
     validate(input, rules);
   });
 };
+
+export default module.exports;

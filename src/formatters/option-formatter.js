@@ -1,10 +1,10 @@
-import { SEPARATOR_OPTION } from '../utils/constants';
+import { SEPARATOR_OPTION } from "../utils/constants";
 
 /**
  * @param singleRuleString
  * @returns {boolean|Array}
  */
-module.exports = (singleRuleString) => {
+module.exports = singleRuleString => {
   const splitOptionsString = singleRuleString.split(SEPARATOR_OPTION);
 
   // If this equals 1, no options are provided.
@@ -15,3 +15,5 @@ module.exports = (singleRuleString) => {
   // Other than that, we got a working array of options.
   return splitOptionsString;
 };
+
+export default module.exports;

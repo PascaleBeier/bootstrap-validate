@@ -15,12 +15,28 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev": "webpack -w",
-    "build": "webpack -p",
-    "check-style": "eslint webpack.config.js src/ spec/",
-    "fix-style": "eslint --fix webpack.config.js src/ spec/",
-    "karma": "cross-env NODE_ENV=test node node_modules/karma/bin/karma start",
-    "test": "karma"
+    "dev": "webpack --config build/library.config.js -w",
+    "build": "webpack --config build/library.config.js -p",
+    "docs:dev": "webpack --config build/docs.config.js -w",
+    "docs:build": "webpack --config build/docs.config.js -p",
+    "test": "cross-env NODE_ENV=test node node_modules/karma/bin/karma start",
+    "precommit": "lint-staged",
+    "check-style": "eslint build/ src/ spec/",
+    "fix-style": "eslint --fix build/ src/ spec/"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "build/*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "spec/**/*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -31,8 +47,13 @@
     "cross-env": "^5.0.1",
     "eslint": "^4.2.0",
     "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-config-prettier": "^2.3.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.4.5",
+    "husky": "^0.14.3",
     "jasmine": "^2.6.0",
     "jasmine-core": "^2.6.4",
     "karma": "^1.7.0",
@@ -40,6 +61,10 @@
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-webpack": "^2.0.4",
+    "lint-staged": "^4.0.2",
+    "prettier": "^1.5.3",
+    "pug": "^2.0.0-rc.2",
+    "pug-html-loader": "^1.1.5",
     "webpack": "^3.3.0"
   },
   "dependencies": {

@@ -3,9 +3,4 @@
  * .pug files to the webpack context.
  * @param file
  */
-requireSourceFiles = file => {
-  file.keys().forEach(file);
-};
-
-// Bring it up!
-requireSourceFiles(require.context('./resources/views/', false, /\.pug$/));
+(file => { file.keys().forEach(file) })(require.context('./resources/views/', false, /\.pug$/));

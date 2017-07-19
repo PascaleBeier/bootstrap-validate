@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
+    <title>bootstrap-validate</title>
+    <meta name="description" content="The easiest way to validate your Bootstrap forms. Maybe.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <link href="https://cdn.rawgit.com/isagalaev/highlight.js/master/src/styles/github.css" rel="stylesheet">
+  </head>
+</html>
+<body>
+  <header class="docs-header">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Bootstrap Validate</h1>
+        <p class="lead">The easiest way to validate your Bootstrap Forms. Maybe.</p>
+      </div>
+    </div>
+  </header>
+  <main class="docs-main">
+    <div class="container">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Demo</div>
+        <div class="panel-body">
+          <p>See for yourself and enter an email address. Well, rather not!</p>
+          <div class="form-group">
+            <label class="control-label" for="docs-demo">Enter your E-Mail Address :)</label>
+            <input class="form-control" id="docs-demo" placeholder="jon@example.org">
+          </div>
+        </div>
+      </div>
+      <h3>Behind the scenes</h3>
+      <p>Literally a no-brainer!</p>
+      <section>
+        <h4>HTML:</h4>
+        <pre><code class="html">&lt;div class="form-group"&gt;
+  &lt;label&gt;Enter your E-Mail Address :)&lt;/label&gt;
+  &lt;input id="docs-demo" class="form-control"&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+      <section>
+        <h4>JavaScript:</h4>
+        <pre><code class="javascript">&lt;script&gt;bootstrapValidate(document.getElementById('docs-demo'), 'email:Enter a valid E-Mail Address!');&lt;/script&gt;</code></pre>
+      </section>
+      <p class="lead">
+         Easy as <i class="fa fa-fw fa-2x fa-birthday-cake" aria-hidden></i> right?</p><a class="btn btn-lg btn-primary" style="display: inline-block; margin-bottom: 50px;">Learn how to use it</a>
+    </div>
+  </main>
+  <footer class="docs-footer">
+    <div class="container">
+      <p>Brought to you with loads of Love and Coffee by @PascaleBeier and Contributors.</p>
+    </div>
+  </footer>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.7/dist/bootstrap-validate.js"></script>
+  <script>bootstrapValidate(document.getElementById('docs-demo'), 'email:Enter a valid E-Mail Address!')</script>
+</body>

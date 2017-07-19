@@ -92,29 +92,45 @@ You can download the latest Release from [rawgit](https://cdn.rawgit.com/Pascale
 
 Works in all recent browsers, and IE 8, may not work below.
 
+## Goal
+
+The main development goal is to provide a super simple API easily usable by non-devs while providing
+decent browser support and build tooling. I mean we all love ES6+ right?
+
 ## Contributing
 
-Contributing is easy as pie.
+Contributing is easy as pie, no matter if you want to contribute to the upcoming
+documentation or the code itself.
+
+### Code
+
+This library is built using *node.js* and *webpack*. You will need to setup node.js for your OS to
+start contributing.
 
 1. Fork this Repository
-2. run `npm i` inside of the repository
-3. run `npm dev` to view changes
-4. run `npm build` to build for production
-5. Commit your changes, push these to your fork and submit a PR
+2. Install all dependencies with your favourite node.js package manager (e.g. `yarn install`, `npm i`, ...)
+3. Checkout a new branch (e.g. `git checkout -b "feature/error-icons"`)
+3. Run `npm run dev` to view changes
+4. Run `npm run build` to build for production
+5. Add your Changes via `git add -A`
+6. Commit your changes - this is where your Code Style gets fixed automagically
+7. Push your newly created branch to your origin Repo through `git push -u origin feature/error-icons`
+8. Submit a PR through GitHub
 
-You will be notified of styling errors - also you can `npm check-style` and `npm fix-style` respectively to check or fix
+Code Style changes should be applied automatically when committing - also you can `npm run check-style` and `npm run fix-style` respectively to check or fix
 code styling.
 
-### Building the documentation
+### Documentation
 
-1. Navigate to `docs`
-2. run `npm i`
-3. run `webpack -w` to watch changes
+Building the documentation is almost the same as building the code.
 
-## Testing
+You only need to run `npm run docs:dev` instead of `npm run dev` and
+`npm run docs:build` instead of `npm run build`.
+
+## Tests
 
 Tests are located under `spec/`.
-After installing all dependencies with `npm i` you may run `npm test` to spin up [Karma](https://karma-runner.github.io/1.0/index.html)-powered tests.
+After installing all dependencies you may run `npm run test` to spin up [Karma](https://karma-runner.github.io/1.0/index.html)-powered tests.
 
 ## License
 

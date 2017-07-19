@@ -4,8 +4,9 @@
         "node": true,
         "jasmine": true
     },
-    "extends": "airbnb-base",
-    "plugins": [
-        "import"
-    ]
+    "extends": ["airbnb-base", "prettier"],
+    "plugins": ["import", "prettier"],
+    "rules": {
+        "prettier/prettier": "error"
+    }
 }

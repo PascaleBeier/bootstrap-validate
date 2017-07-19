@@ -1,9 +1,14 @@
-import { CLASS_ERROR, CLASS_LABEL, CLASS_HELP_BLOCK, ELEMENT_HELP_BLOCK } from './utils/constants';
+import {
+  CLASS_ERROR,
+  CLASS_LABEL,
+  CLASS_HELP_BLOCK,
+  ELEMENT_HELP_BLOCK
+} from "./utils/constants";
 
 module.exports = (input, rule, isValid, text) => {
   const specificErrorClass = `has-error-${rule}`;
   const parent = input.parentNode;
-  const label = parent.querySelector('label');
+  const label = parent.querySelector("label");
   let specificHelpBlock = parent.querySelector(`.${specificErrorClass}`);
 
   if (isValid) {
@@ -11,7 +16,7 @@ module.exports = (input, rule, isValid, text) => {
     if (specificHelpBlock) {
       // Element already has an error element which we can safely remove.
       input.parentNode.classList.remove(CLASS_ERROR);
-      specificHelpBlock.style.display = 'none';
+      specificHelpBlock.style.display = "none";
     }
   } else {
     // Not Valid!
@@ -25,7 +30,7 @@ module.exports = (input, rule, isValid, text) => {
     if (specificHelpBlock) {
       // Element also has an error element.
       specificHelpBlock.textContent = text;
-      specificHelpBlock.style.display = 'block';
+      specificHelpBlock.style.display = "block";
     } else {
       specificHelpBlock = document.createElement(ELEMENT_HELP_BLOCK);
       input.parentNode.appendChild(specificHelpBlock);
@@ -39,3 +44,5 @@ module.exports = (input, rule, isValid, text) => {
     }
   }
 };
+
+export default module.exports;
