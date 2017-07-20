@@ -59,7 +59,6 @@
     "jasmine-core": "^2.6.4",
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.1.1",
-    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-webpack": "^2.0.4",
     "lint-staged": "^4.0.2",

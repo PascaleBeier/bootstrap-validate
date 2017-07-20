@@ -1,9 +1,7 @@
-const path = require('path');
+const webpackConfig = require('./build/karma.config');
 
 // Karma configuration
-// Generated on Wed Jun 07 2017 10:59:29 GMT+0200 (Mitteleuropäische Sommerzeit)
-
-module.exports = function (config) {
+module.exports = (config) => {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -22,51 +20,25 @@ module.exports = function (config) {
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: { 'spec/**/*Spec.js': ['webpack'] },
 
-    webpack: {
-      module: {
-        rules: [
-          {
-            enforce: 'pre',
-            test: /\.js$/,
-            include: [
-              path.join(__dirname, 'spec'),
-              path.join(__dirname, 'src'),
-            ],
-            exclude: path.join(__dirname, 'node_modules'),
-            loader: 'babel-loader',
-          }
-        ]
-      }
-    },
+    webpack: webpackConfig,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
-
-    coverageReporter: {
-      reporters: [
-        {type: 'lcovonly', subdir: '.'},
-        {type: 'json', subdir: '.'}
-      ],
-    },
-
+    reporters: ['progress'],
 
     // web server port
     port: 9876,
 
-
     // enable / disable colors in the output (reporters and logs)
     colors: true,
-
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
@@ -74,7 +46,7 @@ module.exports = function (config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    autoWatch: false,
 
 
     // start these browsers
@@ -84,10 +56,10 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity,
+    concurrency: Infinity
   });
 };

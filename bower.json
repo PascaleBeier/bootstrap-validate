@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-validate",
-  "description": "A simple Form Validation Utility for Bootstrap which does not depend on jQuery.",
+  "description": "A simple Form Validation Utility for Bootstrap no depending on jQuery.",
   "main": "dist/bootstrap-validate.js",
   "authors": [
     "Pascale Beier <mail@pascalebeier.de>"
@@ -18,8 +18,14 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "spec",
+    "docs",
+    "build",
+    "examples",
+    "src",
+    "demo.gif",
+    "karma.conf.js",
+    "package.json",
+    "yarn.lock"
   ]
 }
