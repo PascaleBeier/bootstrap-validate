@@ -16,19 +16,19 @@
 <body>
 
 <div class="container">
-  <form>
-    <div class="form-group">
-      <label for="text">The Text below needs to be an email and between 10 and 300 characters.</label>
-      <input id="text" class="form-control">
+  <div class="form-group">
+    <label for="input" class="control-label col-sm-2">The Text below needs to be an email and between 10 and 300 characters.</label>
+    <div class="col-sm-10">
+      <input id="input" type="text" class="form-control">
     </div>
-  </form>
+  </div>
 </div>
 
 
 <script src="../dist/bootstrap-validate.js"></script>
 <script>
   bootstrapValidate(
-    document.querySelector('input'),
+    '#input',
     'required:fill out this field|email:Enter a valid email address|min:10:Enter at least 10 Characters|max:300:Enter at max 300 chars'
   );
 </script>

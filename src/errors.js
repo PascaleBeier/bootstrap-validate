@@ -7,25 +7,23 @@ import {
 
 module.exports = (input, rule, isValid, text) => {
   const specificErrorClass = `has-error-${rule}`;
-  const parent = input.parentNode;
-  const label = parent.querySelector("label");
-  let specificHelpBlock = parent.querySelector(`.${specificErrorClass}`);
+  const formGroup = input.closest(".form-group") || input.parentNode;
+  const label = formGroup.querySelector("label");
+  let specificHelpBlock = formGroup.querySelector(`.${specificErrorClass}`);
 
   if (isValid) {
     // Element is valid, continue
     if (specificHelpBlock) {
       // Element already has an error element which we can safely remove.
-      input.parentNode.classList.remove(CLASS_ERROR);
+      formGroup.classList.remove(CLASS_ERROR);
       specificHelpBlock.style.display = "none";
     }
   } else {
     // Not Valid!
-    if (label) {
+    if (label && !label.classList.contains(CLASS_LABEL)) {
       // Element does have a label
-      if (!label.classList.contains(CLASS_LABEL)) {
-        // Which doesn't contain the formatting class, so we'll add it.
-        label.classList.add(CLASS_LABEL);
-      }
+      // Which doesn't contain the formatting class, so we'll add it.
+      label.classList.add(CLASS_LABEL);
     }
     if (specificHelpBlock) {
       // Element also has an error element.
@@ -38,9 +36,9 @@ module.exports = (input, rule, isValid, text) => {
       specificHelpBlock.textContent = text;
     }
     // The parent Element needs to contain the error class.
-    if (!parent.classList.contains(CLASS_ERROR)) {
+    if (!formGroup.classList.contains(CLASS_ERROR)) {
       // So we'll just add the class if it is absent.
-      parent.classList.add(CLASS_ERROR);
+      formGroup.classList.add(CLASS_ERROR);
     }
   }
 };
