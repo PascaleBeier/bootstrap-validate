@@ -8,12 +8,8 @@ module.exports = singleRuleString => {
   const splitOptionsString = singleRuleString.split(SEPARATOR_OPTION);
 
   // If this equals 1, no options are provided.
-  if (splitOptionsString.length === 1) {
-    return false;
-  }
-
-  // Other than that, we got a working array of options.
-  return splitOptionsString;
+  // Other than that, we got a working array of [rule, ... options].
+  return splitOptionsString.length === 1 ? false : splitOptionsString;
 };
 
 export default module.exports;

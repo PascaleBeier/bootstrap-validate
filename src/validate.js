@@ -5,7 +5,7 @@ import optionFormatter from "./formatters/option-formatter";
 import ruleArgumentFormatter from "./formatters/rule-argument-formatter";
 
 /**
- * @param input HTMLInputElementesl
+ * @param input HTMLInputElement
  * @param rule string
  */
 module.exports = (input, rule) => {

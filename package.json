@@ -37,6 +37,10 @@
     "spec/**/*.js": [
       "prettier --write",
       "git add"
+    ],
+    "karma.conf.js": [
+      "prettier --write",
+      "git add"
     ]
   },
   "devDependencies": {

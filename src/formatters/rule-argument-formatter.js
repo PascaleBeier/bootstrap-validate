@@ -6,7 +6,7 @@ import availableRules from "../rules";
  */
 module.exports = options => {
   const ruleArgs = options;
-  const ruleArgC = availableRules[options[0]].length;
+  const ruleArgC = availableRules[ruleArgs[0]].length;
   let errorText;
   if (options.length === ruleArgC + 1) {
     errorText = options[options.length - 1];
