@@ -101,7 +101,7 @@ decent browser support, build tooling and omitting jQuery. I mean we all love ES
 
 ### Manually
 
-You can download the latest Release (tag) from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.8/dist/bootstrap-validate.js).
+You can download the latest Release (tag) from [rawgit](https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/1.0.9/dist/bootstrap-validate.js).
 
 Please don't use the master branch as it's not supposed to be stable at all times.
 
