@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-validate",
-  "description": "A simple Form Validation Utility for Bootstrap which does not depend on jQuery",
+  "description": "A simple Form Validation Utility for Bootstrap not depending on jQuery",
   "version": "1.0.9",
   "main": "dist/bootstrap-validate.js",
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
@@ -19,11 +19,10 @@
     "build": "webpack --config build/library.config.js -p",
     "docs:dev": "webpack --config build/docs.config.js -w",
     "docs:build": "webpack --config build/docs.config.js -p",
-    "test": "cross-env NODE_ENV=test node node_modules/karma/bin/karma start",
-    "precommit": "lint-staged",
-    "check-style": "eslint build/ src/ spec/",
-    "fix-style": "eslint --fix build/ src/ spec/",
-    "prod": "npm run build && npm run docs:build"
+    "test": "jest",
+    "precommit": "npm run build && npm run docs:build && lint-staged",
+    "check-style": "eslint build/ src/ __tests__/",
+    "fix-style": "eslint --fix build/ src/ __tests__/"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -34,22 +33,17 @@
       "prettier --write",
       "git add"
     ],
-    "spec/**/*.js": [
-      "prettier --write",
-      "git add"
-    ],
-    "karma.conf.js": [
+    "__tests__/**/*.js": [
       "prettier --write",
       "git add"
     ]
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-array-includes": "^2.0.3",
-    "babel-plugin-istanbul": "^4.1.4",
     "babel-preset-env": "^1.5.2",
-    "cross-env": "^5.0.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-config-prettier": "^2.3.0",
@@ -59,12 +53,7 @@
     "file-loader": "^0.11.2",
     "html-loader": "^0.4.5",
     "husky": "^0.14.3",
-    "jasmine": "^2.6.0",
-    "jasmine-core": "^2.6.4",
-    "karma": "^1.7.0",
-    "karma-chrome-launcher": "^2.1.1",
-    "karma-jasmine": "^1.1.0",
-    "karma-webpack": "^2.0.4",
+    "jest": "^20.0.4",
     "lint-staged": "^4.0.2",
     "prettier": "^1.5.3",
     "pug": "^2.0.0-rc.2",
