@@ -20,7 +20,7 @@
     "docs:dev": "webpack --config build/docs.config.js -w",
     "docs:build": "webpack --config build/docs.config.js -p",
     "test": "jest",
-    "precommit": "npm run build && npm run docs:build && lint-staged",
+    "precommit": "lint-staged",
     "check-style": "eslint build/ src/ __tests__/",
     "fix-style": "eslint --fix build/ src/ __tests__/"
   },

@@ -24,10 +24,8 @@ Imagine the following HTML:
 
 Now you want a Name to be at max 30 characters long and add the following:
 
-```html
-<script>
-    bootstrapValidate('#name', 'max:30:Your name must not be longer than 30 characters');
-</script>
+```javascript
+bootstrapValidate('#name', 'max:30:Your name must not be longer than 30 characters');
 ```
 
 Validating an email address couldn't be easier!
@@ -60,7 +58,7 @@ The second argument is a string of rules, whereas:
 
 `rule1|rule2|rule3`
 
-- Options are separated by a colon **:**.
+- Options are separated by a colon **:**
 
 `option1:option2:option3`
 
@@ -153,8 +151,8 @@ The docs reside below `docs/` and are built with webpack and pug.
 
 ## Tests
 
-Tests are located under `spec/`.
-After installing all dependencies you may run `npm run test` to spin up [Karma](https://karma-runner.github.io/1.0/index.html)-powered tests.
+Tests are located under `__tests__/`.
+After installing all dependencies you may run `yarn test` or `npm run test` to spin up [Jest](https://facebook.github.io/jest/)-powered tests.
 
 ## License
 
