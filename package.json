@@ -22,7 +22,8 @@
     "test": "jest",
     "precommit": "lint-staged",
     "check-style": "eslint build/ src/ __tests__/",
-    "fix-style": "eslint --fix build/ src/ __tests__/"
+    "fix-style": "eslint --fix build/ src/ __tests__/",
+    "coverage": "jest --coverage"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -58,7 +59,7 @@
     "prettier": "^1.5.3",
     "pug": "^2.0.0-rc.2",
     "pug-html-loader": "^1.1.5",
-    "webpack": "^3.3.0"
+    "webpack": "^3.4.0"
   },
   "dependencies": {
     "classlist.js": "git+https://github.com/eligrey/classList.js",
