@@ -83,6 +83,10 @@ The second argument is a string of rules, whereas:
   - `max`: (number) Maximal Number of Characters
   - `email`: Requires a valid E-Mail Address (thanks to [@cmckenzie6](https://github.com/cmckenzie6))
   - `required`: Requires an input to be filled
+  - `url`: Validates an URL
+  - `alphanum`: Requires only Alpha-Numeric Characters (0-9, a-z, A-Z)
+  - `numeric`: Requires numeric value ("0", 0, .42, 42 ...)
+  - `integer`: Requires an Integer ("5", 4, but not 5.2 or ".42")
 
 Adding Rules is super easy! Have a look at `src/rules`. and [How to Contribute](#contributing).
 
