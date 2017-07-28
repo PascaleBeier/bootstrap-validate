@@ -76,6 +76,22 @@ The second argument is a string of rules, whereas:
 
 `min:1:Enter a character|max:2:Enter at max 2 characters|email:Enter a valid email`
 
+### Passing a Callback function
+
+Since 1.1.0 you can pass a callback function to `bootstrapValidate()` as a third parameter.
+This way you can apply additional logic to valid or invalid inputs.
+
+```javascript
+
+bootstrapValidate('#input', 'min:10:Enter at least 10 Characters', function (isValid) {
+   if (isValid) {
+   // If validation passes.
+       alert('valid');
+   } else {
+   // Or validation fails.
+       alert('invalid');
+   }
+
 ## Available Rules
 
 - Input Elements

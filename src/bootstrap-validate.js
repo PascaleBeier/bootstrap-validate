@@ -1,6 +1,6 @@
 import validate from "./validate";
 
-module.exports = (input, rules) => {
+module.exports = (input, rules, callback) => {
   // Check if a reference Element is already supplied,
   // e.g. via document.querySelector('.example').
   // If not, we are going to query it on our owns
@@ -10,7 +10,7 @@ module.exports = (input, rules) => {
     lInput = document.querySelector(input);
 
   lInput.addEventListener("input", () => {
-    validate(lInput, rules);
+    validate(lInput, rules, callback);
   });
 };
 
