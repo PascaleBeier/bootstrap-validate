@@ -62,7 +62,7 @@
     "webpack": "^3.4.1"
   },
   "dependencies": {
-    "classlist.js": "git+https://github.com/eligrey/classList.js",
+    "classlist.js": "https://github.com/eligrey/classList.js#1fd9951666f940ac415dfe5dfa61cf902cc03b5e",
     "element-closest": "^2.0.2"
   }
 }
