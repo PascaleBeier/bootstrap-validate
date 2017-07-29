@@ -91,6 +91,7 @@ bootstrapValidate('#input', 'min:10:Enter at least 10 Characters', function (isV
    // Or validation fails.
        alert('invalid');
    }
+```
 
 ## Available Rules
 
