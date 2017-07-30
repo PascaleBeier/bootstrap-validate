@@ -1,0 +1,25 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#mainnav" aria-expanded="false")
+        span.sr-only Toggle Navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+    .collapse.navbar-collapse#mainnav
+      ul.nav.navbar-nav
+        li
+          a(href='/') Home
+        li
+          a(href='usage.html') Usage
+        li
+          a(href='rules.html') Available Rules
+
+div.jumbotron
+  div.container
+    h1=meta.name
+      small.text-muted  #{meta.version}
+    p.lead=meta.description
+    p
+      a.github-button(href="https://github.com/PascaleBeier/bootstrap-validate" data-icon="octicon-star" data-size="large"
+      aria-label="Star bootstrap-validate on GitHub") Star on GitHub

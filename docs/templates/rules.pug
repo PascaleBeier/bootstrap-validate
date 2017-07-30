@@ -1,0 +1,34 @@
+extends layouts/app
+
+block content
+  .container
+
+    h1.page-header Available Rules
+    p.lead
+      | Bootstrap Validate currently ships the following rules.
+      | Below you will find a description of every rule, its very own options
+      | and a usage example.
+
+    .alert.alert-info
+      h3(style='margin-top: 0;') Are you missing a rule to validate your Bootstrap Forms?
+      p We can surely help you on that one! Also, adding rules is super easy.
+      p But before you need to get your hands dirty, have a look at our
+        a(href="https://github.com/PascaleBeier/bootstrap-validate") GitHub Repository and file an Issue to get your rule added!
+
+    each rule in rules
+      - var docblock = rule.toString().match(/\/\*\*[^/]+\//)[0]
+      - var params = docblock.match(/@param.*/g);
+      - var description = docblock.split('@description');
+      - var hasOptions = rule.length !== 1
+        .rule(style='margin-bottom: 60px;')
+          h2=rule.name
+          p.lead=description[description.length-1].slice(0, -3)
+          p Options: #{rule.length - 1}
+          if hasOptions
+            ul
+            each param in params
+              - var type = param.split(' ')[2];
+              li Type #{type}
+                each word in param.split(' ')
+                  #{word}
+

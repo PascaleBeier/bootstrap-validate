@@ -1,0 +1,12 @@
+- var footerLinks = [
+- { label: "GitHub", href: "https://github.com/PascaleBeier/bootstrap-validate" },
+- { label: "Twitter", href: "https://twitter.com/PascaleBeier" },
+- { label: "Website", href: "https://pascalebeier.de" }
+- ];
+div.container
+  p #{meta.name} is open-source and #{meta.license}-Licensed.
+  nav.nav.nav-pills
+    each link in footerLinks
+      li(role='presentation')
+        a(href=link.href)=link.label
+
