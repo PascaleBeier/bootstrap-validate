@@ -19877,7 +19877,8 @@ exports.default = module.exports;
 
 var map = {
 	"./index.pug": 194,
-	"./rules.pug": 195
+	"./rules.pug": 195,
+	"./usage.pug": 200
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -19906,6 +19907,16 @@ module.exports = __webpack_require__.p + "./../index.html";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "./../rules.html";
+
+/***/ }),
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "./../usage.html";
 
 /***/ })
 /******/ ]);

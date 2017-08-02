@@ -1,5 +1,6 @@
 const path = require("path");
 const rules = require("./../src/rules");
+const constants = require("./../src/utils/constants");
 const extractText = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
           {
             loader: "pug-html-loader",
             options: {
-              data: { rules, meta: require("./../package.json") }
+              data: { rules, meta: require("./../package.json"), constants }
             }
           }
         ]

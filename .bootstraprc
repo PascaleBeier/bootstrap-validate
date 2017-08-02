@@ -70,7 +70,7 @@ styles:
   # Components
   component-animations: true
   dropdowns: true
-  button-groups: false
+  button-groups: true
   input-groups: false
   navs: true
   navbar: true
@@ -84,7 +84,7 @@ styles:
   alerts: true
   progress-bars: false
   media: false
-  list-group: true
+  list-group: false
   panels: true
   wells: false
   responsive-embed: false
