@@ -57,7 +57,7 @@
     "jest": "^20.0.4",
     "lint-staged": "^4.0.2",
     "prettier": "^1.5.3",
-    "pug": "^2.0.0-rc.2",
+    "pug": "^2.0.0-rc.3",
     "pug-html-loader": "^1.1.5",
     "webpack": "^3.4.1"
   },
