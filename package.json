@@ -65,7 +65,7 @@
     "lint-staged": "^4.0.2",
     "node-sass": "^4.5.3",
     "prettier": "^1.5.3",
-    "pug": "^2.0.0-rc.2",
+    "pug": "^2.0.0-rc.3",
     "pug-html-loader": "^1.1.5",
     "resolve-url-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
