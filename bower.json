@@ -18,14 +18,11 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "spec",
+    "__tests__",
     "docs",
     "build",
     "examples",
     "src",
-    "demo.gif",
-    "karma.conf.js",
-    "package.json",
-    "yarn.lock"
+    "demo.gif"
   ]
 }
