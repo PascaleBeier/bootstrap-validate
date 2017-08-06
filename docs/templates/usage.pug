@@ -1,12 +1,17 @@
 extends layouts/app
 
+
+block vars
+  - var title = "Usage"
+  - var description = meta.name + " is built with ease-of-use in mind. You don't need to be a regular ECMAScript&reg; Spec Contributor to use this library!"
+
+
 block content
   .container
 
     h1.page-header Usage
 
-    p.lead #{meta.name} is built with ease-of-use in mind. You don't need to be a regular ECMAScript&reg; Spec Contributor
-      |  to use this library!
+    p.lead=description
 
     h2(style="margin-top: 50px") The
       strong
@@ -55,8 +60,7 @@ block content
       code.javascript bootstrapValidate('input[type="text"]')
       |.
 
-    p Read more about
-      |
+    p Read more about&nbsp;
       a(href="https://developer.mozilla.org/en/docs/Web/API/Document/querySelector") document.querySelector
       |.
 
@@ -105,11 +109,10 @@ block content
     pre
       code.javascript bootstrapValidate('#email', 'email#{constants.SEPARATOR_OPTION}Enter a valid E-Mail!')
 
-    input.form-control#docs_usage_email(placeholder="See for yourself!")
+    .form-group
+      label.col-sm-2 Ty it!
+      input.form-control#docs_usage_email(placeholder="jon@example.org")
 
-    block append scripts
-      script.
-        bootstrapValidate('#docs_usage_email', 'email:Enter a valid E-Mail!')
 
     p(style="margin-top: 20px;") Options are the place to supply necessary rule parameters. For Instance, there is a
       strong  min
@@ -121,3 +124,7 @@ block content
     p Surely we have a list of&nbsp;
       a.btn.btn-default(href="rules.html") Available Rules
       |.
+
+append scripts
+      script.
+        bootstrapValidate('#docs_usage_email', 'email:Enter a valid E-Mail!')

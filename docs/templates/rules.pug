@@ -1,5 +1,10 @@
 extends layouts/app
 
+
+block vars
+  - var title = "Validation Rules"
+  - var description = "Learn about the available validation rules " + meta.name + " ships with."
+
 block content
   .container
 
@@ -41,6 +46,9 @@ block content
               h3 Options
 
               p Available Options: #{rule.length - 1}
+              unless hasOptions
+                .alert.alert-info You only need to pass an Error Text.
+                  
                 - var optionsString = "";
                 if hasOptions
                   ul
