@@ -48,7 +48,7 @@ block content
               p Available Options: #{rule.length - 1}
               unless hasOptions
                 .alert.alert-info You only need to pass an Error Text.
-                  
+
                 - var optionsString = "";
                 if hasOptions
                   ul
@@ -71,3 +71,4 @@ block content
               pre
                 code.javascript=rule.toString()
 
+    a.btn.btn-lg.btn-default.pull-left(href="usage.html") ← Usage

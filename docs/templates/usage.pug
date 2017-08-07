@@ -9,7 +9,7 @@ block vars
 block content
   .container
 
-    h1.page-header Usage
+    h1.page-header="Usage"
 
     p.lead=description
 
@@ -120,10 +120,9 @@ block content
       | you would write
       code.javascript bootstrapValidate('#input', 'min:5:Enter at least 5 Characters');
 
-    h3 Show me the Rules!
-    p Surely we have a list of&nbsp;
-      a.btn.btn-default(href="rules.html") Available Rules
-      |.
+    a.btn.btn-lg.btn-default.pull-left(href="installation.html") ← Installation
+    a.btn.btn-lg.btn-primary.pull-right(href="rules.html") Available Rules →
+
 
 append scripts
       script.

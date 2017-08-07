@@ -1,0 +1,77 @@
+extends layouts/app
+
+
+block vars
+  - var title = "Installation"
+  - var description = "You can install " + meta.name + " with your favourite package manager and CDN."
+
+block content
+  .container
+
+    h1.page-header="Installation"
+
+    p.lead=description
+
+    h2(style="margin-top: 50px") Via
+      strong
+        |    Package Managers
+
+    p As stated above you can easily install #{meta.name} using your favourite package manager.
+      |  However we do recommend installing with yarn.
+
+    h3 yarn
+
+    pre
+      code.bash yarn add bootstrap-validate
+
+
+    h3 npm
+
+    pre
+      code.bash npm i bootstrap-validate
+
+    h3 bower
+
+    pre
+      code.bash bower install bootstrap-validate
+
+
+    h2(style="margin-top: 50px") Via
+      strong
+        |    CDN
+
+
+    p RawGit makes including #{meta.name} in your project super easy, providing a CDN
+      | allowing you to use a specific version of #{meta.name}.
+
+    p For the current version, you can just include
+
+    pre
+      code.html
+        | &lt;script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/#{meta.version}/dist/bootstrap-validate.js"&gt;&lt;/script&gt;
+
+
+    h2(style="margin-top: 50px") Get the
+      strong
+        |    Source
+
+    p You can grab the full Source Code including build files and documentation from our&nbsp;
+      a(href="https://github.com/PascaleBeier/bootstrap-validate") GitHub Repository
+      |.
+
+
+    h2(style="margin-top: 50px") Usage with Webpack etc.
+
+    p #{meta.name} can be used in ES6+ Environments as well. However, importing
+      | the library has a small quirk.
+
+    p You need to
+
+    pre
+      code.javascript
+        | import * from 'bootstrap-validate' as bootstrapValidate;
+        | window.bootstrapValidate = bootstrapValidate;
+
+    p to export the bootstrapValidate function to your resulting bundle.
+
+    a.btn.btn-lg.btn-primary.pull-right(href="usage.html") Usage →
