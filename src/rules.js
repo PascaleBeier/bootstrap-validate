@@ -52,7 +52,14 @@ module.exports = {
     /**
      * @description Require alphanumeric input, e.g. 0-9 and a-Z.
      */
-    new RegExp(/^[a-z0-9]+$/i).test(input.value)
+    new RegExp(/^[a-z0-9]+$/i).test(input.value),
+  contains: (input, string) => {
+    /**
+     * @param string string: String to appear in the Input Element
+     * @description Require the input to contain a given string.
+     */
+    return input.value.includes(string);
+  }
 };
 
 export default module.exports;

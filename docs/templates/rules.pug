@@ -23,7 +23,7 @@ block content
         data-size="large" data-show-count="true" aria-label="File an Issue to get your Rule added") Issue
 
     each rule, i in rules
-      - var types = [{ label: 'number', example: '5' }];
+      - var types = [{ label: 'number', example: '5' }, { label: 'string', example: 'Name' }];
       - var docblock = rule.toString().match(/\/\*\*[^/]+\//)[0]
       - var params = docblock.match(/@param.*/g);
       - var description = docblock.split('@description');
@@ -49,16 +49,16 @@ block content
               unless hasOptions
                 .alert.alert-info You only need to pass an Error Text.
 
-                - var optionsString = "";
-                if hasOptions
-                  ul
-                    each param in params
-                      li
-                        each word in param.split(' ').slice(2)
-                          |  #{word}
-                        - var type = types.find(function (type) { return type.label + ':' === param.split(' ')[2]; });
-                        - optionsString += type.example + ':';
-                        strong  Example: #{type.example}
+              - var optionsString = "";
+              if hasOptions
+                ul
+                  each param in params
+                    li
+                      each word in param.split(' ').slice(2)
+                        |  #{word}
+                      - var type = types.find(function (type) { return type.label + ':' === param.split(' ')[2]; });
+                      - optionsString += type.example + ':';
+                      strong  Example: #{type.example}
 
             .tab-pane.fade(role="tabpanel" id="usage_" + i)
               h3 Usage
