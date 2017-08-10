@@ -62,6 +62,7 @@
     "html-loader": "^0.5.1",
     "husky": "^0.14.3",
     "jest": "^20.0.4",
+    "jstransformer-markdown-it": "^2.0.0",
     "lint-staged": "^4.0.3",
     "node-sass": "^4.5.3",
     "prettier": "^1.5.3",

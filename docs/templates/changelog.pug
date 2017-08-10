@@ -1,0 +1,10 @@
+extends layouts/app
+
+block vars
+  - var title = "Changelog"
+
+block content
+  .container
+
+    include:markdown-it /CHANGELOG.md
+

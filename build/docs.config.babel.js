@@ -26,6 +26,7 @@ module.exports = {
           {
             loader: "pug-html-loader",
             options: {
+              basedir: path.join(__dirname, "../"),
               data: { rules, meta: require("./../package.json"), constants }
             }
           }
