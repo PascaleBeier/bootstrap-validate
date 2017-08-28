@@ -1,3 +1,4 @@
+include ../partials/mixins
 
 doctype html
 html(lang='en')
@@ -12,12 +13,13 @@ html(lang='en')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(name='keywords' content=meta.keywords.toString())
     link(rel="stylesheet" href="assets/main.css")
-body(style="padding-top: 50px")
+body
   header.docs-header
     include ../partials/header
   main.docs-main
-    block content
-  footer.docs-footer.jumbotron(style='margin-bottom: 0; margin-top: 100px;')
+    .container
+      block content
+  footer.docs-footer.jumbotron
     include ../partials/footer
   block scripts
     script(async defer src="https://buttons.github.io/buttons.js")

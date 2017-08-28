@@ -1,7 +1,10 @@
+block nav
+  - var active = null
+
 nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      .navbar-brand=meta.name
+      a.navbar-brand(href="/")=meta.name
       button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#mainnav" aria-expanded="false")
         span.sr-only Toggle Navigation
         span.icon-bar
@@ -9,15 +12,13 @@ nav.navbar.navbar-default.navbar-fixed-top
         span.icon-bar
     .collapse.navbar-collapse#mainnav
       ul.nav.navbar-nav.navbar-right
-        li
-          a(href='/') Home
-        li
+        li(class=(active === 'Installation' ? 'active' : ''))
           a(href='installation.html') Installation
-        li
+        li(class=(active === 'Usage' ? 'active' : ''))
           a(href='usage.html') Usage
-        li
+        li(class=(active === 'Rules' ? 'active' : ''))
           a(href='rules.html') Available Rules
-        li
+        li(class=(active === 'Changelog' ? 'active' : ''))
           a(href='changelog.html') Changelog
 
 div.jumbotron
