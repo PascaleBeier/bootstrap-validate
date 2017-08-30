@@ -74,7 +74,5 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5"
   },
-  "dependencies": {
-    "element-closest": "^2.0.2"
-  }
+  "dependencies": {}
 }
