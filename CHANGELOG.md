@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Ditched classlist.js for MDN Classlist Polyfill, saving more than 1kb gzipped
+- Optimized Polyfills for IE and older browsers, reducing the library size.
 
 ## [1.0.11] - 2017-08-07
 
