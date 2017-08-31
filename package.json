@@ -48,7 +48,7 @@
     "bootstrap-loader": "^2.2.0",
     "bootstrap-sass": "^3.3.7",
     "bootstrap.native": "^2.0.14",
-    "css-loader": "^0.28.5",
+    "css-loader": "^0.28.7",
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-config-prettier": "^2.3.0",
