@@ -77,6 +77,19 @@ module.exports = {
         .toString()
         .substr(input.value.length - string.length, string.length) === string
     );
+  },
+  matches: (input, matchingInput) => {
+    /**
+     * @param matchingInput string: The input element to match against (e.g. #passwordConfirm)
+     * @description Require the input value to match the given inputs value. Like bootstrapValidate's first Parameter, you can pass a selector or Element.
+     */
+    let lMatchingInput = matchingInput;
+
+    if (typeof lMatchingInput.nodeType == "undefined") {
+      lMatchingInput = document.querySelector(input);
+    }
+
+    return input.value === lMatchingInput.value;
   }
 };
 
