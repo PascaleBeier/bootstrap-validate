@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Rule: startsWith [fff8678](https://github.com/PascaleBeier/bootstrap-validate/commit/fff867887914a97876ae66c0b4867d46c17a02b6)
 - Optimized Polyfills for IE and older browsers, reducing the library size.
+
 
 ## [1.0.11] - 2017-08-07
 
