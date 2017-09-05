@@ -47,16 +47,8 @@
 <script>
   // Basic Example
   bootstrapValidate(
-    '#input',
+    ['#input', '#inputCb'],
     'endsWith:Peter:Your Input needs to end with "Peter".');
-  // Passing a Callback
-  bootstrapValidate(
-    '#inputCb',
-    'min:5:Enter at least 5 Characters',
-    function (isValid) {
-      console.log(isValid);
-    }
-  )
 
 </script>
 </body>
