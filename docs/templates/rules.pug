@@ -20,14 +20,17 @@ block content
       data-size="large" data-show-count="true" aria-label="File an Issue to get your Rule added") Issue
 
   each rule, i in rules
-    - var types = [{ label: 'number', example: '5' }, { label: 'string', example: 'Name' }];
-    - var docblock = rule.toString().match(/\/\*\*[^/]+\//)[0]
-    - var params = docblock.match(/@param.*/g);
-    - var description = docblock.split('@description');
+    - var docs = docblock({tags: { error: docblock.singleParameterTag, description: docblock.singleParameterTag } }).parse(rule.toString());
     - var hasOptions = rule.length !== 1
       .rule(style='margin-bottom: 60px;')
-        h2=rule.name
-        p.lead=description[description.length-1].slice(0, -3)
+        h2 #{rule.name}
+          if semver.eq(docs.tags.since, meta.version)
+            |&nbsp;<span class="label label-primary">New</span>
+          if semver.gt(docs.tags.since, meta.version)
+            |&nbsp;<span class="label label-danger">Unreleased</span>
+          |&nbsp;<span class="label label-default">#{docs.tags.since}</span>
+
+        p.lead=docs.tags.description
 
         ul.nav.nav-tabs(role="tablist")
           li.active(role="presentation")
@@ -49,19 +52,21 @@ block content
             - var optionsString = "";
             if hasOptions
               ul
-                each param in params
-                  li
-                    each word in param.split(' ').slice(2)
-                      |  #{word}
-                    - var type = types.find(function (type) { return type.label + ':' === param.split(' ')[2]; });
-                    - optionsString += type.example + ':';
-                    strong  Example: #{type.example}
+                each param in [docs.tags.param]
+                  li=param.substr(param.indexOf(" ") + 1)
+
+
+            if docs.tags.example
+              - optionsString += docs.tags.example + ':'
+
+            if docs.tags.error
+              - optionsString += docs.tags.error
 
           .tab-pane.fade(role="tabpanel" id="usage_" + i)
             h3 Usage
 
             pre
-              code.javascript bootstrapValidate('#input', '#{rule.name}#{constants.SEPARATOR_OPTION}#{optionsString}Obligatory Error Text')
+              code.javascript bootstrapValidate('#input', '#{rule.name}#{constants.SEPARATOR_OPTION}#{optionsString}')
           .tab-pane.fade(role="tabpanel" id="source_" + i)
             h3 Source
 

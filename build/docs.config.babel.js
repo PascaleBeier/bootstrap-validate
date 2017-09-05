@@ -2,6 +2,9 @@ const path = require("path");
 const rules = require("./../src/rules");
 const constants = require("./../src/utils/constants");
 const extractText = require("extract-text-webpack-plugin");
+const docblock = require("docblock-parser");
+const meta = require("./../package.json");
+const semver = require("semver");
 
 module.exports = {
   context: path.resolve(__dirname, "../docs"),
@@ -27,7 +30,7 @@ module.exports = {
             loader: "pug-html-loader",
             options: {
               basedir: path.join(__dirname, "../"),
-              data: { rules, meta: require("./../package.json"), constants }
+              data: { docblock, rules, meta, semver, constants }
             }
           }
         ]

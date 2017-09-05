@@ -49,6 +49,7 @@
     "bootstrap-sass": "^3.3.7",
     "bootstrap.native": "^2.0.14",
     "css-loader": "^0.28.7",
+    "docblock-parser": "^1.0.0",
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-config-prettier": "^2.4.0",
@@ -70,6 +71,7 @@
     "pug-html-loader": "^1.1.5",
     "resolve-url-loader": "^2.1.0",
     "sass-loader": "^6.0.6",
+    "semver": "^5.4.1",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5"
