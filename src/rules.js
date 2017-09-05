@@ -66,6 +66,17 @@ module.exports = {
      * @description Require the input value to start with a given string.
      */
     return input.value.toString().substr(0, string.length) === string;
+  },
+  endsWith: (input, string) => {
+    /**
+     * @param string string: String the input value should end with
+     * @description Require the input value to end with a given string.
+     */
+    return (
+      input.value
+        .toString()
+        .substr(input.value.length - string.length, string.length) === string
+    );
   }
 };
 
