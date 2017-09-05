@@ -61,14 +61,12 @@ module.exports = {
     /**
      * @since 1.0.10
      * @description Require a valid numeric input.
-     * @example 10
      * @error Please only enter numeric characters!
      */
     !isNaN(parseFloat(input.value)) && isFinite(input.value),
   alphanum: input =>
     /**
      * @since 1.0.10
-     * @example 4
      * @error Please only enter alphanumeric characters!
      * @description Require alphanumeric input, e.g. 0-9 and a-Z.
      */
