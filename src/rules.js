@@ -59,6 +59,13 @@ module.exports = {
      * @description Require the input to contain a given string.
      */
     return input.value.includes(string);
+  },
+  startsWith: (input, string) => {
+    /**
+     * @param string string: String the input value should start with
+     * @description Require the input value to start with a given string.
+     */
+    return input.value.toString().substr(0, string.length) === string;
   }
 };
 
