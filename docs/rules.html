@@ -111,7 +111,7 @@
     var lMatchingInput = matchingInput;
 
     if (typeof lMatchingInput.nodeType == &quot;undefined&quot;) {
-      lMatchingInput = document.querySelector(input);
+      lMatchingInput = document.querySelector(matchingInput);
     }
 
     return input.value === lMatchingInput.value;

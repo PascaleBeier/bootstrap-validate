@@ -116,7 +116,7 @@ module.exports = {
     let lMatchingInput = matchingInput;
 
     if (typeof lMatchingInput.nodeType == "undefined") {
-      lMatchingInput = document.querySelector(input);
+      lMatchingInput = document.querySelector(matchingInput);
     }
 
     return input.value === lMatchingInput.value;

@@ -6,7 +6,6 @@ module.exports = (input, rules, callback) => {
   // If not, we are going to query it on our owns
   // enabling the user to only supply a query string.
   let lInput = input;
-  debugger;
 
   if (Array.isArray(lInput)) {
     lInput.forEach(el => {
@@ -14,6 +13,7 @@ module.exports = (input, rules, callback) => {
       if (typeof el.nodeType == "undefined") {
         lElement = document.querySelector(el);
       }
+
       lElement.addEventListener("input", () => {
         validate(lElement, rules, callback);
       });

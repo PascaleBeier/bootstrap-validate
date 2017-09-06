@@ -4,11 +4,11 @@ describe("matches", () => {
   const valid = "Name";
   const invalid = "AAAa   ss224";
 
-  matchingInput.value = valid;
-  input.value = valid;
-
   const input = document.createElement("input");
   const matchingInput = document.createElement("input");
+
+  matchingInput.value = valid;
+  input.value = valid;
 
   it("should return true if input the input value matches the given input value.", () => {
     expect(matches(input, matchingInput)).toBeTruthy();
