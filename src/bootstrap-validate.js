@@ -1,31 +1,37 @@
-import validate from "./validate";
+import availableRules from "./rules";
+import drawErrors from "./errors";
+import { SEPARATOR_OPTION, SEPARATOR_RULE } from "./constants";
+import first from "lodash/first";
+import last from "lodash/last";
+import isFunction from "lodash/isFunction";
+import flatten from "lodash/flatten";
 
 module.exports = (input, rules, callback) => {
-  // Check if a reference Element is already supplied,
-  // e.g. via document.querySelector('.example').
-  // If not, we are going to query it on our owns
-  // enabling the user to only supply a query string.
-  let lInput = input;
+  // Normalize the input parameter to a flat array.
+  flatten([input]).forEach(element => {
+    // Check for either element or selector.
+    let lElement = element.nodeType ? element : document.querySelector(element);
 
-  if (Array.isArray(lInput)) {
-    lInput.forEach(el => {
-      let lElement = el;
-      if (typeof el.nodeType == "undefined") {
-        lElement = document.querySelector(el);
-      }
+    lElement.addEventListener("input", () => {
+      // Let's extract the rules off of the given rule argument.
+      rules.split(SEPARATOR_RULE).forEach(rule => {
+        // get an array of [rule, option1, ...]
+        const options = rule.split(SEPARATOR_OPTION);
 
-      lElement.addEventListener("input", () => {
-        validate(lElement, rules, callback);
+        // invoke the rule, returning boolean
+        let isValid = availableRules[first(options)](
+          lElement,
+          ...options.slice(1)
+        );
+
+        // DOM Manipulations to toggle errors.
+        drawErrors(lElement, first(options), isValid, last(options));
+
+        // optionally invoke the callback.
+        if (isFunction(callback)) callback(isValid);
       });
     });
-  } else {
-    if (typeof lInput.nodeType == "undefined")
-      lInput = document.querySelector(input);
-
-    lInput.addEventListener("input", () => {
-      validate(lInput, rules, callback);
-    });
-  }
+  });
 };
 
 export default module.exports;
