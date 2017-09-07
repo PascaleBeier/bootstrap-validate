@@ -1,3 +1,12 @@
+import isFinite from "lodash/isFinite";
+import parseInt from "lodash/parseInt";
+import isInteger from "lodash/isInteger";
+import isString from "lodash/isString";
+import startsWith from "lodash/startsWith";
+import endsWith from "lodash/endsWith";
+import gte from "lodash/gte";
+import lte from "lodash/lte";
+
 module.exports = {
   min: (input, min) => {
     /**
@@ -7,7 +16,7 @@ module.exports = {
      * @param min number: Number of minimum characters.
      * @description Require a given minimum character count.
      */
-    return input.value.length >= parseInt(min, 10);
+    return gte(input.value.length, parseInt(min));
   },
   max: (input, max) => {
     /**
@@ -17,24 +26,26 @@ module.exports = {
      * @param max number: Number of maximum characters.
      * @description Maximum character count required.
      */
-    return input.value.length <= parseInt(max, 10);
+    return lte(input.value.length, parseInt(max));
   },
-  email: input =>
+  email: input => {
     /**
      * @since 1.0.3
      * @error Enter a valid email address
      * @description Require a valid E-Mail Address.
      */
-    new RegExp(
+    return new RegExp(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    ).test(input.value),
-  required: input =>
+    ).test(input.value);
+  },
+  required: input => {
     /**
      * @since 1.0.7
      * @error Please fill out this field!
      * @description Require a field to be filled out.
      */
-    input.value.length > 0,
+    return input.value.length && input.value.length > 0;
+  },
   url: input =>
     /**
      * @since 1.0.10
@@ -50,27 +61,24 @@ module.exports = {
      * @error Please fill out this input field!
      * @description Require a valid integer.
      */
-    if (isNaN(input.value)) {
-      return false;
-    }
-    const x = parseFloat(input.value);
-
-    return (x | 0) === x; // eslint-disable-line no-bitwise
+    return isInteger(parseFloat(input.value));
   },
-  numeric: input =>
+  numeric: input => {
     /**
      * @since 1.0.10
      * @description Require a valid numeric input.
      * @error Please only enter numeric characters!
      */
-    !isNaN(parseFloat(input.value)) && isFinite(input.value),
-  alphanum: input =>
+    return isFinite(parseFloat(input.value));
+  },
+  alphanum: input => {
     /**
      * @since 1.0.10
      * @error Please only enter alphanumeric characters!
      * @description Require alphanumeric input, e.g. 0-9 and a-Z.
      */
-    new RegExp(/^[a-z0-9]+$/i).test(input.value),
+    return new RegExp(/^[a-z0-9]+$/i).test(input.value);
+  },
   contains: (input, string) => {
     /**
      * @since 1.0.11
@@ -89,7 +97,7 @@ module.exports = {
      * @error Your phone number needs to start with +49
      * @description Require the input value to start with a given string.
      */
-    return input.value.toString().substr(0, string.length) === string;
+    return startsWith(input.value, string);
   },
   endsWith: (input, string) => {
     /**
@@ -99,11 +107,7 @@ module.exports = {
      * @param string string: String the input value should end with
      * @description Require the input value to end with a given string.
      */
-    return (
-      input.value
-        .toString()
-        .substr(input.value.length - string.length, string.length) === string
-    );
+    return endsWith(input.value, string);
   },
   matches: (input, matchingInput) => {
     /**
@@ -120,6 +124,14 @@ module.exports = {
     }
 
     return input.value === lMatchingInput.value;
+  },
+  alpha: input => {
+    /**
+     * @since 1.1.0
+     * @error You can only input alphabetic characters
+     * @description Validate only alphabetic characters - a-z, A-Z.
+     */
+    return isString(input.value) && new RegExp(/^[a-z]+$/i).test(input.value);
   }
 };
 
