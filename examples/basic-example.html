@@ -19,21 +19,18 @@
 
   <div class="form-horizontal">
 
-  <h1>Basic Example</h1>
 
   <div class="form-group">
-    <label for="input" class="control-label col-sm-2">The Text below needs to be an email and between 10 and 300 characters.</label>
+    <label for="input" class="control-label col-sm-2">Test1</label>
     <div class="col-sm-10">
-      <input id="input" type="text" class="form-control">
+      <input id="input2" type="text" class="form-control">
     </div>
   </div>
 
-  <h1>Passing a Callback</h1>
-
   <div class="form-group">
-    <label for="inputCb" class="control-label col-sm-2">Trigger a callback</label>
+    <label for="input" class="control-label col-sm-2">Test2</label>
     <div class="col-sm-10">
-      <input id="inputCb" type="text" class="form-control">
+      <input id="input3" type="text" class="form-control">
     </div>
   </div>
 
@@ -46,9 +43,8 @@
 <script src="../dist/bootstrap-validate.js"></script>
 <script>
   // Basic Example
-  bootstrapValidate(
-    '#inputCb',
-    'matches:#input:Both fields need to match!');
+  bootstrapValidate(['#input2', '#input3'], 'contains:Peter:Needs to Contain "Peter"|min:20:Enter a character!|max:40:Enter 40 chars at most!');
+
 
 </script>
 </body>

@@ -3,7 +3,7 @@ import {
   CLASS_LABEL,
   CLASS_HELP_BLOCK,
   ELEMENT_HELP_BLOCK
-} from "./utils/constants";
+} from "./constants";
 
 module.exports = (input, rule, isValid, text) => {
   const specificErrorClass = `has-error-${rule}`;
@@ -27,13 +27,14 @@ module.exports = (input, rule, isValid, text) => {
     }
     if (specificHelpBlock) {
       // Element also has an error element.
-      specificHelpBlock.textContent = text;
-      specificHelpBlock.style.display = "block";
+      specificHelpBlock.innerHTML = text;
+      specificHelpBlock.style.display = "inline-block";
     } else {
       specificHelpBlock = document.createElement(ELEMENT_HELP_BLOCK);
       input.parentNode.appendChild(specificHelpBlock);
+      specificHelpBlock.style.display = "inline-block";
       specificHelpBlock.classList.add(CLASS_HELP_BLOCK, specificErrorClass);
-      specificHelpBlock.textContent = text;
+      specificHelpBlock.innerHTML = text;
     }
     // The parent Element needs to contain the error class.
     if (!formGroup.classList.contains(CLASS_ERROR)) {

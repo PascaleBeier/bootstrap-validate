@@ -1,6 +1,6 @@
 const path = require("path");
 const rules = require("./../src/rules");
-const constants = require("./../src/utils/constants");
+const constants = require("./../src/constants");
 const extractText = require("extract-text-webpack-plugin");
 const docblock = require("docblock-parser");
 const meta = require("./../package.json");

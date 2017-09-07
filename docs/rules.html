@@ -6,7 +6,7 @@
      * @param min number: Number of minimum characters.
      * @description Require a given minimum character count.
      */
-    return input.value.length &gt;= parseInt(_min, 10);
+    return (0, _gte2.default)(input.value.length, (0, _parseInt2.default)(_min));
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>max&nbsp;<span class="label label-default">1.0.0</span></h2><p class="lead">Maximum character count required.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_max" aria-controls="options_max" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_max" aria-controls="usage_max" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_max" aria-controls="source_max" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_max"><h3>Options</h3><p>Available Options: 1</p><ul><li>number: Number of maximum characters.</li></ul></div><div class="tab-pane fade" role="tabpanel" id="usage_max"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'max:42:Please dont enter more than 42 characters!')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_max"><h3>Source</h3><pre><code class="javascript">function max(input, _max) {
     /**
      * @since 1.0.0
@@ -15,25 +15,21 @@
      * @param max number: Number of maximum characters.
      * @description Maximum character count required.
      */
-    return input.value.length &lt;= parseInt(_max, 10);
+    return (0, _lte2.default)(input.value.length, (0, _parseInt2.default)(_max));
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>email&nbsp;<span class="label label-default">1.0.3</span></h2><p class="lead">Require a valid E-Mail Address.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_email" aria-controls="options_email" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_email" aria-controls="usage_email" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_email" aria-controls="source_email" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_email"><h3>Options</h3><p>Available Options: 0</p><div class="alert alert-info">You only need to pass an Error Text.</div></div><div class="tab-pane fade" role="tabpanel" id="usage_email"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'email:Enter a valid email address')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_email"><h3>Source</h3><pre><code class="javascript">function email(input) {
-    return (
-      /**
-       * @since 1.0.3
-       * @error Enter a valid email address
-       * @description Require a valid E-Mail Address.
-       */
-      new RegExp(/^(([^&lt;&gt;()[\]\\.,;:\s@&quot;]+(\.[^&lt;&gt;()[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(input.value)
-    );
+    /**
+     * @since 1.0.3
+     * @error Enter a valid email address
+     * @description Require a valid E-Mail Address.
+     */
+    return new RegExp(/^(([^&lt;&gt;()[\]\\.,;:\s@&quot;]+(\.[^&lt;&gt;()[\]\\.,;:\s@&quot;]+)*)|(&quot;.+&quot;))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(input.value);
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>required&nbsp;<span class="label label-default">1.0.7</span></h2><p class="lead">Require a field to be filled out.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_required" aria-controls="options_required" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_required" aria-controls="usage_required" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_required" aria-controls="source_required" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_required"><h3>Options</h3><p>Available Options: 0</p><div class="alert alert-info">You only need to pass an Error Text.</div></div><div class="tab-pane fade" role="tabpanel" id="usage_required"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'required:Please fill out this field!')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_required"><h3>Source</h3><pre><code class="javascript">function required(input) {
-    return (
-      /**
-       * @since 1.0.7
-       * @error Please fill out this field!
-       * @description Require a field to be filled out.
-       */
-      input.value.length &gt; 0
-    );
+    /**
+     * @since 1.0.7
+     * @error Please fill out this field!
+     * @description Require a field to be filled out.
+     */
+    return input.value.length &amp;&amp; input.value.length &gt; 0;
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>url&nbsp;<span class="label label-default">1.0.10</span></h2><p class="lead">Require a valid URL.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_url" aria-controls="options_url" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_url" aria-controls="usage_url" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_url" aria-controls="source_url" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_url"><h3>Options</h3><p>Available Options: 0</p><div class="alert alert-info">You only need to pass an Error Text.</div></div><div class="tab-pane fade" role="tabpanel" id="usage_url"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'url:Please enter a valid URL!')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_url"><h3>Source</h3><pre><code class="javascript">function url(input) {
     return (
       /**
@@ -49,30 +45,21 @@
      * @error Please fill out this input field!
      * @description Require a valid integer.
      */
-    if (isNaN(input.value)) {
-      return false;
-    }
-    var x = parseFloat(input.value);
-
-    return (x | 0) === x; // eslint-disable-line no-bitwise
+    return (0, _isInteger2.default)(parseFloat(input.value));
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>numeric&nbsp;<span class="label label-default">1.0.10</span></h2><p class="lead">Require a valid numeric input.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_numeric" aria-controls="options_numeric" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_numeric" aria-controls="usage_numeric" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_numeric" aria-controls="source_numeric" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_numeric"><h3>Options</h3><p>Available Options: 0</p><div class="alert alert-info">You only need to pass an Error Text.</div></div><div class="tab-pane fade" role="tabpanel" id="usage_numeric"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'numeric:Please only enter numeric characters!')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_numeric"><h3>Source</h3><pre><code class="javascript">function numeric(input) {
-    return (
-      /**
-       * @since 1.0.10
-       * @description Require a valid numeric input.
-       * @error Please only enter numeric characters!
-       */
-      !isNaN(parseFloat(input.value)) &amp;&amp; isFinite(input.value)
-    );
+    /**
+     * @since 1.0.10
+     * @description Require a valid numeric input.
+     * @error Please only enter numeric characters!
+     */
+    return (0, _isFinite2.default)(parseFloat(input.value));
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>alphanum&nbsp;<span class="label label-default">1.0.10</span></h2><p class="lead">Require alphanumeric input, e.g. 0-9 and a-Z.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_alphanum" aria-controls="options_alphanum" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_alphanum" aria-controls="usage_alphanum" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_alphanum" aria-controls="source_alphanum" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_alphanum"><h3>Options</h3><p>Available Options: 0</p><div class="alert alert-info">You only need to pass an Error Text.</div></div><div class="tab-pane fade" role="tabpanel" id="usage_alphanum"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'alphanum:Please only enter alphanumeric characters!')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_alphanum"><h3>Source</h3><pre><code class="javascript">function alphanum(input) {
-    return (
-      /**
-       * @since 1.0.10
-       * @error Please only enter alphanumeric characters!
-       * @description Require alphanumeric input, e.g. 0-9 and a-Z.
-       */
-      new RegExp(/^[a-z0-9]+$/i).test(input.value)
-    );
+    /**
+     * @since 1.0.10
+     * @error Please only enter alphanumeric characters!
+     * @description Require alphanumeric input, e.g. 0-9 and a-Z.
+     */
+    return new RegExp(/^[a-z0-9]+$/i).test(input.value);
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>contains&nbsp;<span class="label label-primary">New</span>&nbsp;<span class="label label-default">1.0.11</span></h2><p class="lead">Require the input to contain a given string.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_contains" aria-controls="options_contains" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_contains" aria-controls="usage_contains" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_contains" aria-controls="source_contains" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_contains"><h3>Options</h3><p>Available Options: 1</p><ul><li>string: String to appear in the Input Element</li></ul></div><div class="tab-pane fade" role="tabpanel" id="usage_contains"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'contains:something:Your text needs to contain something!')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_contains"><h3>Source</h3><pre><code class="javascript">function contains(input, string) {
     /**
      * @since 1.0.11
@@ -90,7 +77,7 @@
      * @error Your phone number needs to start with +49
      * @description Require the input value to start with a given string.
      */
-    return input.value.toString().substr(0, string.length) === string;
+    return (0, _startsWith3.default)(input.value, string);
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>endsWith&nbsp;<span class="label label-danger">Unreleased</span>&nbsp;<span class="label label-default">1.1.0</span></h2><p class="lead">Require the input value to end with a given string.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_endsWith" aria-controls="options_endsWith" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_endsWith" aria-controls="usage_endsWith" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_endsWith" aria-controls="source_endsWith" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_endsWith"><h3>Options</h3><p>Available Options: 1</p><ul><li>string: String the input value should end with</li></ul></div><div class="tab-pane fade" role="tabpanel" id="usage_endsWith"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'endsWith:UCV:Your Input needs to end with UCV')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_endsWith"><h3>Source</h3><pre><code class="javascript">function endsWith(input, string) {
     /**
      * @since 1.1.0
@@ -99,7 +86,7 @@
      * @param string string: String the input value should end with
      * @description Require the input value to end with a given string.
      */
-    return input.value.toString().substr(input.value.length - string.length, string.length) === string;
+    return (0, _endsWith3.default)(input.value, string);
   }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>matches&nbsp;<span class="label label-danger">Unreleased</span>&nbsp;<span class="label label-default">1.1.0</span></h2><p class="lead">Require the input value to match the given inputs value. Like bootstrapValidate's first Parameter, you can pass a selector or Element.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_matches" aria-controls="options_matches" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_matches" aria-controls="usage_matches" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_matches" aria-controls="source_matches" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_matches"><h3>Options</h3><p>Available Options: 1</p><ul><li>string: The input element to match against</li></ul></div><div class="tab-pane fade" role="tabpanel" id="usage_matches"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'matches:#passwordConfirm:Your passwords should match')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_matches"><h3>Source</h3><pre><code class="javascript">function matches(input, matchingInput) {
     /**
      * @since 1.1.0
@@ -115,5 +102,12 @@
     }
 
     return input.value === lMatchingInput.value;
+  }</code></pre></div></div></div><div class="rule" style="margin-bottom: 60px;"><h2>alpha&nbsp;<span class="label label-danger">Unreleased</span>&nbsp;<span class="label label-default">1.1.0</span></h2><p class="lead">Validate only alphabetic characters - a-z, A-Z.</p><ul class="nav nav-tabs" role="tablist"><li class="active" role="presentation"><a href="#options_alpha" aria-controls="options_alpha" role="tab" data-toggle="tab">Options</a></li><li role="presentation"><a href="#usage_alpha" aria-controls="usage_alpha" role="tab" data-toggle="tab">Usage</a></li><li role="presentation"><a href="#source_alpha" aria-controls="source_alpha" role="tab" data-toggle="tab">Source</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" role="tabpanel" id="options_alpha"><h3>Options</h3><p>Available Options: 0</p><div class="alert alert-info">You only need to pass an Error Text.</div></div><div class="tab-pane fade" role="tabpanel" id="usage_alpha"><h3>Usage</h3><pre><code class="javascript">bootstrapValidate('#input', 'alpha:You can only input alphabetic characters')</code></pre></div><div class="tab-pane fade" role="tabpanel" id="source_alpha"><h3>Source</h3><pre><code class="javascript">function alpha(input) {
+    /**
+     * @since 1.1.0
+     * @error You can only input alphabetic characters
+     * @description Validate only alphabetic characters - a-z, A-Z.
+     */
+    return (0, _isString2.default)(input.value) &amp;&amp; new RegExp(/^[a-z]+$/i).test(input.value);
   }</code></pre></div></div></div><a class="btn btn-lg btn-default pull-left" href="usage.html">← Usage</a></div></main><footer class="docs-footer jumbotron"><div class="container"><p>bootstrap-validate is open-source and MIT-Licensed.</p><nav class="nav nav-pills"><li role="presentation"><a href="https://github.com/PascaleBeier/bootstrap-validate">GitHub</a></li><li role="presentation"><a href="https://twitter.com/PascaleBeier">Twitter</a></li><li role="presentation"><a href="https://pascalebeier.de">Website</a></li><li role="presentation"><a href="https://pascalebeier.de/impressum">Imprint (German)</a></li><li role="presentation"><a href="https://pascalebeier.de/datenschutz">Privacy Policy (German)</a></li></nav></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="assets/main.js"></script><script>window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
 ga('create','UA-68262372-6','auto');ga('send','pageview')</script><script async defer src="https://www.google-analytics.com/analytics.js"></script></body>

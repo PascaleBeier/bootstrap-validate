@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   context: path.resolve(__dirname, "../"),
-  entry: ["./src/utils/polyfills.js", "./src/bootstrap-validate.js"],
+  entry: "./src/bootstrap-validate.js",
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "bootstrap-validate.js",

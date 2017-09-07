@@ -4,9 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## Unreleased - 1.1.0
+
+This is a big one!
 
 ### Added
+
+- Feature: You can now use HTML in your error messages. You do need to escape it yourself for the moment.
+
+```javascript
+bootstrapValidate('#prename', 'min:20:Enter at least <strong>20</strong> characters.');
+```
 
 - Feature: You can now pass an Array of Elements or Selectors as first Argument, for example:
 
@@ -19,8 +27,20 @@ This can come in handy when you are applying identical sets of rules and options
 - Rule: startsWith [fff8678](https://github.com/PascaleBeier/bootstrap-validate/commit/fff867887914a97876ae66c0b4867d46c17a02b6)
 - Rule: endsWith [aa51798](https://github.com/PascaleBeier/bootstrap-validate/commit/aa51798fd7702183c683021a60fb8705e0306d2b)
 - Rule: matches [208a5cf](https://github.com/PascaleBeier/bootstrap-validate/commit/208a5cf7ab17add9da153addcdcf90eefb9529be)
-- Optimized Polyfills for IE and older browsers, reducing the library size.
+- Rule: alpha
+
+### Removed
+
+- Polyfills for element.closest() and element.classList().
+
+### Changed
+
+- Error Blocks now `display: inline-block;` instead of `display: block;`. This should be a reasonable default.
+
+### Other
+
 - Documentation cleaning
+- Housekeeping: Removed most handmade helpers and replaced them with the battle-proven lodash helpers. This drastically improves maintainability and stability.
 
 ## [1.0.11] - 2017-08-07
 

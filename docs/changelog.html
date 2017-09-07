@@ -2,8 +2,14 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2>Unreleased</h2>
+<h2>Unreleased - 1.1.0</h2>
+<p>This is a big one!</p>
 <h3>Added</h3>
+<ul>
+<li>Feature: You can now use HTML in your error messages. You do need to escape it yourself for the moment.</li>
+</ul>
+<pre><code class="language-javascript">bootstrapValidate('#prename', 'min:20:Enter at least &lt;strong&gt;20&lt;/strong&gt; characters.');
+</code></pre>
 <ul>
 <li>Feature: You can now pass an Array of Elements or Selectors as first Argument, for example:</li>
 </ul>
@@ -14,8 +20,20 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Rule: startsWith <a href="https://github.com/PascaleBeier/bootstrap-validate/commit/fff867887914a97876ae66c0b4867d46c17a02b6">fff8678</a></li>
 <li>Rule: endsWith <a href="https://github.com/PascaleBeier/bootstrap-validate/commit/aa51798fd7702183c683021a60fb8705e0306d2b">aa51798</a></li>
 <li>Rule: matches <a href="https://github.com/PascaleBeier/bootstrap-validate/commit/208a5cf7ab17add9da153addcdcf90eefb9529be">208a5cf</a></li>
-<li>Optimized Polyfills for IE and older browsers, reducing the library size.</li>
+<li>Rule: alpha</li>
+</ul>
+<h3>Removed</h3>
+<ul>
+<li>Polyfills for element.closest() and element.classList().</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Error Blocks now <code>display: inline-block;</code> instead of <code>display: block;</code>. This should be a reasonable default.</li>
+</ul>
+<h3>Other</h3>
+<ul>
 <li>Documentation cleaning</li>
+<li>Housekeeping: Removed most handmade helpers and replaced them with the battle-proven lodash helpers. This drastically improves maintainability and stability.</li>
 </ul>
 <h2><a href="https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.10...1.0.11">1.0.11</a> - 2017-08-07</h2>
 <h3>Added</h3>
