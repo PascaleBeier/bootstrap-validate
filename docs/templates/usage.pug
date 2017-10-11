@@ -60,6 +60,13 @@ block content
     | or any other query
     code.javascript bootstrapValidate('input[type="text"]')
     |.
+    
+  h3 Passing Multiple Elements
+  
+  p If you want to apply the same validation rules to multiple input elements, you can pass an Array of selectors:
+  
+  pre
+    code.javascript bootstrapValidate(['#prename', '#lastname'], 'max:20:Enter no more than 20 characters!');
 
   p Read more about&nbsp;
     a(href="https://developer.mozilla.org/en/docs/Web/API/Document/querySelector") document.querySelector
