@@ -1,10 +1,9 @@
 module.exports = {
-  CLASS_ERROR: "has-error",
-  ELEMENT_HELP_BLOCK: "span",
-  CLASS_HELP_BLOCK: "help-block",
+  CLASS_ERROR: "is-invalid",
+  ELEMENT_HELP_BLOCK: "div",
+  CLASS_HELP_BLOCK: "invalid-feedback",
   SEPARATOR_RULE: "|",
-  SEPARATOR_OPTION: ":",
-  CLASS_LABEL: "control-label"
+  SEPARATOR_OPTION: ":"
 };
 
 export default module.exports;

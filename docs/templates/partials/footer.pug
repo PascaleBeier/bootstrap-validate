@@ -9,7 +9,7 @@ div.container
   p #{meta.name} is open-source and #{meta.license}-Licensed.
   nav.nav.nav-pills
     each link in footerLinks
-      li(role='presentation')
-        a(href=link.href)=link.label
+      li.nav-item(role='presentation')
+        a.nav-link(href=link.href)=link.label
 
 

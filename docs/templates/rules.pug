@@ -2,7 +2,6 @@ extends layouts/app
 
 block nav
   - var active = "Rules"
-
 block vars
   - var title = "Validation Rules"
   - var description = "Learn about the available validation rules " + meta.name + " ships with."
@@ -25,23 +24,23 @@ block content
       .rule(style='margin-bottom: 60px;')
         h2 #{rule.name}
           if semver.eq(docs.tags.since, meta.version)
-            |&nbsp;<span class="label label-primary">New</span>
+            |&nbsp;<span class="badge badge-primary">New</span>
           if semver.gt(docs.tags.since, meta.version)
-            |&nbsp;<span class="label label-danger">Unreleased</span>
-          |&nbsp;<span class="label label-default">#{docs.tags.since}</span>
+            |&nbsp;<span class="badge badge-danger">Unreleased</span>
+          |&nbsp;<span class="badge badge-secondary">#{docs.tags.since}</span>
 
         p.lead=docs.tags.description
 
-        ul.nav.nav-tabs(role="tablist")
-          li.active(role="presentation")
-            a(href="#options_" + i aria-controls="options_" + i role="tab" data-toggle="tab") Options
-          li(role="presentation")
-            a(href="#usage_" + i aria-controls="usage_" + i role="tab" data-toggle="tab") Usage
-          li(role="presentation")
-            a(href="#source_" + i aria-controls="source_" + i role="tab" data-toggle="tab") Source
+        ul.nav.nav-tabs(role="tablist" id=`${i}Tab`)
+          li.nav-item
+            a.nav-link.active(id=`#options_${i}_tab` data-toggle="tab" data-duration="350" data-height="true" href=`#options_${i}`  role="tab" aria-controls=`#options_${i}`  aria-expanded="true") Options
+          li.nav-item
+            a.nav-link(id=`#usage_${i}_tab` data-toggle="tab" data-duration="350" data-height="true" href=`#usage_${i}` role="tab" aria-controls=`#usage_${i}` aria-expanded="false") Usage
+          li.nav-item
+            a.nav-link(id=`#source_${i}_tab` data-toggle="tab" data-duration="350" data-height="true" href=`#source_${i}` role="tab" aria-controls=`#source_${i}` aria-expanded="false") Source
 
-        .tab-content
-          .tab-pane.fade.in.active(role="tabpanel" id="options_" + i)
+        .tab-content(id=`${i}TabContent`)
+          .tab-pane.fade.active.show(role="tabpanel" id=`options_${i}`)
 
             h3 Options
 
@@ -62,12 +61,12 @@ block content
             if docs.tags.error
               - optionsString += docs.tags.error
 
-          .tab-pane.fade(role="tabpanel" id="usage_" + i)
+          .tab-pane.fade(role="tabpanel" id=`usage_${i}`)
             h3 Usage
 
             pre
               code.javascript bootstrapValidate('#input', '#{rule.name}#{constants.SEPARATOR_OPTION}#{optionsString}')
-          .tab-pane.fade(role="tabpanel" id="source_" + i)
+          .tab-pane.fade(role="tabpanel" id=`source_${i}`)
             h3 Source
 
             pre

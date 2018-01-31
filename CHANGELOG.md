@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased - 1.1.0
+## [v2.0.0] - 2018-01-31
 
-This is a big one!
+This is a big one! Dropping Bootstrap v3 for that bright'n'shiny Bootstrap 4!
 
 ### Added
 
@@ -32,10 +32,6 @@ This can come in handy when you are applying identical sets of rules and options
 ### Removed
 
 - Polyfills for element.closest() and element.classList().
-
-### Changed
-
-- Error Blocks now `display: inline-block;` instead of `display: block;`. This should be a reasonable default.
 
 ### Other
 
@@ -101,6 +97,7 @@ This is a non-breaking change - the old notation is still possible.
 ## [1.0.1] - 2017-06-06
 
 
+[v2.0.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.11...v2.0.0
 [1.0.11]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.10...1.0.11
 [1.0.10]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.9...1.0.10
 [1.0.9]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.8...1.0.9

@@ -1,33 +1,31 @@
 block nav
   - var active = null
 
-nav.navbar.navbar-default.navbar-fixed-top
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
   .container
-    .navbar-header
-      a.navbar-brand(href="/")=meta.name
-      button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#mainnav" aria-expanded="false")
-        span.sr-only Toggle Navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
+    a.navbar-brand(href="/")=meta.name
+    button.navbar-toggler(type="button" data-toggle="collapse" data-target="#mainnav" aria-expanded="false")
+      span.navbar-toggler-icon
     .collapse.navbar-collapse#mainnav
-      ul.nav.navbar-nav.navbar-right
-        li(class=(active === 'Installation' ? 'active' : ''))
-          a(href='installation.html') Installation
-        li(class=(active === 'Usage' ? 'active' : ''))
-          a(href='usage.html') Usage
-        li(class=(active === 'Rules' ? 'active' : ''))
-          a(href='rules.html') Available Rules
-        li(class=(active === 'Changelog' ? 'active' : ''))
-          a(href='changelog.html') Changelog
+      ul.navbar-nav.ml-auto
+        li(class=(active === 'Installation' ? 'nav-item active' : 'nav-item'))
+          a.nav-link(href='installation.html') Installation
+        li(class=(active === 'Usage' ? 'nav-item active' : 'nav-item'))
+          a.nav-link(href='usage.html') Usage
+        li(class=(active === 'Rules' ? 'nav-item active' : 'nav-item'))
+          a.nav-link(href='rules.html') Available Rules
+        li(class=(active === 'Changelog' ? 'nav-item active' : 'nav-item'))
+          a.nav-link(href='changelog.html') Changelog
 
 div.jumbotron
   div.container
     h1=meta.name
-      small.text-muted  #{meta.version}
+    small.text-muted  #{meta.version}
     p.lead=meta.description
     p
+      a.github-button(href="https://github.com/PascaleBeier/bootstrap-validate/archive/1.0.11.zip" data-icon="octicon-cloud-download"
+      data-size="large" aria-label="Download " + meta.name) Download v1 for Bootstrap 3
       a.github-button(href="https://github.com/PascaleBeier/bootstrap-validate/archive/" + meta.version + ".zip" data-icon="octicon-cloud-download"
-      data-size="large" aria-label="Download " + meta.name) Download
+      data-size="large" aria-label="Download " + meta.name) Download v2 (latest) for Bootstrap 4
       a.github-button(href="https://github.com/PascaleBeier/bootstrap-validate" data-icon="octicon-star" data-size="large"
       aria-label="Star " + meta.name + " on GitHub") Star on GitHub
