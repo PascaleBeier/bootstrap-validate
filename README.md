@@ -2,7 +2,7 @@
 
 > A simple Form Validation Utility for Bootstrap 3 and 4 which does not depend on jQuery.
 
-[![Demo](demo.gif)](#)
+[![Demo](demo.mp4)](#)
 
 ## Supported Versions
 
@@ -52,6 +52,8 @@ bootstrapValidate('#email', 'email:Enter a valid email address');
 ```
 
 ## Download
+
+You can find current and previous Downloads in our [Download Archive](https://bootstrap-validate.js.org/download.html).
 
 ## Changelog
 

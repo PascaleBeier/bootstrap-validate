@@ -14,13 +14,15 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light.fixed-top
           a.nav-link(href='usage.html') Usage
         li(class=(active === 'Rules' ? 'nav-item active' : 'nav-item'))
           a.nav-link(href='rules.html') Available Rules
+        li(class=(active === 'Download' ? 'nav-item active' : 'nav-item'))
+          a.nav-link(href='download.html') Download
         li(class=(active === 'Changelog' ? 'nav-item active' : 'nav-item'))
           a.nav-link(href='changelog.html') Changelog
 
 div.jumbotron
   div.container
-    h1=meta.name
-    small.text-muted  #{meta.version}
+    h1.d-inline-block=meta.name
+    small.d-inline-block #{meta.version}
     p.lead=meta.description
     p
       a.github-button(href="https://github.com/PascaleBeier/bootstrap-validate/archive/1.0.11.zip" data-icon="octicon-cloud-download"

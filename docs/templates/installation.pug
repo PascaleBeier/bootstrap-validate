@@ -29,42 +29,33 @@ block content
   pre
     code.bash npm i bootstrap-validate
 
-  h3 bower
-
-  pre
-    code.bash bower install bootstrap-validate
-
 
   h2 Via
     strong
       |    CDN
 
 
-  p RawGit makes including #{meta.name} in your project super easy, providing a CDN
-    | allowing you to use a specific version of #{meta.name}.
+  p RawGit makes including #{meta.name} in your project super easy, providing a CDN allowing you to use a specific version of #{meta.name}.
 
   p For the current version, you can just include
 
   pre
     code.html
-      | &lt;script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/#{meta.version}/dist/bootstrap-validate.js"&gt;&lt;/script&gt;
+      | &lt;script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/#{meta.version}/dist/bootstrap-validate.js" integrity="#{meta.sri}" crossorigin="anonymous"&gt;&lt;/script&gt;
 
 
-  h2 Get the
-    strong
-      |    Source
+  h2 Download
 
   p You can grab the full Source Code including build files and documentation from our&nbsp;
-    a(href="https://github.com/PascaleBeier/bootstrap-validate") GitHub Repository
+    a(href="download.html") Download Archive.
     |.
 
 
   h2 Usage with Webpack etc.
 
-  p #{meta.name} can be used in ES6+ Environments as well. However, importing
-    | the library has a small quirk.
+  p #{meta.name} can be used in ES6+ Environments as well. However, importing the library has a small quirk.
 
-  p You need to
+  p You will need to
 
   pre
     code.javascript
