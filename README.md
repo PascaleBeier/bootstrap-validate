@@ -2,7 +2,7 @@
 
 > A simple Form Validation Utility for Bootstrap 3 and 4 which does not depend on jQuery.
 
-[![Demo](demo.mp4)](#)
+[![Demo](demo.gif)](#)
 
 ## Supported Versions
 
