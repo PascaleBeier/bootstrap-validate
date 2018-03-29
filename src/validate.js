@@ -1,3 +1,4 @@
+import isFunction from "lodash/isFunction";
 import availableRules from "./rules";
 import drawErrors from "./errors";
 import ruleFormatter from "./formatters/rule-formatter";
@@ -40,7 +41,7 @@ module.exports = (input, rule, callback) => {
 
       drawErrors(input, options[0], isValid, ruleArgsAndErrorText[1]);
 
-      if (typeof callback === "function") callback(isValid);
+      if (isFunction(callback)) callback(isValid);
     }
   });
 };

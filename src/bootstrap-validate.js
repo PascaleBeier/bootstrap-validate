@@ -1,3 +1,4 @@
+import flatten from "lodash/flatten";
 import validate from "./validate";
 
 module.exports = (input, rules, callback) => {
@@ -5,12 +6,15 @@ module.exports = (input, rules, callback) => {
   // e.g. via document.querySelector('.example').
   // If not, we are going to query it on our owns
   // enabling the user to only supply a query string.
-  let lInput = input;
-  if (typeof lInput.nodeType == "undefined")
-    lInput = document.querySelector(input);
+  flatten([input]).forEach(element => {
+    // Check for either element or selector.
+    const lElement = element.nodeType
+      ? element
+      : document.querySelector(element);
 
-  lInput.addEventListener("input", () => {
-    validate(lInput, rules, callback);
+    lElement.addEventListener("input", () => {
+      validate(lElement, rules, callback);
+    });
   });
 };
 

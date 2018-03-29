@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-validate",
   "description": "A simple Form Validation Utility for Bootstrap not depending on jQuery",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "main": "dist/bootstrap-validate.js",
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
   "author": "Pascale Beier <mail@pascalebeier.de>",
@@ -21,8 +21,8 @@
     "docs:build": "webpack --config build/docs.config.babel.js -p",
     "test": "jest",
     "precommit": "lint-staged",
-    "check-style": "eslint build/ src/ __tests__/",
-    "fix-style": "eslint --fix build/ src/ __tests__/",
+    "check-style": "eslint src/ __tests__/",
+    "fix-style": "eslint --fix src/ __tests__/",
     "coverage": "jest --coverage"
   },
   "lint-staged": {
@@ -75,6 +75,7 @@
   },
   "dependencies": {
     "classlist.js": "https://github.com/eligrey/classList.js#1fd9951666f940ac415dfe5dfa61cf902cc03b5e",
-    "element-closest": "^2.0.2"
+    "element-closest": "^2.0.2",
+    "lodash": "^4.17.5"
   }
 }

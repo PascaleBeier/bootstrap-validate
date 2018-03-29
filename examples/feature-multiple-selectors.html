@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      min-height: 24em;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="form-horizontal">
+
+  <h1>Feature: Multiple Selectors</h1>
+
+    <p>We want both inputs to be at least 10 and at max 20 characters.</p>
+
+    <pre>
+  bootstrapValidate(
+    ['#name', '#prename'],
+    'min:10:Enter at least 10 Characters|max:20:Enter at most 20 Characters',
+  );
+    </pre>
+
+    <div class="form-group">
+      <label for="name" class="control-label col-sm-2">First Name</label>
+      <div class="col-sm-10">
+        <input id="prename" type="text" placeholder="Enter your First Name" class="form-control">
+      </div>
+    </div>
+
+  <div class="form-group">
+    <label for="name" class="control-label col-sm-2">Last Name</label>
+    <div class="col-sm-10">
+      <input id="name" type="text" placeholder="Enter your name" class="form-control">
+    </div>
+  </div>
+
+</div>
+
+
+<script src="../dist/bootstrap-validate.js"></script>
+<script>
+  bootstrapValidate(
+    ['#name', '#prename'],
+    'min:10:Enter at least 10 Characters|max:20:Enter at most 20 Characters',
+  );
+</script>
+</body>
+</html>
