@@ -6,7 +6,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "bootstrap-validate.js",
-    library: "bootstrapValidate"
+    library: "bootstrapValidate",
+    libraryTarget: "umd"
   },
   module: {
     rules: [
