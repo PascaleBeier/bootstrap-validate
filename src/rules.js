@@ -61,7 +61,7 @@ module.exports = {
      * @error Please fill out this input field!
      * @description Require a valid integer.
      */
-    return isInteger(parseFloat(input.value));
+    return isInteger(Number(input.value));
   },
   numeric: input => {
     /**
@@ -69,7 +69,7 @@ module.exports = {
      * @description Require a valid numeric input.
      * @error Please only enter numeric characters!
      */
-    return isFinite(parseFloat(input.value));
+    return isFinite(Number(input.value));
   },
   alphanum: input => {
     /**
