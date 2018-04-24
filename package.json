@@ -5,7 +5,7 @@
   "main": "dist/bootstrap-validate.js",
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
   "author": "Pascale Beier <mail@pascalebeier.de>",
-  "sri": "sha384-YmuBsjGRLbP6xIXehXIvB6ftbTViDPXx/goUnD/B7EZ8qDE5JVVuBN+Zws8lzmh7",
+  "sri": "sha384-Mdg4vWje/mL9Q7zo0ThF20z6u2qkn4F2+2/0hUzYqhV7jAQVyhuerLUbplu63KuK",
   "keywords": [
     "bootstrap",
     "bootstrap3",
