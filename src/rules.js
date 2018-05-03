@@ -1,11 +1,11 @@
-import isFinite from "lodash/isFinite";
-import parseInt from "lodash/parseInt";
-import isInteger from "lodash/isInteger";
-import isString from "lodash/isString";
-import startsWith from "lodash/startsWith";
-import endsWith from "lodash/endsWith";
-import gte from "lodash/gte";
-import lte from "lodash/lte";
+import isFinite from 'lodash/isFinite';
+import parseInt from 'lodash/parseInt';
+import isInteger from 'lodash/isInteger';
+import isString from 'lodash/isString';
+import startsWith from 'lodash/startsWith';
+import endsWith from 'lodash/endsWith';
+import gte from 'lodash/gte';
+import lte from 'lodash/lte';
 
 module.exports = {
   min: (input, min) => {
@@ -79,6 +79,36 @@ module.exports = {
      */
     return new RegExp(/^[a-z0-9]+$/i).test(input.value);
   },
+  ISO8601: input => {
+    /**
+     * @since v2.1.0
+     * @error Your input does not match the wanted format YYYY-MM-DD
+     * @description Validate user input against ISO 8601 Format.
+     */
+    return new RegExp(/^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/).test(
+      input.value
+    );
+  },
+  regex: (input, regex) => {
+    /**
+     * @since v2.1.0
+     * @example ^[a-z]+$
+     * @param regex regex: Regex to validate
+     * @error Please fulfill my regex
+     * @description Test a Regular Expression against an input value
+     */
+    return new RegExp(regex).test(input.value);
+  },
+  divisible: (input, number) => {
+    /**
+     * @since v2.1.0
+     * @example 15
+     * @param number Number: Number to Test
+     * @error 15 is not divisible by 4.
+     * @description Test if input number can be divided by given number and the result is an exact whole number.
+     */
+    return Number(input.value) % number === 0;
+  },
   contains: (input, string) => {
     /**
      * @since 1.0.11
@@ -119,7 +149,7 @@ module.exports = {
      */
     let lMatchingInput = matchingInput;
 
-    if (typeof lMatchingInput.nodeType == "undefined") {
+    if (typeof lMatchingInput.nodeType == 'undefined') {
       lMatchingInput = document.querySelector(matchingInput);
     }
 
@@ -132,7 +162,7 @@ module.exports = {
      * @description Validate only alphabetic characters - a-z, A-Z.
      */
     return isString(input.value) && new RegExp(/^[a-z]+$/i).test(input.value);
-  }
+  },
 };
 
 export default module.exports;
