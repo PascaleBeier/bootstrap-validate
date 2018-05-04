@@ -107,7 +107,7 @@ module.exports = {
      * @error 15 is not divisible by 4.
      * @description Test if input number can be divided by given number and the result is an exact whole number.
      */
-    return Number(input.value) % number === 0;
+    return isInteger(Number(input.value / number));
   },
   contains: (input, string) => {
     /**

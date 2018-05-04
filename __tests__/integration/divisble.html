@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      min-height: 24em;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <form>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="input3">Divisible</label>
+        <input type="text" class="form-control" id="input" placeholder="3.1 % 0.2: false, 4.2 % 0.2: true" value="Mark" required>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </form>
+
+
+</div>
+
+
+<script src="../../dist/bootstrap-validate.js"></script>
+<script>
+  // Basic Example
+  bootstrapValidate('#input', 'divisible:0.2:Must be divisible through 0.2');
+</script>
+</body>
+</html>
