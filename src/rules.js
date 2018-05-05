@@ -6,6 +6,7 @@ import startsWith from 'lodash/startsWith';
 import endsWith from 'lodash/endsWith';
 import gte from 'lodash/gte';
 import lte from 'lodash/lte';
+import Big from 'big.js';
 
 module.exports = {
   min: (input, min) => {
@@ -107,7 +108,14 @@ module.exports = {
      * @error 15 is not divisible by 4.
      * @description Test if input number can be divided by given number and the result is an exact whole number.
      */
-    return isInteger(Number(input.value / number));
+    let lDivisible = false;
+    let lNumber = Number(input.value);
+    if (isFinite(lNumber)) {
+      lDivisible =
+        new Big(lNumber).mod(new Big(Number(number))).toString() === '0';
+    }
+
+    return lDivisible;
   },
   contains: (input, string) => {
     /**

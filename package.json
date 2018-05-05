@@ -1,7 +1,8 @@
 {
   "name": "bootstrap-validate",
   "description": "A simple Form Validation Utility for Bootstrap 3 and Bootstrap 4 not depending on jQuery.",
-  "version": "v2.1.1",
+  "version": "v2.1.2",
+  "sideEffects": false,
   "main": "dist/bootstrap-validate.js",
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
   "author": "Pascale Beier <mail@pascalebeier.de>",
@@ -18,7 +19,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --config build/library.config.js -w",
-    "build": "webpack --config build/library.config.js -p",
+    "build": "webpack --config build/library.config.js",
     "docs:dev": "webpack --config build/docs.config.babel.js -w",
     "docs:build": "webpack --config build/docs.config.babel.js -p",
     "test": "jest",
@@ -46,7 +47,10 @@
     "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-array-includes": "^2.0.3",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
     "bootstrap": "^4.1.1",
     "bootstrap-loader": "^2.2.0",
     "bootstrap.native": "^2.0.22",
@@ -67,6 +71,7 @@
     "jest": "^22.4.3",
     "jstransformer-markdown-it": "^2.1.0",
     "lint-staged": "^7.0.5",
+    "lodash-webpack-plugin": "^0.11.5",
     "node-sass": "^4.9.0",
     "postcss": "^6.0.22",
     "postcss-loader": "^2.1.4",
@@ -82,6 +87,7 @@
     "webpack-cli": "^2.1.2"
   },
   "dependencies": {
+    "big.js": "^5.0.3",
     "lodash": "^4.17.10"
   }
 }
