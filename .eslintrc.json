@@ -2,11 +2,12 @@
     "env": {
         "browser": true,
         "node": true,
-        "jasmine": true
+        "jest": true
     },
     "extends": ["airbnb-base", "prettier"],
     "plugins": ["import", "prettier"],
     "rules": {
+        "no-param-reassign": "off",
         "prettier/prettier": "error"
     }
 }

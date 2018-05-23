@@ -3,7 +3,8 @@ module.exports = {
   ELEMENT_HELP_BLOCK: "div",
   CLASS_HELP_BLOCK: "invalid-feedback",
   SEPARATOR_RULE: "|",
-  SEPARATOR_OPTION: ":"
+  SEPARATOR_OPTION: ":",
+  LISTENER: "input"
 };
 
 export default module.exports;

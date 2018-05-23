@@ -1,8 +1,4 @@
-import {
-  CLASS_ERROR,
-  CLASS_HELP_BLOCK,
-  ELEMENT_HELP_BLOCK
-} from "./constants";
+import { CLASS_ERROR, CLASS_HELP_BLOCK, ELEMENT_HELP_BLOCK } from "./constants";
 
 module.exports = (input, rule, isValid, text) => {
   const specificErrorClass = `has-error-${rule}`;

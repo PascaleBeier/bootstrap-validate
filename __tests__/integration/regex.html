@@ -20,8 +20,14 @@
   <form>
     <div class="form-row">
       <div class="col-md-4 mb-3">
-        <label for="input3">First name</label>
-        <input type="text" class="form-control" id="input" placeholder="First name" value="Mark" required>
+        <label for="input">First name</label>
+        <input type="text" class="form-control" id="input" placeholder="First name" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="colon">Colon Symbol</label>
+        <input type="text" class="form-control" id="colon" placeholder="Test Colon Symbol" required>
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>
@@ -35,6 +41,7 @@
 <script>
   // Basic Example
   bootstrapValidate('#input', 'regex:^[a-z]+$:Only enter alphabetical characters');
+  bootstrapValidate('#colon', 'regex:^(my:track:[a-zA-Z0-9]{22}$):Invalid');
 </script>
 </body>
 </html>
