@@ -1,3 +1,7 @@
+# UNMAINTAINED!
+
+I advice you to use other Software, e.g. the excellent https://github.com/jquery-validation/jquery-validation
+
 # bootstrap-validate
 
 > A simple Form Validation Utility for Bootstrap 3 and 4 which does not depend on jQuery.
