@@ -7,9 +7,7 @@ bootstrapVersion: 4
 
 # Webpack loaders, order matters
 styleLoaders:
-  - style
   - css
-  - postcss
   - sass
 
 # Extract styles to stand-alone css file

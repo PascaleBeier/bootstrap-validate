@@ -1,10 +1,10 @@
 const path = require("path");
 const rules = require("./../src/rules");
 const constants = require("./../src/constants");
-const extractText = require("extract-text-webpack-plugin");
 const docblock = require("docblock-parser");
 const meta = require("./../package.json");
 const semver = require("semver");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "../docs"),
@@ -37,5 +37,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [new extractText("[name].css")]
+  plugins: [new MiniCssExtractPlugin({ filename: "main.css" })]
 };

@@ -4,6 +4,8 @@ import isInteger from "lodash/isInteger";
 import isString from "lodash/isString";
 import startsWith from "lodash/startsWith";
 import endsWith from "lodash/endsWith";
+import trim from "lodash/trim";
+import split from "lodash/split";
 import gte from "lodash/gte";
 import lte from "lodash/lte";
 import Big from "big.js";
@@ -155,7 +157,19 @@ module.exports = {
      * @error You can only input alphabetic characters
      * @description Validate only alphabetic characters - a-z, A-Z.
      */
-    isString(input.value) && new RegExp(/^[a-z]+$/i).test(input.value)
+    isString(input.value) && new RegExp(/^[a-z]+$/i).test(input.value),
+  inArray: (input, string) => {
+    /**
+     * @since 2.2.0
+     * @example (ABC, DEF, GHI)
+     * @param string string: Array String (abc, def, ghi)
+     * @error Your input must be any of (ABC, DEF, GHI)
+     * @description Validate if user input is in given array. Similar to contains, but with an array.
+     */
+    const value = trim(input.value);
+    const array = split(trim(string, "whitespace()"), ",");
+    return array.includes(value);
+  }
 };
 
 export default module.exports;

@@ -1,6 +1,6 @@
-# UNMAINTAINED!
+# Not really mainained!
 
-I advice you to use other Software, e.g. the excellent https://github.com/jquery-validation/jquery-validation
+I advise you to use other Software, e.g. the excellent https://github.com/jquery-validation/jquery-validation
 
 # bootstrap-validate
 
