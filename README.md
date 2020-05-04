@@ -1,9 +1,3 @@
-# Not maintained!
-
-I don't work for the company this library was developed for. Also, it lacks some major features like possible ajax integrations and flexibility.
-
-I advise you to use other Software, e.g. the excellent https://github.com/jquery-validation/jquery-validation
-
 # bootstrap-validate
 
 > A simple Form Validation Utility for Bootstrap 3 and 4 which does not depend on jQuery.
