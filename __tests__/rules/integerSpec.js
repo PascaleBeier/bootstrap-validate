@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-
 import rules from "../../src/rules";
 
 describe("integer", () => {
@@ -11,14 +10,14 @@ describe("integer", () => {
   const input = document.createElement("input");
 
   it("should return true on a valid integer", () => {
-    validIntegers.forEach(validInteger => {
+    validIntegers.forEach((validInteger) => {
       input.value = validInteger;
       expect(rules.integer(input)).toBeTruthy();
     });
   });
 
   it("should return false on an invalid integer", () => {
-    invalidIntegers.forEach(invalidInteger => {
+    invalidIntegers.forEach((invalidInteger) => {
       input.value = invalidInteger;
       expect(rules.integer(input)).toBeFalsy();
     });

@@ -6,13 +6,13 @@ import { SEPARATOR_OPTION, SEPARATOR_RULE, LISTENER } from "./constants";
 
 export default function bootstrapValidate(input, string, callback) {
   // Normalize the input parameter to a flat array.
-  flatten([input]).forEach(element => {
+  flatten([input]).forEach((element) => {
     // Check for either element or selector.
     element = element.nodeType ? element : document.querySelector(element);
 
     element.addEventListener(LISTENER, () => {
       // Let's extract the rules off of the given rule argument.
-      string.split(SEPARATOR_RULE).forEach(rule => {
+      string.split(SEPARATOR_RULE).forEach((rule) => {
         // get an array of [rule, option1, ...]
         let options = rule.split(SEPARATOR_OPTION);
         // Take rule name from options.

@@ -6,7 +6,7 @@ module.exports = {
   mode: "production",
   entry: require.resolve("./src/bootstrap-validate.js"),
   resolve: {
-    extensions: [".js"]
+    extensions: [".js"],
   },
   output: {
     path: outputPath,
@@ -14,8 +14,8 @@ module.exports = {
     library: {
       name: "bootstrapValidate",
       type: "umd",
-      export: "default"
-    }
+      export: "default",
+    },
   },
   module: {
     rules: [
@@ -23,8 +23,8 @@ module.exports = {
         test: /\.js$/,
         include: path.resolve(__dirname, "src"),
         exclude: path.resolve(__dirname, "node_modules"),
-        loader: "babel-loader"
-      }
-    ]
-  }
+        loader: "babel-loader",
+      },
+    ],
+  },
 };

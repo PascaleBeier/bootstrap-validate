@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-
 import rules from "../../src/rules";
 
 describe("alpha", () => {

@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-validate",
-  "description": "A simple Form Validation Utility for Bootstrap 3 and Bootstrap 4 not depending on jQuery.",
+  "description": "A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.",
   "version": "v2.2.2",
   "sideEffects": false,
   "main": "dist/bootstrap-validate.js",
@@ -25,7 +25,7 @@
     "dev": "webpack -w",
     "build": "webpack",
     "check-style": "eslint webpack.config.js src/ __tests__/",
-    "fix-style": "eslint . --fix webpack.config.js src/ __tests__/",
+    "fix-style": "eslint --fix webpack.config.js src/ __tests__/",
     "test": "npm run test-unit",
     "test-unit": "jest",
     "coverage-unit": "jest --coverage",

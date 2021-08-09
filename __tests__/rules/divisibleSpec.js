@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-
 import rules from "../../src/rules";
 
 describe("divisible", () => {
@@ -12,14 +11,14 @@ describe("divisible", () => {
   const divisor = 0.2;
 
   it("should return true if input can be divided through 3", () => {
-    validInputs.forEach(validInput => {
+    validInputs.forEach((validInput) => {
       input.value = validInput;
       expect(rules.divisible(input, divisor)).toBeTruthy();
     });
   });
 
   it("should return false if method is invoked and returns false", () => {
-    invalidInputs.forEach(invalidInput => {
+    invalidInputs.forEach((invalidInput) => {
       input.value = invalidInput;
       expect(rules.divisible(input, divisor)).toBeFalsy();
     });

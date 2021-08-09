@@ -28,7 +28,7 @@ export default {
      * @description Maximum character count required.
      */
     lte(input.value.length, parseInt(max)),
-  email: input =>
+  email: (input) =>
     /**
      * @since 1.0.3
      * @error Enter a valid email address
@@ -37,14 +37,14 @@ export default {
     new RegExp(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     ).test(input.value),
-  required: input =>
+  required: (input) =>
     /**
      * @since 1.0.7
      * @error Please fill out this field!
      * @description Require a field to be filled out.
      */
     input.value.length && input.value.length > 0,
-  url: input =>
+  url: (input) =>
     /**
      * @since 1.0.10
      * @error Please enter a valid URL!
@@ -53,28 +53,28 @@ export default {
     new RegExp(
       /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i
     ).test(input.value),
-  integer: input =>
+  integer: (input) =>
     /**
      * @since 1.0.10
      * @error Please fill out this input field!
      * @description Require a valid integer.
      */
     isInteger(Number(input.value)),
-  numeric: input =>
+  numeric: (input) =>
     /**
      * @since 1.0.10
      * @description Require a valid numeric input.
      * @error Please only enter numeric characters!
      */
     isFinite(Number(input.value)),
-  alphanum: input =>
+  alphanum: (input) =>
     /**
      * @since 1.0.10
      * @error Please only enter alphanumeric characters!
      * @description Require alphanumeric input, e.g. 0-9 and a-Z.
      */
     new RegExp(/^[a-z0-9]+$/i).test(input.value),
-  ISO8601: input =>
+  ISO8601: (input) =>
     /**
      * @since v2.1.0
      * @error Your input does not match the wanted format YYYY-MM-DD
@@ -150,7 +150,7 @@ export default {
 
     return input.value === lMatchingInput.value;
   },
-  alpha: input =>
+  alpha: (input) =>
     /**
      * @since 1.1.0
      * @error You can only input alphabetic characters
@@ -166,14 +166,8 @@ export default {
      * @description Validate if user input is in given array. Similar to contains, but with an array.
      */
     const { value } = input;
-    const array = split(
-      string
-        .replace("(", "")
-        .replace(")", "")
-        .trim(),
-      ","
-    );
+    const array = split(string.replace("(", "").replace(")", "").trim(), ",");
 
     return array.includes(value);
-  }
+  },
 };

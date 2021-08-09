@@ -10,14 +10,14 @@ describe("numeric", () => {
   const input = document.createElement("input");
 
   it("should return true on a valid number", () => {
-    validNumbers.forEach(validNumber => {
+    validNumbers.forEach((validNumber) => {
       input.value = validNumber;
       expect(rules.numeric(input)).toBeTruthy();
     });
   });
 
   it("should return false on an invalid number", () => {
-    invalidNumbers.forEach(invalidNumber => {
+    invalidNumbers.forEach((invalidNumber) => {
       input.value = invalidNumber;
       expect(rules.numeric(input)).toBeFalsy();
     });
