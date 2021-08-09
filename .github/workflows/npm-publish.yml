@@ -21,5 +21,6 @@ jobs:
         with:
           registry-url: 'https://npm.pkg.github.com'
       - run: npm publish
+        if: always()
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PAT }}
