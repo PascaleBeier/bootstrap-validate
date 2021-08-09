@@ -1,4 +1,9 @@
 # bootstrap-validate
+![GitHub Workflow Status Lint](https://img.shields.io/github/workflow/status/PascaleBeier/bootstrap-validate/Lint?label=ESLint)
+![GitHub Workflow Status Lint](https://img.shields.io/github/workflow/status/PascaleBeier/bootstrap-validate/Unit%20Tests?label=Jest)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PascaleBeier/bootstrap-validate?label=Latest)
+![npm](https://img.shields.io/npm/dt/bootstrap-validate)
+![GitHub](https://img.shields.io/github/license/PascaleBeier/bootstrap-validate)
 
 > A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.
 
@@ -21,31 +26,32 @@
 
 Read the Documentation at [bootstrap-validate.js.org](<https://bootstrap-validate.js.org>).
 
-## Usage
+## Quick Start
 
-1. Include the bootstrap-validate.js script:
-
-```html
-<script src="bootstrap-validate.js"></script>
+```bash
+$ npm i bootstrap-validate
 ```
 
-2. Setup Validation for your Input Elements:
+Include the bootstrap-validate.js script:
 
-Imagine the following HTML:
+```html
+<script defer="defer" src="bootstrap-validate.js"></script>
+```
+
+We want the `#name` to be not longer than 30 characters!
+
 ```html
 <div class="form-group">
     <label class="control-label">Enter a Name</label>
     <input id="name">
 </div>
-```
 
-Now you want a Name to be at max 30 characters long and add the following:
-
-```javascript
+<script>
 bootstrapValidate('#name', 'max:30:Your name must not be longer than 30 characters');
+</script>
 ```
 
-Validating an email address couldn't be easier!
+Validating an `#email` address couldn't be easier!
 
 ```html
 <div class="form-group">
@@ -58,9 +64,19 @@ bootstrapValidate('#email', 'email:Enter a valid email address');
 </script>
 ```
 
+## More Features!
+
+See the v2 Documentation on <https://bootstrap-validate.js.org/v2/> to
+see all available validation features, examples, and usage with module bundlers.
+
+## Examples
+
+See [examples/](Examples) for real-world usage.
+
 ## Download
 
-You can find current and previous Downloads in our [Download Archive](https://bootstrap-validate.js.org/v2/download.html).
+You can find current Releases under [Releases](<https://github.com/PascaleBeier/bootstrap-validate/releases>) and
+older Releases for Bootstrap 3 and Bootstrap 4 in the [Download Archive](https://bootstrap-validate.js.org/v2/download.html).
 
 ## Changelog
 
@@ -68,9 +84,7 @@ See [CHANGELOG](CHANGELOG.md).
 
 ## Tests
 
-Tests are located under `__tests__/`.
-After installing all dependencies you may run `npm run test-unit` to spin up [Jest](https://facebook.github.io/jest/)-powered tests.
-
+Validation Rules are at least unit-tested. Use `npm test` to spin up the test suites.
 ## License
 
 Licensed under the MIT License, see [LICENSE](LICENSE.md).

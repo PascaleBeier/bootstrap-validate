@@ -1,7 +1,7 @@
 ---
 name: Publish npm Package
 
-on: [release, workflow_dispatch]
+on: [release]
 
 jobs:
   publish-npm:
@@ -16,11 +16,3 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - uses: actions/setup-node@v2
-        if: always()
-        with:
-          registry-url: 'https://npm.pkg.github.com'
-      - run: npm publish
-        if: always()
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PAT }}

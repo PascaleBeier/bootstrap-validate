@@ -3,6 +3,7 @@
   "description": "A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.",
   "version": "v2.2.3",
   "sideEffects": false,
+  "homepage": "https://bootstrap-validate.js.org",
   "main": "dist/bootstrap-validate.js",
   "module": "src/bootstrap-validate.js",
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
