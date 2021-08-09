@@ -1,4 +1,9 @@
-import { integer } from "./../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+
+import rules from "../../src/rules";
 
 describe("integer", () => {
   const validIntegers = ["5", 4];
@@ -8,14 +13,14 @@ describe("integer", () => {
   it("should return true on a valid integer", () => {
     validIntegers.forEach(validInteger => {
       input.value = validInteger;
-      expect(integer(input)).toBeTruthy();
+      expect(rules.integer(input)).toBeTruthy();
     });
   });
 
   it("should return false on an invalid integer", () => {
     invalidIntegers.forEach(invalidInteger => {
       input.value = invalidInteger;
-      expect(integer(input)).toBeFalsy();
+      expect(rules.integer(input)).toBeFalsy();
     });
   });
 });

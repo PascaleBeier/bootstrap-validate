@@ -1,4 +1,8 @@
-import { url } from "./../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+import rules from "../../src/rules";
 
 describe("url", () => {
   const validUrl = "https://example.org";
@@ -7,11 +11,11 @@ describe("url", () => {
 
   it("should return true on a valid url", () => {
     input.value = validUrl;
-    expect(url(input)).toBeTruthy();
+    expect(rules.url(input)).toBeTruthy();
   });
 
   it("should return false on an valid url", () => {
     input.value = invalidUrl;
-    expect(url(input)).toBeFalsy();
+    expect(rules.url(input)).toBeFalsy();
   });
 });

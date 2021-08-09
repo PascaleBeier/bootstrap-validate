@@ -1,4 +1,9 @@
-import { matches } from "./../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+
+import rules from "../../src/rules";
 
 describe("matches", () => {
   const valid = "Name";
@@ -11,12 +16,12 @@ describe("matches", () => {
   input.value = valid;
 
   it("should return true if input the input value matches the given input value.", () => {
-    expect(matches(input, matchingInput)).toBeTruthy();
+    expect(rules.matches(input, matchingInput)).toBeTruthy();
   });
 
   it("should return false if input the input value does not match the given input value.", () => {
     matchingInput.value = invalid;
 
-    expect(matches(input, matchingInput)).toBeFalsy();
+    expect(rules.matches(input, matchingInput)).toBeFalsy();
   });
 });

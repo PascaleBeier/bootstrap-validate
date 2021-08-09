@@ -1,18 +1,25 @@
 # bootstrap-validate
 
-> A simple Form Validation Utility for Bootstrap 3 and 4 which does not depend on jQuery.
+> A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.
 
-[![Demo](demo.gif)](#)
+[![Demo](.github/images/demo.gif)](#)
+
+> ## Upcoming Release
+>
+> Share your opinions and feedback <https://github.com/PascaleBeier/bootstrap-validate/discussions/65>.
+
 
 ## Supported Versions
 
-- v2: Bootstrap 4
-- v1: Bootstrap 3
+| bootstrap-validate Version | Bootstrap Version | Documentation                |
+-----------------------------|-------------------|-------------------------------
+| v1 | Bootstrap 3 | [v1 Download + Docs](https://bootstrap-validate.js.org/v1) |
+| v2 | Bootstrap 4 | [v2 Download + Docs](https://bootstrap-validate.js.org/v2) |
+| v3 (Upcoming) | Bootstrap 5, Bootstrap 4? | [v3 Download + Docs](https://bootstrap-validate.js.org)    |
 
 ## Documentation
 
-Read the Documentation at [bootstrap-validate.js.org](https://bootstrap-validate.js.org)
-which resides below `docs`.
+Read the Documentation at [bootstrap-validate.js.org](<https://bootstrap-validate.js.org>).
 
 ## Usage
 
@@ -53,7 +60,7 @@ bootstrapValidate('#email', 'email:Enter a valid email address');
 
 ## Download
 
-You can find current and previous Downloads in our [Download Archive](https://bootstrap-validate.js.org/download.html).
+You can find current and previous Downloads in our [Download Archive](https://bootstrap-validate.js.org/v2/download.html).
 
 ## Changelog
 
@@ -62,7 +69,7 @@ See [CHANGELOG](CHANGELOG.md).
 ## Tests
 
 Tests are located under `__tests__/`.
-After installing all dependencies you may run `yarn test` or `npm run test` to spin up [Jest](https://facebook.github.io/jest/)-powered tests.
+After installing all dependencies you may run `npm run test-unit` to spin up [Jest](https://facebook.github.io/jest/)-powered tests.
 
 ## License
 

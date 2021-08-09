@@ -1,10 +1,10 @@
 import isFunction from "lodash/isFunction";
 import flatten from "lodash/flatten";
 import rules from "./rules";
-import feedback from "./errors";
+import errors from "./errors";
 import { SEPARATOR_OPTION, SEPARATOR_RULE, LISTENER } from "./constants";
 
-module.exports = (input, string, callback) => {
+export default function bootstrapValidate(input, string, callback) {
   // Normalize the input parameter to a flat array.
   flatten([input]).forEach(element => {
     // Check for either element or selector.
@@ -30,13 +30,11 @@ module.exports = (input, string, callback) => {
         const validity = rules[ruleName](element, ...options);
 
         // DOM Manipulations to toggle errors.
-        feedback(element, ruleName, validity, errorText);
+        errors(element, ruleName, validity, errorText);
 
         // optionally invoke the callback.
         if (isFunction(callback)) callback(validity);
       });
     });
   });
-};
-
-export default module.exports;
+}

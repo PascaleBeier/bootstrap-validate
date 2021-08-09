@@ -1,8 +1,35 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+The format is based on [Keep a Changelog](http://kepachangelog.com/ene/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [v3.0.0] - UNRELEASED
+
+- TBD, see <https://github.com/PascaleBeier/bootstrap-validate/discussions/65>
+
+## [v2.2.2] - 2021-08-09
+
+> Security Updates, CI improvements, a Bug Fix and Documentation sunsetting.
+>
+> You can find Documentation for previous Releases under
+> <https://bootstrap-validate.js.org/v1> and
+> <https://bootstrap-validate.js.org/v2> respectively.
+
+### Fixed
+
+- Fixed a case were inArray would return false positives
+
+### Improvements
+
+- Reduced Bundle Size
+- Added package.module Entry point
+- Switched to Hugo for Documentation Rendering
+- Added old documentations to public documentation
+
+## [v2.2.1] - 2020-04-05
+
+> Security Updates
 
 ## [v2.2.0] - 2019-02-26
 
@@ -141,6 +168,9 @@ This is a non-breaking change - the old notation is still possible.
 
 ## [1.0.1] - 2017-06-06
 
+[v3.0.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.2...v3.0.0
+[v2.2.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.1...v2.2.2
+[v2.2.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.0...v2.2.1
 [v2.2.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.3...v2.2.0
 [v2.1.3]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.2...v2.1.3
 [v2.1.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.1...v2.1.2

@@ -4,13 +4,12 @@ import isInteger from "lodash/isInteger";
 import isString from "lodash/isString";
 import startsWith from "lodash/startsWith";
 import endsWith from "lodash/endsWith";
-import trim from "lodash/trim";
 import split from "lodash/split";
 import gte from "lodash/gte";
 import lte from "lodash/lte";
 import Big from "big.js";
 
-module.exports = {
+export default {
   min: (input, min) =>
     /**
      * @since 1.0.0
@@ -166,10 +165,15 @@ module.exports = {
      * @error Your input must be any of (ABC, DEF, GHI)
      * @description Validate if user input is in given array. Similar to contains, but with an array.
      */
-    const value = trim(input.value);
-    const array = split(trim(string, "whitespace()"), ",");
+    const { value } = input;
+    const array = split(
+      string
+        .replace("(", "")
+        .replace(")", "")
+        .trim(),
+      ","
+    );
+
     return array.includes(value);
   }
 };
-
-export default module.exports;

@@ -1,4 +1,8 @@
-import { alphanum } from "./../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+import rules from "../../src/rules";
 
 describe("alphanum", () => {
   const validAlphanumeric = "AAaaa2101202";
@@ -7,11 +11,11 @@ describe("alphanum", () => {
 
   it("should return true on alphanumeric input", () => {
     input.value = validAlphanumeric;
-    expect(alphanum(input)).toBeTruthy();
+    expect(rules.alphanum(input)).toBeTruthy();
   });
 
   it("should return false on non alphanumeric input", () => {
     input.value = invalidAlphanumeric;
-    expect(alphanum(input)).toBeFalsy();
+    expect(rules.alphanum(input)).toBeFalsy();
   });
 });

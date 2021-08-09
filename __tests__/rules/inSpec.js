@@ -1,4 +1,8 @@
-import { inArray } from "./../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+import rules from "../../src/rules";
 
 describe("inArray", () => {
   const valid = "abc";
@@ -8,11 +12,11 @@ describe("inArray", () => {
 
   it("should return true if input contains string", () => {
     input.value = valid;
-    expect(inArray(input, array)).toBeTruthy();
+    expect(rules.inArray(input, array)).toBeTruthy();
   });
 
   it("should return false if input doesn't contain string", () => {
     input.value = invalid;
-    expect(inArray(input, array)).toBeFalsy();
+    expect(rules.inArray(input, array)).toBeFalsy();
   });
 });

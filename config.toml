@@ -1,0 +1,42 @@
+#
+# Hugo global configuration
+#
+baseURL = 'https://bootstrap-validate.js.org/'
+languageCode = 'en-us'
+title = 'bootstrap-validate'
+theme = 'hugo-geekdoc'
+
+archetypeDir = 'site/archetypes'
+assetDir = 'site/assets'
+contentDir = 'site/content'
+dataDir = 'site/data'
+layoutDir = 'site/layouts'
+staticDir = 'site/static'
+themesDir = 'site/themes'
+publishDir = 'docs'
+
+#
+# Geekdoc theme configuration
+#
+pluralizeListTitles = false
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+disablePathToLower = true
+[markup]
+[markup.goldmark.renderer]
+unsafe = true
+[markup.tableOfContents]
+startLevel = 1
+endLevel = 9
+
+#
+# bootstrap-validate configuration
+#
+[params]
+geekdocBreadcrumb = false
+geekdocRepo = 'https://github.com/PascaleBeier/bootstrap-validate'
+geekdocEditPath = 'edit/main/site/content'
+[params.versions]
+'Bootstrap 3' = '/v1'
+'Boostrap 4' = '/v2'
+'Bootstrap 5' = '/v3'

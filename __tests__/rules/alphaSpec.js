@@ -1,4 +1,9 @@
-import { alpha } from "./../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+
+import rules from "../../src/rules";
 
 describe("alpha", () => {
   const validAlpha = "AAaaa";
@@ -7,11 +12,11 @@ describe("alpha", () => {
 
   it("should return true on alphabetic input", () => {
     input.value = validAlpha;
-    expect(alpha(input)).toBeTruthy();
+    expect(rules.alpha(input)).toBeTruthy();
   });
 
   it("should return false on non alphabetic input", () => {
     input.value = invalidAlpha;
-    expect(alpha(input)).toBeFalsy();
+    expect(rules.alpha(input)).toBeFalsy();
   });
 });

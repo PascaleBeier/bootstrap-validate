@@ -1,6 +1,6 @@
 import { CLASS_ERROR, CLASS_HELP_BLOCK, ELEMENT_HELP_BLOCK } from "./constants";
 
-module.exports = (input, rule, isValid, text) => {
+export default function errors(input, rule, isValid, text) {
   const specificErrorClass = `has-error-${rule}`;
   const formGroup = input.closest(".form-group") || input.parentNode;
   let specificHelpBlock = formGroup.querySelector(`.${specificErrorClass}`);
@@ -31,6 +31,4 @@ module.exports = (input, rule, isValid, text) => {
       input.classList.add(CLASS_ERROR);
     }
   }
-};
-
-export default module.exports;
+}

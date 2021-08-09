@@ -1,4 +1,9 @@
-import { ISO8601 } from "../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+
+import rules from "../../src/rules";
 
 describe("ISO8601", () => {
   const input = document.createElement("input");
@@ -7,11 +12,11 @@ describe("ISO8601", () => {
 
   it("should return true if input is valid ISO 8601", () => {
     input.value = validInput;
-    expect(ISO8601(input, validInput)).toBeTruthy();
+    expect(rules.ISO8601(input, validInput)).toBeTruthy();
   });
 
   it("should return false if input is invalid ISO 8601", () => {
     input.value = invalidInput;
-    expect(ISO8601(input, invalidInput)).toBeFalsy();
+    expect(rules.ISO8601(input, invalidInput)).toBeFalsy();
   });
 });

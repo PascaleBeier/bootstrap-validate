@@ -1,4 +1,9 @@
-import { regex } from "../../src/rules";
+/**
+ * @jest-environment jsdom
+ */
+
+
+import rules from "../../src/rules";
 
 describe("regex", () => {
   const input = document.createElement("input");
@@ -8,11 +13,11 @@ describe("regex", () => {
 
   it("should return true if regex passes.", () => {
     input.value = validInput;
-    expect(regex(input, myRegex)).toBeTruthy();
+    expect(rules.regex(input, myRegex)).toBeTruthy();
   });
 
   it("should return false if regex fails.", () => {
     input.value = invalidInput;
-    expect(regex(input, myRegex)).toBeFalsy();
+    expect(rules.regex(input, myRegex)).toBeFalsy();
   });
 });
