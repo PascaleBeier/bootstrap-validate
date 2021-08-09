@@ -4,11 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [v3.0.0] - UNRELEASED
+## [unreleased]
 
 - TBD, see <https://github.com/PascaleBeier/bootstrap-validate/discussions/65>
 
-## [v2.2.2] - 2021-08-09
+## [2.2.3] - 2021-08-09
 
 > Security Updates, CI improvements, a Bug Fix and Documentation sunsetting.
 >
@@ -27,36 +27,36 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Switched to Hugo for Documentation Rendering
 - Added old documentations to public documentation
 
-## [v2.2.1] - 2020-04-05
+## [2.2.1] - 2020-04-05
 
 > Security Updates
 
-## [v2.2.0] - 2019-02-26
+## [2.2.0] - 2019-02-26
 
 ### Added
 
 - Added new `inArray` Rule, allowing to validate an input against an array of strings.
 - Updated Dependencies
 
-## [v2.1.3] - 2018-05-23
+## [2.1.3] - 2018-05-23
 
 ### Fixed
 
 - Enable the use of the colon symbol `:` in the regex rule.
 
-## [v2.1.2] - 2018-05-05
+## [2.1.2] - 2018-05-05
 
 ### Fixed
 
 - Use arbitrary-precision decimal arithmetic
 
-## [v2.1.1] - 2018-05-04
+## [2.1.1] - 2018-05-04
 
 ### Fixed
 
 - Fixed floating numbers divisions
 
-## [v2.1.0] - 2018-05-04
+## [2.1.0] - 2018-05-04
 
 ### Added
 
@@ -64,19 +64,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Rule: regex
 - Rule: ISO8601 (date format yyyy-mm-dd)
 
-## [v2.0.2] - 2018-04-24
+## [2.0.2] - 2018-04-24
 
 ### Fixed
 
 - Fixed Hexadecimal values passing integer validation. (#22)
 
-## [v2.0.1] - 2018-04-11
+## [2.0.1] - 2018-04-11
 
 ### Fixed
 
 - Fixed UMD Bundle for Webpack / ES6 Usage
 
-## [v2.0.0] - 2018-01-31
+## [2.0.0] - 2018-01-31
 
 This is a big one! Dropping Bootstrap v3 for that bright'n'shiny Bootstrap 4!
 
@@ -168,17 +168,22 @@ This is a non-breaking change - the old notation is still possible.
 
 ## [1.0.1] - 2017-06-06
 
-[v3.0.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.2...v3.0.0
-[v2.2.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.1...v2.2.2
-[v2.2.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.0...v2.2.1
-[v2.2.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.3...v2.2.0
-[v2.1.3]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.2...v2.1.3
-[v2.1.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.1...v2.1.2
-[v2.1.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.0...v2.1.1
-[v2.1.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.0.2...v2.1.0
-[v2.0.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.0.1...v2.0.2
-[v2.0.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.0.0...v2.0.1
-[v2.0.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.11...v2.0.0
+## [1.0.0] - 2017-06-06
+
+> Initial Release
+
+[unreleased]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.3...HEAD
+[2.2.3]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.2...v2.2.3
+[2.2.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.1...v2.2.2
+[2.2.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.0...v2.2.1
+[2.2.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.3...v2.2.0
+[2.1.3]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.2...v2.1.3
+[2.1.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.1...v2.1.2
+[2.1.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.1.0...v2.1.1
+[2.1.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.0.2...v2.1.0
+[2.0.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.0.1...v2.0.2
+[2.0.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.11...v2.0.0
 [1.0.11]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.10...1.0.11
 [1.0.10]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.9...1.0.10
 [1.0.9]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.8...1.0.9
@@ -192,6 +197,3 @@ This is a non-breaking change - the old notation is still possible.
 [1.0.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/PascaleBeier/bootstrap-validate/commit/aa4fbffa625dc389292cc1246bd04573f9371e93
 
-## [1.0.0] - 2017-06-06
-
-> Initial Release

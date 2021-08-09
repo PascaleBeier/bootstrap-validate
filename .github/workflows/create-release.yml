@@ -18,10 +18,12 @@ jobs:
         uses: ffurrer2/extract-release-notes@v1
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
+      - name: Get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: Create release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1.8
         with:
-          tag_name: ${{ github.ref }}
+          name: Release ${{ env.TAG }}
           draft: false
           prerelease: false
           body: ${{ steps.extract-release-notes.outputs.release_notes }}
