@@ -1,11 +1,11 @@
 {
   "name": "bootstrap-validate",
   "description": "A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.",
-  "version": "v2.2.3",
+  "version": "v3.0.0-dev",
   "sideEffects": false,
   "homepage": "https://bootstrap-validate.js.org",
   "main": "dist/bootstrap-validate.js",
-  "module": "src/bootstrap-validate.js",
+  "module": "src/index.js",
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
   "author": "Pascale Beier <mail@pascalebeier.de>",
   "keywords": [
@@ -23,8 +23,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev": "webpack -w",
-    "build": "webpack",
+    "build": "rollup -c",
     "check-style": "eslint webpack.config.js src/ __tests__/",
     "fix-style": "eslint --fix webpack.config.js src/ __tests__/",
     "test": "npm run test-unit",
@@ -39,22 +38,25 @@
     "@babel/core": "^7.15.0",
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
-    "babel-loader": "^8.2.2",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-dynamic-import-vars": "^1.4.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-prettier": "^3.4.0",
     "hugo-bin": "^0.75.0",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
-    "webpack": "^5.49.0",
-    "webpack-cli": "^4.7.2"
+    "rollup": "^2.56.2",
+    "rollup-plugin-sizes": "^1.0.4"
   },
   "dependencies": {
     "@babel/runtime": "^7.14.8",
+    "@babel/runtime-corejs3": "^7.14.9",
     "big.js": "^6.1.1",
-    "lodash": "^4.17.21"
+    "core-js": "^3.16.1"
   },
   "hugo-bin": {
     "buildTags": "extended"

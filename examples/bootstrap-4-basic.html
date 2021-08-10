@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>bootstrap-validate: Bootstrap 4 Basic Example</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style>
     body {
@@ -17,15 +17,15 @@
 
 <div class="container">
 
-  <form>
+  <form id="address-form">
     <div class="form-row">
       <div class="col-md-4 mb-3">
-        <label for="input3">First name</label>
-        <input type="text" class="form-control" id="input2" placeholder="First name" value="Mark" required>
+        <label for="first-name">First name</label>
+        <input type="text" class="form-control" id="first-name" placeholder="First name" value="Mark" required>
       </div>
       <div class="col-md-4 mb-3">
-        <label for="input2">Last name</label>
-        <input type="text" class="form-control" id="input3" placeholder="Last name" value="Otto" required>
+        <label for="last-name">Last name</label>
+        <input type="text" class="form-control" id="last-name" placeholder="Last name" value="Otto" required>
       </div>
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>
@@ -35,10 +35,9 @@
 </div>
 
 
-<script src="../dist/bootstrap-validate.js"></script>
+<script defer='defer' src="../dist/bootstrap-validate.js"></script>
 <script>
-  // Basic Example
-  bootstrapValidate(['#input2', '#input3'], 'contains:Peter:Needs to Contain "Peter"|min:20:Enter 20 character!|max:40:Enter 40 chars at most!');
+
 </script>
 </body>
 </html>

@@ -1,5 +1,4 @@
-var BootstrapValidate = (function () {
-  'use strict';
+define(function () { 'use strict';
 
   var TO_STRING_TAG_SUPPORT = require('../internals/to-string-tag-support');
   var redefine$3 = require('../internals/redefine');
@@ -692,4 +691,4 @@ var BootstrapValidate = (function () {
 
   return BootstrapValidate$1;
 
-}());
+});

@@ -27,5 +27,7 @@ jobs:
           draft: false
           prerelease: false
           body: ${{ steps.extract-release-notes.outputs.release_notes }}
-          files: dist/bootstrap-validate.js
+          files: |
+            dist/bootstrap-validate.js
+            dist/bootstrap-validate.js.LICENSE.txt
           token: ${{ secrets.PAT }}

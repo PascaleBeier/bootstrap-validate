@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - TBD, see <https://github.com/PascaleBeier/bootstrap-validate/discussions/65>
 
+### Breaking
+
+- Removed the possibility to add HTMLElement as the first parameter to bootstrapValidate
+
+
 ## [2.2.3] - 2021-08-09
 
 > Security Updates, CI improvements, a Bug Fix and Documentation sunsetting.

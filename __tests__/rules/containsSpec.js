@@ -2,15 +2,15 @@
  * @jest-environment jsdom
  */
 
-import rules from "../../src/rules";
+import rules from '../../src/rules';
 
-describe("contains", () => {
-  const valid = "Name";
-  const invalid = "AAAa   ss224";
-  const input = document.createElement("input");
-  input.value = "My Name";
+describe('contains', () => {
+  const valid = 'Name';
+  const invalid = 'AAAa   ss224';
+  const input = document.createElement('input');
+  input.value = 'My Name';
 
-  it("should return true if input contains string", () => {
+  it('should return true if input contains string', () => {
     expect(rules.contains(input, valid)).toBeTruthy();
   });
 

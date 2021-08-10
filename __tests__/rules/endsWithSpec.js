@@ -2,15 +2,15 @@
  * @jest-environment jsdom
  */
 
-import rules from "../../src/rules";
+import rules from '../../src/rules';
 
-describe("endsWith", () => {
-  const valid = "Name";
-  const invalid = "AAAa   ss224";
-  const input = document.createElement("input");
-  input.value = "My Name";
+describe('endsWith', () => {
+  const valid = 'Name';
+  const invalid = 'AAAa   ss224';
+  const input = document.createElement('input');
+  input.value = 'My Name';
 
-  it("should return true if input value end with the given string", () => {
+  it('should return true if input value end with the given string', () => {
     expect(rules.endsWith(input, valid)).toBeTruthy();
   });
 

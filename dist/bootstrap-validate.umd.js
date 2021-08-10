@@ -1,5 +1,8 @@
-var BootstrapValidate = (function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.BootstrapValidate = factory());
+}(this, (function () { 'use strict';
 
   var TO_STRING_TAG_SUPPORT = require('../internals/to-string-tag-support');
   var redefine$3 = require('../internals/redefine');
@@ -692,4 +695,4 @@ var BootstrapValidate = (function () {
 
   return BootstrapValidate$1;
 
-}());
+})));

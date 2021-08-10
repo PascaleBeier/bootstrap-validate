@@ -1,13 +1,4 @@
-import isFinite from "lodash/isFinite";
-import parseInt from "lodash/parseInt";
-import isInteger from "lodash/isInteger";
-import isString from "lodash/isString";
-import startsWith from "lodash/startsWith";
-import endsWith from "lodash/endsWith";
-import split from "lodash/split";
-import gte from "lodash/gte";
-import lte from "lodash/lte";
-import Big from "big.js";
+import Big from 'big.js';
 
 export default {
   min: (input, min) =>
@@ -18,7 +9,7 @@ export default {
      * @param min number: Number of minimum characters.
      * @description Require a given minimum character count.
      */
-    gte(input.value.length, parseInt(min)),
+    Big(input.value.length).gte(new Big(min)),
   max: (input, max) =>
     /**
      * @since 1.0.0
@@ -27,7 +18,7 @@ export default {
      * @param max number: Number of maximum characters.
      * @description Maximum character count required.
      */
-    lte(input.value.length, parseInt(max)),
+    Big(input.value.length).lte(new Big(max)),
   email: (input) =>
     /**
      * @since 1.0.3
@@ -59,14 +50,14 @@ export default {
      * @error Please fill out this input field!
      * @description Require a valid integer.
      */
-    isInteger(Number(input.value)),
+    !Number.isNaN(parseInt(input.value, 10)),
   numeric: (input) =>
     /**
      * @since 1.0.10
      * @description Require a valid numeric input.
      * @error Please only enter numeric characters!
      */
-    isFinite(Number(input.value)),
+    Number.isFinite(parseInt(input.value, 10)),
   alphanum: (input) =>
     /**
      * @since 1.0.10
@@ -100,9 +91,9 @@ export default {
      */
     let lDivisible = false;
     const lNumber = Number(input.value);
-    if (isFinite(lNumber)) {
+    if (Number.isFinite(lNumber)) {
       lDivisible =
-        new Big(lNumber).mod(new Big(Number(number))).toString() === "0";
+        new Big(lNumber).mod(new Big(Number(number))).toString() === '0';
     }
 
     return lDivisible;
@@ -124,7 +115,7 @@ export default {
      * @error Your phone number needs to start with +49
      * @description Require the input value to start with a given string.
      */
-    startsWith(input.value, string),
+    input.value.startsWith(string),
   endsWith: (input, string) =>
     /**
      * @since 1.1.0
@@ -133,7 +124,7 @@ export default {
      * @param string string: String the input value should end with
      * @description Require the input value to end with a given string.
      */
-    endsWith(input.value, string),
+    input.value.endsWith(string),
   matches: (input, matchingInput) => {
     /**
      * @since 1.1.0
@@ -144,7 +135,7 @@ export default {
      */
     let lMatchingInput = matchingInput;
 
-    if (typeof lMatchingInput.nodeType === "undefined") {
+    if (typeof lMatchingInput.nodeType === 'undefined') {
       lMatchingInput = document.querySelector(matchingInput);
     }
 
@@ -156,7 +147,7 @@ export default {
      * @error You can only input alphabetic characters
      * @description Validate only alphabetic characters - a-z, A-Z.
      */
-    isString(input.value) && new RegExp(/^[a-z]+$/i).test(input.value),
+    new RegExp(/^[a-z]+$/i).test(input.value),
   inArray: (input, string) => {
     /**
      * @since 2.2.0
@@ -166,7 +157,7 @@ export default {
      * @description Validate if user input is in given array. Similar to contains, but with an array.
      */
     const { value } = input;
-    const array = split(string.replace("(", "").replace(")", "").trim(), ",");
+    const array = string.replace('(', '').replace(')', '').trim().split(',');
 
     return array.includes(value);
   },
