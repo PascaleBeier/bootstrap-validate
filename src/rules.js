@@ -34,9 +34,9 @@ export default {
      * @error Enter a valid email address
      * @description Require a valid E-Mail Address.
      */
-    new RegExp(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    ).test(input.value),
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      input.value
+    ),
   required: (input) =>
     /**
      * @since 1.0.7
@@ -50,9 +50,9 @@ export default {
      * @error Please enter a valid URL!
      * @description Require a valid URL.
      */
-    new RegExp(
-      /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i
-    ).test(input.value),
+    /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(
+      input.value
+    ),
   integer: (input) =>
     /**
      * @since 1.0.10
@@ -73,14 +73,14 @@ export default {
      * @error Please only enter alphanumeric characters!
      * @description Require alphanumeric input, e.g. 0-9 and a-Z.
      */
-    new RegExp(/^[a-z0-9]+$/i).test(input.value),
+    /^[a-z0-9]+$/i.test(input.value),
   ISO8601: (input) =>
     /**
      * @since v2.1.0
      * @error Your input does not match the wanted format YYYY-MM-DD
      * @description Validate user input against ISO 8601 Format.
      */
-    new RegExp(/^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/).test(input.value),
+    /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/.test(input.value),
   regex: (input, regex) =>
     /**
      * @since v2.1.0
@@ -156,7 +156,7 @@ export default {
      * @error You can only input alphabetic characters
      * @description Validate only alphabetic characters - a-z, A-Z.
      */
-    isString(input.value) && new RegExp(/^[a-z]+$/i).test(input.value),
+    isString(input.value) && /^[a-z]+$/i.test(input.value),
   inArray: (input, string) => {
     /**
      * @since 2.2.0

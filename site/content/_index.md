@@ -7,16 +7,16 @@ url: /
 
 > A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.
 
-{{< hint danger >}}
+{{% notice info %}}
 **Upcoming Version**\
 You are currently looking at the documentation for the upcoming version of **bootstrap-validate**.
-
+\
 Use the links in the table below to browse documentation for older releases.
-
+\
 Join our discussion on <https://github.com/PascaleBeier/bootstrap-validate/discussions/65> to give
 feedback for this upcoming Release!
 
-{{< /hint >}}
+{{% /notice %}}
 
 ## Supported Versions
 

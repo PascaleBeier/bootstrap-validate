@@ -4,7 +4,7 @@
 baseURL = 'https://bootstrap-validate.js.org/'
 languageCode = 'en-us'
 title = 'bootstrap-validate'
-theme = 'hugo-geekdoc'
+theme = 'hugo-theme-learn'
 
 archetypeDir = 'site/archetypes'
 assetDir = 'site/assets'
@@ -40,3 +40,33 @@ geekdocEditPath = 'edit/main/site/content'
 'Bootstrap 3' = '/v1'
 'Boostrap 4' = '/v2'
 'Bootstrap 5' = '/v3'
+
+
+[Languages]
+[Languages.en]
+title = "bootstrap-validate"
+weight = 1
+languageName = "English"
+landingPageURL = "/en"
+landingPageName = "<i class='fas fa-home'></i> Home"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-fw fa-github'></i> GitHub repo"
+identifier = "ds"
+url = "https://github.com/PascaleBeier/bootstrap-validate"
+weight = 10
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-gift'></i> Support us with Developer Merch"
+url = "https://devsfordevs.shop"
+weight = 11
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-book'></i> Bootstrap 3"
+url = "/v1"
+weight = 12
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-book'></i> Bootstrap 4"
+url = "/v2"
+weight = 13

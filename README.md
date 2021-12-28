@@ -9,9 +9,9 @@
 
 [![Demo](.github/images/demo.gif)](#)
 
-> ## Upcoming Release
->
-> Share your opinions and feedback <https://github.com/PascaleBeier/bootstrap-validate/discussions/65>.
+## 🎉  Support us with Developer Merchandise
+
+> Check out stickers, apparel and accessoires for devs on <https://devsfordevs.shop>.
 
 
 ## Supported Versions

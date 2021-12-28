@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - TBD, see <https://github.com/PascaleBeier/bootstrap-validate/discussions/65>
 
+## [2.2.5] - 2021-12-28
+
+> Security and Documentation Updates
+
 ## [2.2.4] - 2021-09-10
 
 > Security Updates
@@ -180,8 +184,9 @@ This is a non-breaking change - the old notation is still possible.
 
 > Initial Release
 
-[unreleased]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.3...HEAD
-[2.2.4]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.2...v2.2.3
+[unreleased]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.5...HEAD
+[2.2.5]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.4...v2.2.5
+[2.2.4]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.3...v2.2.4
 [2.2.3]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.2...v2.2.3
 [2.2.2]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/PascaleBeier/bootstrap-validate/compare/v2.2.0...v2.2.1
