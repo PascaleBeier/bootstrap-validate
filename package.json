@@ -40,7 +40,7 @@
     "@babel/plugin-transform-runtime": "7.16.7",
     "@babel/preset-env": "7.16.7",
     "babel-loader": "8.2.3",
-    "eslint": "8.5.0",
+    "eslint": "8.6.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.25.3",
