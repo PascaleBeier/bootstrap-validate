@@ -46,7 +46,7 @@
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-prettier": "4.0.0",
     "hugo-bin": "0.79.2",
-    "jest": "27.4.6",
+    "jest": "27.4.7",
     "prettier": "2.5.1",
     "webpack": "5.65.0",
     "webpack-cli": "4.9.1"
