@@ -25,8 +25,8 @@
   "scripts": {
     "dev": "webpack -w",
     "build": "webpack",
-    "check-style": "eslint webpack.config.js src/ __tests__/",
-    "fix-style": "eslint --fix webpack.config.js src/ __tests__/",
+    "check-style": "eslint webpack.config.js src/ tests/",
+    "fix-style": "eslint --fix webpack.config.js src/ tests/",
     "test": "npm run test-unit",
     "test-unit": "jest",
     "coverage-unit": "jest --coverage",
@@ -58,5 +58,8 @@
   },
   "hugo-bin": {
     "buildTags": "extended"
+  },
+  "jest": {
+  	"testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.[jt]sx?$"
   }
 }
