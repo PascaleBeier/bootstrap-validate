@@ -4,7 +4,7 @@
 baseURL = 'https://bootstrap-validate.js.org/'
 languageCode = 'en-us'
 title = 'bootstrap-validate'
-theme = 'hugo-theme-learn'
+theme = ['bootstrap-validate', 'hugo-theme-relearn']
 
 archetypeDir = 'site/archetypes'
 assetDir = 'site/assets'
