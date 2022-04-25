@@ -56,7 +56,7 @@ Validating an `#email` address couldn't be easier!
 ```html
 <div class="form-group">
   <label for="email" class="control-label">Enter your E-Mail</label>
-  <div class="input" id="email">
+  <input class="input" id="email">
 </div>
 
 <script>
