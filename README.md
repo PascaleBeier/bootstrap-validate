@@ -5,14 +5,9 @@
 ![npm](https://img.shields.io/npm/dt/bootstrap-validate)
 ![GitHub](https://img.shields.io/github/license/PascaleBeier/bootstrap-validate)
 
-> A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.
+> A simple Form Validation Utility for Bootstrap 3, Bootstrap 4 for Humans.
 
 [![Demo](.github/images/demo.gif)](#)
-
-## 🎉  Support us with Developer Merchandise
-
-> Check out stickers, apparel and accessoires for devs on <https://devsfordevs.shop>.
-
 
 ## Supported Versions
 
@@ -20,7 +15,6 @@
 -----------------------------|-------------------|-------------------------------
 | v1 | Bootstrap 3 | [v1 Download + Docs](https://bootstrap-validate.js.org/v1) |
 | v2 | Bootstrap 4 | [v2 Download + Docs](https://bootstrap-validate.js.org/v2) |
-| v3 (Upcoming) | Bootstrap 5, Bootstrap 4? | [v3 Download + Docs](https://bootstrap-validate.js.org)    |
 
 ## Documentation
 
