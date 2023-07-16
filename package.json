@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-validate",
   "description": "A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.",
-  "version": "v2.2.5",
+  "version": "v2.2.6",
   "sideEffects": false,
   "homepage": "https://bootstrap-validate.js.org",
   "main": "dist/bootstrap-validate.js",
