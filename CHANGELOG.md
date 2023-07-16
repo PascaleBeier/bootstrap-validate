@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - TBD, see <https://github.com/PascaleBeier/bootstrap-validate/discussions/65>
 
+## [2.2.6] - 2023-07-16
+
+> Security and Documentation Updates
+
 ## [2.2.5] - 2021-12-28
 
 > Security and Documentation Updates

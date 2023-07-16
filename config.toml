@@ -57,11 +57,6 @@ url = "https://github.com/PascaleBeier/bootstrap-validate"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-fw fa-gift'></i> Support us with Developer Merch"
-url = "https://devsfordevs.shop"
-weight = 11
-
-[[Languages.en.menu.shortcuts]]
 name = "<i class='fas fa-fw fa-book'></i> Bootstrap 3"
 url = "/v1"
 weight = 12

@@ -1,31 +1,30 @@
 /* Tags */
 
-#head-tags{
+.tags{
     margin-left:1rem;
     margin-top:1rem;
 }
 
 #body .tags a.tag-link {
-    background: #7dc903; /* var(--TAG-BG-color) */
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    color: #ffffff; /* var(--MAIN-BG-color) */
+    box-shadow: 0 1px 2px rgba( 0, 0, 0, .2 );
     display: inline-block;
     font-size: 0.8em;
     font-weight: 400;
     line-height: 2em;
-    margin: 0 16px 8px 0;
+    margin: 0 0 8px -1px;
+    margin-inline-end: 16px;
     padding: 0 10px 0 12px;
     position: relative;
 }
 
 #body .tags a.tag-link:before {
-    border-color: transparent #7dc903 transparent transparent; /* var(--TAG-BG-color) */
+    border-color: transparent;
     border-style: solid;
     border-width: 1em 1em 1em 0;
     content: "";
-    left: -.99em;
+    left: -1em;
     height: 0;
     position: absolute;
     top:0;
@@ -33,7 +32,6 @@
 }
 
 #body .tags a.tag-link:after {
-    background: #ffffff; /* var(--MAIN-BG-color) */
     border-radius: 100%;
     content: "";
     left: 1px;

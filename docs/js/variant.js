@@ -1,13 +1,46 @@
 // we need to load this script in the html head to avoid flickering
 // on page load if the user has selected a non default variant
+
+// polyfill this rotten piece of sh...oftware
+if( typeof NodeList !== "undefined" && NodeList.prototype && !NodeList.prototype.forEach ){
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
+if (!String.prototype.startsWith) {
+    Object.defineProperty(String.prototype, 'startsWith', {
+        value: function(search, rawPos) {
+            var pos = rawPos > 0 ? rawPos|0 : 0;
+            return this.substring(pos, pos + search.length) === search;
+        }
+    });
+}
+
+"function"!=typeof Object.assign&&(Object.assign=function(n,t){"use strict";if(null==n)throw new TypeError("Cannot convert undefined or null to object");for(var r=Object(n),e=1;e<arguments.length;e++){var o=arguments[e];if(null!=o)for(var c in o)Object.prototype.hasOwnProperty.call(o,c)&&(r[c]=o[c])}return r});
+
+if(!Array.prototype.find){Array.prototype.find=function(predicate){if(this===null){throw new TypeError('Array.prototype.find called on null or undefined')}if(typeof predicate!=='function'){throw new TypeError('predicate must be a function')}var list=Object(this);var length=list.length>>>0;var thisArg=arguments[1];var value;for(var i=0;i<length;i+=1){value=list[i];if(predicate.call(thisArg,value,i,list)){return value}}return undefined}}
+
+Array.from||(Array.from=function(){var r;try{r=Symbol.iterator?Symbol.iterator:"Symbol(Symbol.iterator)"}catch(t){r="Symbol(Symbol.iterator)"}var t=Object.prototype.toString,n=function(r){return"function"==typeof r||"[object Function]"===t.call(r)},o=Math.pow(2,53)-1,e=function(r){var t=function(r){var t=Number(r);return isNaN(t)?0:0!==t&&isFinite(t)?(t>0?1:-1)*Math.floor(Math.abs(t)):t}(r);return Math.min(Math.max(t,0),o)},a=function(t,n){var o=t&&n[r]();return function(r){return t?o.next():n[r]}},i=function(r,t,n,o,e,a){for(var i=0;i<n||e;){var u=o(i),f=e?u.value:u;if(e&&u.done)return t;t[i]=a?void 0===r?a(f,i):a.call(r,f,i):f,i+=1}if(e)throw new TypeError("Array.from: provided arrayLike or iterator has length more then 2 ** 52 - 1");return t.length=n,t};return function(t){var o=this,u=Object(t),f=n(u[r]);if(null==t&&!f)throw new TypeError("Array.from requires an array-like object or iterator - not null or undefined");var l,c=arguments.length>1?arguments[1]:void 0;if(void 0!==c){if(!n(c))throw new TypeError("Array.from: when provided, the second argument must be a function");arguments.length>2&&(l=arguments[2])}var y=e(u.length),h=n(o)?Object(new o(y)):new Array(y);return i(l,h,y,a(f,u),f,c)}}());
+
+const ElementPrototype=window.Element.prototype;
+if(typeof ElementPrototype.matches!=='function'){ElementPrototype.matches=ElementPrototype.msMatchesSelector||ElementPrototype.mozMatchesSelector||ElementPrototype.webkitMatchesSelector||function matches(selector){let element=this;const elements=(element.document||element.ownerDocument).querySelectorAll(selector);let index=0;while(elements[index]&&elements[index]!==element){index+=1}return Boolean(elements[index])}}if(typeof ElementPrototype.closest!=='function'){ElementPrototype.closest=function closest(selector){let element=this;while(element&&element.nodeType===1){if(element.matches(selector)){return element}element=element.parentNode}return null}}
+
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ready(fn) { if (document.readyState == 'complete') { fn(); } else { document.addEventListener('DOMContentLoaded',fn); } }
+
 var variants = {
 	variant: '',
 	variants: [],
 	customvariantname: 'my-custom-variant',
+	isstylesheetloaded: true,
 
 	init: function( variants ){
 		this.variants = variants;
-		var variant = window.localStorage.getItem( 'variant' ) || ( this.variants.length ? this.variants[0] : '' );
+		var variant = window.localStorage.getItem( baseUriFull+'variant' ) || ( this.variants.length ? this.variants[0] : '' );
 		this.changeVariant( variant );
 		document.addEventListener( 'readystatechange', function(){
 			if( document.readyState == 'interactive' ){
@@ -22,7 +55,11 @@ var variants = {
 
 	setVariant: function( variant ){
 		this.variant = variant;
-		window.localStorage.setItem( 'variant', variant );
+		window.localStorage.setItem( baseUriFull+'variant', variant );
+	},
+
+	isVariantLoaded: function(){
+		return window.theme && this.isstylesheetloaded;
 	},
 
 	markSelectedVariant: function(){
@@ -35,6 +72,13 @@ var variants = {
 		if( variant && select.value != variant ){
 			select.value = variant;
 		}
+		var interval_id = setInterval( function(){
+			if( this.isVariantLoaded() ){
+				clearInterval( interval_id );
+				initMermaid( true );
+				initOpenapi( true );
+			}
+		}.bind( this ), 25 );
 		// remove selection, because if some uses an arrow navigation"
 		// by pressing the left or right cursor key, we will automatically
 		// select a different style
@@ -49,11 +93,11 @@ var variants = {
 	},
 
 	addCustomVariantOption: function(){
-		var variantbase = window.localStorage.getItem( 'customvariantbase' );
+		var variantbase = window.localStorage.getItem( baseUriFull+'customvariantbase' );
 		if( this.variants.indexOf( variantbase ) < 0 ){
 			variantbase = '';
 		}
-		if( !window.localStorage.getItem( 'customvariant' ) ){
+		if( !window.localStorage.getItem( baseUriFull+'customvariant' ) ){
 			variantbase = '';
 		}
 		if( !variantbase ){
@@ -90,15 +134,15 @@ var variants = {
 
 	saveCustomVariant: function(){
 		if( this.getVariant() != this.customvariantname ){
-			window.localStorage.setItem( 'customvariantbase', this.getVariant() );
+			window.localStorage.setItem( baseUriFull+'customvariantbase', this.getVariant() );
 		}
-		window.localStorage.setItem( 'customvariant', this.generateStylesheet() );
+		window.localStorage.setItem( baseUriFull+'customvariant', this.generateStylesheet() );
 		this.setVariant( this.customvariantname );
 		this.markSelectedVariant();
 	},
 
 	loadCustomVariant: function(){
-		var stylesheet = window.localStorage.getItem( 'customvariant' );
+		var stylesheet = window.localStorage.getItem( baseUriFull+'customvariant' );
 
 		// temp styles to document
 		var head = document.querySelector( 'head' );
@@ -121,19 +165,22 @@ var variants = {
 				this.saveCustomVariant();
 			}
 		}.bind( this ), 25 );
-
 	},
 
 	resetVariant: function(){
-		var variantbase = window.localStorage.getItem( 'customvariantbase' );
+		var variantbase = window.localStorage.getItem( baseUriFull+'customvariantbase' );
 		if( variantbase && confirm( 'You have made changes to your custom variant. Are you sure you want to reset all changes?' ) ){
-			window.localStorage.removeItem( 'customvariantbase' );
-			window.localStorage.removeItem( 'customvariant' );
+			window.localStorage.removeItem( baseUriFull+'customvariantbase' );
+			window.localStorage.removeItem( baseUriFull+'customvariant' );
 			this.removeCustomVariantOption();
 			if( this.getVariant() == this.customvariantname ){
 				this.changeVariant( variantbase );
 			}
 		}
+	},
+
+	onLoadStylesheet: function(){
+		variants.isstylesheetloaded = true;
 	},
 
 	switchStylesheet: function( variant, without_check ){
@@ -143,16 +190,24 @@ var variants = {
 		}
 		var old_path = link.getAttribute( 'href' );
 		var new_path = this.generateVariantPath( variant, old_path );
-		link.setAttribute( 'href', new_path );
+		this.isstylesheetloaded = false;
+
+		// Chrome needs a new element to trigger the load callback again
+		var new_link = document.createElement( 'link' );
+		new_link.id = 'variant-style';
+		new_link.rel = 'stylesheet';
+		new_link.onload = this.onLoadStylesheet;
+		new_link.setAttribute( 'href', new_path );
+		link.parentNode.replaceChild( new_link, link );
 	},
 
 	changeVariant: function( variant ){
 		if( variant == this.customvariantname ){
-			var variantbase = window.localStorage.getItem( 'customvariantbase' );
+			var variantbase = window.localStorage.getItem( baseUriFull+'customvariantbase' );
 			if( this.variants.indexOf( variantbase ) < 0 ){
 				variant = '';
 			}
-			if( !window.localStorage.getItem( 'customvariant' ) ){
+			if( !window.localStorage.getItem( baseUriFull+'customvariant' ) ){
 				variant = '';
 			}
 			this.setVariant( variant );
@@ -175,7 +230,7 @@ var variants = {
 		}
 	},
 
-	generator: function( vargenerator, vardownload, varreset ){
+	generator: function( vargenerator ){
 		var graphDefinition = this.generateGraph();
 		var graphs = document.querySelectorAll( vargenerator );
 		graphs.forEach( function( e ){ e.innerHTML = graphDefinition; });
@@ -186,16 +241,9 @@ var variants = {
 				this.styleGraph();
 			}
 		}.bind( this ), 25 );
-
-		var downloads = document.querySelectorAll( vardownload );
-		downloads.forEach( function( e ){ e.addEventListener('click', this.getStylesheet.bind( this )); }.bind( this ) );
-
-		var resets = document.querySelectorAll( varreset );
-		resets.forEach( function( e ){ e.addEventListener('click', this.resetVariant.bind( this )); }.bind( this ) );
 	},
 
 	download: function(data, mimetype, filename){
-		console.log( data );
 		var blob = new Blob([data], { type: mimetype });
 		var url = window.URL.createObjectURL(blob);
 		var a = document.createElement('a');
@@ -208,34 +256,52 @@ var variants = {
 		this.download( this.generateStylesheet(), 'text/css', 'theme-' + this.customvariantname + '.css' );
 	},
 
-	adjustCSSRules: function(selector, props, sheets){
-		// get stylesheet(s)
-		if (!sheets) sheets = [...document.styleSheets];
-		else if (sheets.sup){    // sheets is a string
-			let absoluteURL = new URL(sheets, document.baseURI).href;
-			sheets = [...document.styleSheets].filter(i => i.href == absoluteURL);
-		}
-		else sheets = [sheets];  // sheets is a stylesheet
+	adjustCSSRules: function(selector, props, sheets) {
+    // get stylesheet(s)
+    if (!sheets) sheets = [].concat(Array.from(document.styleSheets));else if (sheets.sup) {
+      // sheets is a string
+      var absoluteURL = new URL(sheets, document.baseURI).href;
+      sheets = [].concat(document.styleSheets).filter(function (i) {
+        return i.href == absoluteURL;
+      });
+    } else sheets = [sheets]; // sheets is a stylesheet
+    // CSS (& HTML) reduce spaces in selector to one.
 
-		// CSS (& HTML) reduce spaces in selector to one.
-		selector = selector.replace(/\s+/g, ' ');
-		const findRule = s => [...s.cssRules].reverse().find(i => i.selectorText == selector)
-		let rule = sheets.map(findRule).filter(i=>i).pop()
+    selector = selector.replace(/\s+/g, ' ');
 
-		const propsArr = props.sup
-			? props.split(/\s*;\s*/).map(i => i.split(/\s*:\s*/)) // from string
-			: Object.entries(props);                              // from Object
+    var findRule = function findRule(s) {
+      return [].concat(s.cssRules).reverse().find(function (i) {
+        return i.selectorText == selector;
+      });
+    };
 
-		if (rule) for (let [prop, val] of propsArr){
-			// rule.style[prop] = val; is against the spec, and does not support !important.
-			rule.style.setProperty(prop, ...val.split(/ *!(?=important)/));
-		}
-		else {
-			sheet = sheets.pop();
-			if (!props.sup) props = propsArr.reduce((str, [k, v]) => `${str}; ${k}: ${v}`, '');
-			sheet.insertRule(`${selector} { ${props} }`, sheet.cssRules.length);
-		}
-	},
+    var rule = sheets.map(findRule).filter(function (i) {
+      return i;
+    }).pop();
+    var propsArr = props.sup ? props.split(/\s*;\s*/).map(function (i) {
+      return i.split(/\s*:\s*/);
+    }) // from string
+    : Object.entries(props); // from Object
+
+    if (rule) {
+      for (var _iterator = _createForOfIteratorHelperLoose(propsArr), _step; !(_step = _iterator()).done;) {
+        var _rule$style;
+        var _step$value = _step.value,
+            prop = _step$value[0],
+            val = _step$value[1];
+        // rule.style[prop] = val; is against the spec, and does not support !important.
+        (_rule$style = rule.style).setProperty.apply(_rule$style, [prop].concat(val.split(/ *!(?=important)/)));
+      }
+    } else {
+      sheet = sheets.pop();
+      if (!props.sup) props = propsArr.reduce(function (str, _ref) {
+        var k = _ref[0],
+            v = _ref[1];
+        return str + "; " + k + ": " + v;
+      }, '');
+      sheet.insertRule(selector + " { " + props + " }", sheet.cssRules.length);
+    }
+  },
 
 	normalizeColor: function( c ){
 		if( !c || !c.trim ){
@@ -254,25 +320,45 @@ var variants = {
 		return this.normalizeColor( getComputedStyle( document.documentElement ).getPropertyValue( '--INTERNAL-'+c ) );
 	},
 
+	getColorProperty: function( c, read_style ){
+		var e = this.findColor( c );
+		var p = this.normalizeColor( read_style.getPropertyValue( '--'+c ) ).replace( '--INTERNAL-', '--' );
+		return p;
+	},
+
 	findLoadedStylesheet: function( id ){
-		var style = null;
 		for( var n = 0; n < document.styleSheets.length; ++n ){
 			if( document.styleSheets[n].ownerNode.id == id ){
 				var s = document.styleSheets[n];
-				for( var m = 0; m < s.rules.length; ++m ){
-					if( s.rules[m].selectorText == ':root' ){
-						style = s.rules[m].style;
-						break;
+				if( s.rules && s.rules.length ){
+					for( var m = 0; m < s.rules.length; ++m ){
+						if( s.rules[m].selectorText == ':root' ){
+							return s.rules[m].style;
+						}
+						if( s.rules[m].cssRules && s.rules[m].cssRules.length ){
+							for( var o = 0; o < s.rules[m].cssRules.length; ++o ){
+								if( s.rules[m].cssRules[o].selectorText == ':root' ){
+									return s.rules[m].cssRules[o].style;
+								}
+							}
+						}
 					}
 				}
 				break;
 			}
 		}
-		return style;
+		return null;
 	},
 
 	changeColor: function( c, without_prompt ){
-		without_prompt = without_prompt || false;
+		var with_prompt = !(without_prompt || false);
+		if( this.getVariant() == 'auto' ){
+			if( with_prompt ){
+				alert( 'The Auto variant can not be changed. Please select the light/dark variant directly to make changes' );
+			}
+			return;
+		}
+
 		var read_style = this.findLoadedStylesheet( 'custom-variant-style' );
 		var write_style = this.findLoadedStylesheet( 'variant-style' );
 		if( !read_style ){
@@ -280,46 +366,40 @@ var variants = {
 		}
 
 		var e = this.findColor( c );
-		var p = this.normalizeColor( read_style.getPropertyValue( '--'+c ) ).replace( '--INTERNAL-', '--' );
-		var f = this.getColorValue( e.fallback );
-
-		var v = this.getColorValue( e.name );
-		if( v == f || v == this.normalizeColor(e.default) ){
-			v = '';
-		}
-		if( p ){
-			v = p;
-		}
-
+		var v = this.getColorProperty( c, read_style );
 		var n = '';
-		if( without_prompt ){
+		if( !with_prompt ){
 			n = v;
 		}
 		else{
 			var t = c + '\n\n' + e.tooltip + '\n';
 			if( e.fallback ){
-				t += '\nInherits value "' + f + '" from ' + e.fallback + ' if not set\n';
+				t += '\nInherits value "' + this.getColorValue(e.fallback) + '" from ' + e.fallback + ' if not set\n';
 			}
-			if( e.default ){
+			else if( e.default ){
 				t += '\nDefaults to value "' + this.normalizeColor(e.default) + '" if not set\n';
 			}
 			n = prompt( t, v );
+			if( n === null ){
+				// user canceld operation
+				return;
+			}
 		}
 
 		if( n ){
+			// value set to specific value
 			n = this.normalizeColor( n ).replace( '--INTERNAL-', '--' ).replace( '--', '--INTERNAL-' );
-			if( without_prompt || n != v ){
+			if( !with_prompt || n != v ){
 				write_style.setProperty( '--'+c, n );
 			}
-			if( !without_prompt ){
-				this.saveCustomVariant();
-			}
 		}
-		else if( n !== null){
+		else{
+			// value emptied, so delete it
 			write_style.removeProperty( '--'+c );
-			if( !without_prompt ){
-				this.saveCustomVariant();
-			}
+		}
+
+		if( with_prompt ){
+			this.saveCustomVariant();
 		}
 	},
 
@@ -330,28 +410,28 @@ var variants = {
 		return f;
 	},
 
-	generateColorVariable: function( e ){
+	generateColorVariable: function( e, read_style ){
 		var v = '';
-		var gen = true;
-		if( e.fallback ){
-			f = this.findColor( e.fallback );
-			gen = this.getColorValue(f.name) != this.getColorValue(e.name);
-		}
-		else if( e.default ){
-			gen = this.normalizeColor(e.default) != this.getColorValue(e.name);
-		}
+		var gen = this.getColorProperty( e.name, read_style );
 		if( gen ){
-			v += '  --' + e.name + ': ' + this.getColorValue(e.name) + '; /* ' + e.tooltip + ' */\n';
+			v += '  --' + e.name + ': ' + gen + '; /* ' + e.tooltip + ' */\n';
 		}
 		return v;
 	},
 
 	generateStylesheet: function(){
+		var read_style = this.findLoadedStylesheet( 'custom-variant-style' );
+		var write_style = this.findLoadedStylesheet( 'variant-style' );
+		if( !read_style ){
+			read_style = write_style;
+		}
+
 		var style =
 			'/* ' + this.customvariantname + ' */\n' +
 			':root {\n' +
-			this.variantvariables.sort( function( l, r ){ return l.name.localeCompare(r.name); } ).reduce( function( a, e ){ return a + this.generateColorVariable( e ); }.bind( this ), '' ) +
+			this.variantvariables.reduce( function( a, e ){ return a + this.generateColorVariable( e, read_style ); }.bind( this ), '' ) +
 			'}\n';
+		console.log( style );
 		return style;
 	},
 
@@ -368,8 +448,10 @@ var variants = {
 		}.bind( this ) );
 		this.styleGraphGroup( '#maincontent', 'MAIN-BG-color' );
 		this.styleGraphGroup( '#mainheadings', 'MAIN-BG-color' );
+		this.styleGraphGroup( '#code', 'CODE-BLOCK-BG-color' );
 		this.styleGraphGroup( '#inlinecode', 'CODE-INLINE-BG-color' );
 		this.styleGraphGroup( '#blockcode', 'CODE-BLOCK-BG-color' );
+		this.styleGraphGroup( '#thirdparty', 'MAIN-BG-color' );
 		this.styleGraphGroup( '#coloredboxes', 'BOX-BG-color' );
 		this.styleGraphGroup( '#menu', 'MENU-SECTIONS-BG-color' );
 		this.styleGraphGroup( '#menuheader', 'MENU-HEADER-BG-color' );
@@ -425,13 +507,21 @@ var variants = {
 			'      direction LR\n' +
 					g_groups[ 'headings' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
 			'    end\n' +
-			'    subgraph inlinecode["inline code"]\n' +
-			'      direction LR\n' +
-					g_groups[ 'inline code' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
+			'    subgraph code["code"]\n' +
+			'      direction TB\n' +
+					g_groups[ 'code' ].reduce( function( a, e ){ return a + '    ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
+			'      subgraph inlinecode["inline code"]\n' +
+			'        direction LR\n' +
+						g_groups[ 'inline code' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
+			'      end\n' +
+			'      subgraph blockcode["code blocks"]\n' +
+			'        direction LR\n' +
+						g_groups[ 'code blocks' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
+			'      end\n' +
 			'    end\n' +
-			'    subgraph blockcode["code blocks"]\n' +
+			'    subgraph thirdparty["3rd party"]\n' +
 			'      direction LR\n' +
-					g_groups[ 'code blocks' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
+					g_groups[ '3rd party' ].reduce( function( a, e ){ return a + '      ' + this.generateGraphGroupedEdge( e ) + '\n'; }.bind( this ), '' ) +
 			'    end\n' +
 			'    subgraph coloredboxes["colored boxes"]\n' +
 			'      direction LR\n' +
@@ -446,20 +536,34 @@ var variants = {
 	},
 
 	variantvariables: [
-		{ name: 'MAIN-TEXT-color',                       group: 'content',        default: '#101010',                     tooltip: 'text color of content and h1 titles', },
-		{ name: 'MAIN-LINK-color',                       group: 'content',        default: '#486ac9',                     tooltip: 'link color of content', },
-		{ name: 'MAIN-LINK-HOVER-color',                 group: 'content',       fallback: 'MAIN-LINK-color',             tooltip: 'hoverd link color of content', },
-		{ name: 'MAIN-ANCHOR-color',                     group: 'content',       fallback: 'MAIN-LINK-HOVER-color',       tooltip: 'anchor color of titles', },
-		{ name: 'MAIN-BG-color',                         group: 'content',        default: '#ffffff',                     tooltip: 'background color of content', },
-		{ name: 'TAG-BG-color',                          group: 'content',       fallback: 'MENU-HEADER-BG-color',        tooltip: 'tag color', },
+		{ name: 'PRIMARY-color',                         group: 'content',       fallback: 'MENU-HEADER-BG-color',        tooltip: 'brand primary color', },
+		{ name: 'SECONDARY-color',                       group: 'content',       fallback: 'MAIN-LINK-color',             tooltip: 'brand secondary color', },
+		{ name: 'ACCENT-color',                          group: 'content',        default: '#ffff00',                     tooltip: 'brand accent color, used for search highlights', },
 
-		{ name: 'MAIN-TITLES-TEXT-color',                group: 'headings',       default: '#4a4a4a',                     tooltip: 'text color of h2-h6 titles and transparent box titles', },
+		{ name: 'MAIN-LINK-color',                       group: 'content',       fallback: 'SECONDARY-color',             tooltip: 'link color of content', },
+		{ name: 'MAIN-LINK-HOVER-color',                 group: 'content',       fallback: 'MAIN-LINK-color',             tooltip: 'hoverd link color of content', },
+		{ name: 'MAIN-BG-color',                         group: 'content',        default: '#ffffff',                     tooltip: 'background color of content', },
+		{ name: 'TAG-BG-color',                          group: 'content',       fallback: 'PRIMARY-color',               tooltip: 'tag color', },
+
+		{ name: 'MAIN-TEXT-color',                       group: 'content',        default: '#101010',                     tooltip: 'text color of content and h1 titles', },
+
+		{ name: 'MAIN-TITLES-TEXT-color',                group: 'headings',      fallback: 'MAIN-TEXT-color',             tooltip: 'text color of h2-h6 titles and transparent box titles', },
 		{ name: 'MAIN-TITLES-H1-color',                  group: 'headings',      fallback: 'MAIN-TEXT-color',             tooltip: 'text color of h1 titles', },
 		{ name: 'MAIN-TITLES-H2-color',                  group: 'headings',      fallback: 'MAIN-TITLES-TEXT-color',      tooltip: 'text color of h2-h6 titles', },
 		{ name: 'MAIN-TITLES-H3-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H2-color',        tooltip: 'text color of h3-h6 titles', },
 		{ name: 'MAIN-TITLES-H4-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H3-color',        tooltip: 'text color of h4-h6 titles', },
 		{ name: 'MAIN-TITLES-H5-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H4-color',        tooltip: 'text color of h5-h6 titles', },
 		{ name: 'MAIN-TITLES-H6-color',                  group: 'headings',      fallback: 'MAIN-TITLES-H5-color',        tooltip: 'text color of h6 titles', },
+
+		{ name: 'MAIN-font',                             group: 'content',        default: '"Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif', tooltip: 'text font of content and h1 titles', },
+
+		{ name: 'MAIN-TITLES-TEXT-font',                 group: 'headings',      fallback: 'MAIN-font',                   tooltip: 'text font of h2-h6 titles and transparent box titles', },
+		{ name: 'MAIN-TITLES-H1-font',                   group: 'headings',      fallback: 'MAIN-font',                   tooltip: 'text font of h1 titles', },
+		{ name: 'MAIN-TITLES-H2-font',                   group: 'headings',      fallback: 'MAIN-TITLES-TEXT-font',       tooltip: 'text font of h2-h6 titles', },
+		{ name: 'MAIN-TITLES-H3-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H2-font',         tooltip: 'text font of h3-h6 titles', },
+		{ name: 'MAIN-TITLES-H4-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H3-font',         tooltip: 'text font of h4-h6 titles', },
+		{ name: 'MAIN-TITLES-H5-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H4-font',         tooltip: 'text font of h5-h6 titles', },
+		{ name: 'MAIN-TITLES-H6-font',                   group: 'headings',      fallback: 'MAIN-TITLES-H5-font',         tooltip: 'text font of h6 titles', },
 
 		{ name: 'CODE-BLOCK-color',                      group: 'code blocks',    default: '#000000',                     tooltip: 'fallback text color of block code; should be adjusted to your selected chroma style', },
 		{ name: 'CODE-BLOCK-BG-color',                   group: 'code blocks',    default: '#f8f8f8',                     tooltip: 'fallback background color of block code; should be adjusted to your selected chroma style', },
@@ -469,7 +573,14 @@ var variants = {
 		{ name: 'CODE-INLINE-BG-color',                  group: 'inline code',    default: '#fffae9',                     tooltip: 'background color of inline code', },
 		{ name: 'CODE-INLINE-BORDER-color',              group: 'inline code',    default: '#fbf0cb',                     tooltip: 'border color of inline code', },
 
-		{ name: 'MENU-HEADER-BG-color',                  group: 'header',         default: '#7dc903',                     tooltip: 'background color of menu header', },
+		{ name: 'CODE-font',                             group: 'code',           default: '"Consolas", menlo, monospace', tooltip: 'text font of code', },
+
+		{ name: 'BROWSER-theme',                         group: '3rd party',      default: 'light',                       tooltip: 'name of the theme for browser scrollbars of the main section', },
+		{ name: 'MERMAID-theme',                         group: '3rd party',      default: 'default',                     tooltip: 'name of the default Mermaid theme for this variant, can be overridden in config.toml', },
+		{ name: 'OPENAPI-theme',                         group: '3rd party',      default: 'light',                       tooltip: 'name of the default OpenAPI theme for this variant, can be overridden in config.toml', },
+		{ name: 'OPENAPI-CODE-theme',                    group: '3rd party',      default: 'obsidian',                    tooltip: 'name of the default OpenAPI coee theme for this variant, can be overridden in config.toml', },
+
+		{ name: 'MENU-HEADER-BG-color',                  group: 'header',        fallback: 'PRIMARY-color',               tooltip: 'background color of menu header', },
 		{ name: 'MENU-HEADER-BORDER-color',              group: 'header',        fallback: 'MENU-HEADER-BG-color',        tooltip: 'separator color of menu header', },
 		{ name: 'MENU-HOME-LINK-color',                  group: 'header',         default: '#323232',                     tooltip: 'home button color if configured', },
 		{ name: 'MENU-HOME-LINK-HOVER-color',            group: 'header',         default: '#808080',                     tooltip: 'hoverd home button color if configured', },
@@ -479,16 +590,16 @@ var variants = {
 
 		{ name: 'MENU-SECTIONS-BG-color',                group: 'sections',       default: '#282828',                     tooltip: 'background of the menu; this is NOT just a color value but can be a complete CSS background definition including gradients, etc.', },
 		{ name: 'MENU-SECTIONS-ACTIVE-BG-color',         group: 'sections',       default: 'rgba( 0, 0, 0, .166 )',       tooltip: 'background color of the active menu section', },
-		{ name: 'MENU-SECTION-ACTIVE-CATEGORY-color',    group: 'sections',       default: '#444444',                     tooltip: 'text color of the displayed menu topic', },
-		{ name: 'MENU-SECTION-ACTIVE-CATEGORY-BG-color', group: 'sections',      fallback: 'MAIN-BG-color',               tooltip: 'background color of the displayed menu topic', },
 		{ name: 'MENU-SECTIONS-LINK-color',              group: 'sections',       default: '#bababa',                     tooltip: 'link color of menu topics', },
 		{ name: 'MENU-SECTIONS-LINK-HOVER-color',        group: 'sections',      fallback: 'MENU-SECTIONS-LINK-color',    tooltip: 'hoverd link color of menu topics', },
-		{ name: 'MENU-VISITED-color',                    group: 'sections',       default: '#506397',                     tooltip: 'icon color of visited menu topics if configured', },
+		{ name: 'MENU-SECTION-ACTIVE-CATEGORY-color',    group: 'sections',       default: '#444444',                     tooltip: 'text color of the displayed menu topic', },
+		{ name: 'MENU-SECTION-ACTIVE-CATEGORY-BG-color', group: 'sections',      fallback: 'MAIN-BG-color',               tooltip: 'background color of the displayed menu topic', },
 		{ name: 'MENU-SECTION-HR-color',                 group: 'sections',       default: '#606060',                     tooltip: 'separator color of menu footer', },
+		{ name: 'MENU-VISITED-color',                    group: 'sections',      fallback: 'SECONDARY-color',             tooltip: 'icon color of visited menu topics if configured', },
 
 		{ name: 'BOX-CAPTION-color',                     group: 'colored boxes',  default: 'rgba( 255, 255, 255, 1 )',    tooltip: 'text color of colored box titles', },
 		{ name: 'BOX-BG-color',                          group: 'colored boxes',  default: 'rgba( 255, 255, 255, .833 )', tooltip: 'background color of colored boxes', },
-		{ name: 'BOX-TEXT-color',                        group: 'colored boxes',  default: 'rgba( 16, 16, 16, 1 )',       tooltip: 'text color of colored box content', },
+		{ name: 'BOX-TEXT-color',                        group: 'colored boxes', fallback: 'MAIN-TEXT-color',             tooltip: 'text color of colored box content', },
 
 		{ name: 'BOX-BLUE-color',                        group: 'colored boxes',  default: 'rgba( 48, 117, 229, 1 )',     tooltip: 'background color of blue boxes', },
 		{ name: 'BOX-INFO-color',                        group: 'colored boxes', fallback: 'BOX-BLUE-color',              tooltip: 'background color of info boxes', },
