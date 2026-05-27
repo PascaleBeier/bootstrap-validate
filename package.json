@@ -19,7 +19,10 @@
       "default": "./dist/bootstrap-validate.js"
     }
   },
-  "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PascaleBeier/bootstrap-validate.git"
+  },
   "author": "Pascale Beier <mail@pascalebeier.de>",
   "keywords": [
     "bootstrap",
