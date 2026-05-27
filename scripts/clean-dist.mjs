@@ -7,5 +7,6 @@ const distPath = path.join(root, "dist");
 await Promise.all([
   fs.rm(path.join(distPath, "constants.d.ts"), { force: true }),
   fs.rm(path.join(distPath, "errors.d.ts"), { force: true }),
+  fs.rm(path.join(distPath, "parser.d.ts"), { force: true }),
   fs.rm(path.join(distPath, "rules"), { force: true, recursive: true }),
 ]);
