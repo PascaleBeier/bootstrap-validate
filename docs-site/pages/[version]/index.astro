@@ -1,0 +1,24 @@
+---
+import DocPage from "../../components/DocPage.astro";
+import VersionOverview from "../../components/VersionOverview.astro";
+import rules from "../../generated/rules.json";
+import { getVersion, getVersionRules } from "../../lib/site.js";
+import { versionPaths } from "../../lib/page-paths.js";
+
+export function getStaticPaths() {
+  return versionPaths();
+}
+
+const { versionSlug } = Astro.props;
+const version = getVersion(versionSlug);
+const pageRules = getVersionRules(rules, versionSlug);
+---
+
+<DocPage
+  title={`${version.title} Docs`}
+  description={`${version.bootstrap} documentation for bootstrap-validate.`}
+  versionSlug={versionSlug}
+  canonicalPath={`/${versionSlug}/`}
+>
+  <VersionOverview version={version} rules={pageRules} />
+</DocPage>

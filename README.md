@@ -1,9 +1,12 @@
 # bootstrap-validate
-![GitHub Workflow Status Lint](https://img.shields.io/github/workflow/status/PascaleBeier/bootstrap-validate/Lint?label=ESLint)
-![GitHub Workflow Status Lint](https://img.shields.io/github/workflow/status/PascaleBeier/bootstrap-validate/Unit%20Tests?label=Jest)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PascaleBeier/bootstrap-validate?label=Latest)
-![npm](https://img.shields.io/npm/dt/bootstrap-validate)
-![GitHub](https://img.shields.io/github/license/PascaleBeier/bootstrap-validate)
+[![Unit Tests](https://img.shields.io/github/actions/workflow/status/PascaleBeier/bootstrap-validate/unit-test.yml?branch=main&label=tests)](https://github.com/PascaleBeier/bootstrap-validate/actions/workflows/unit-test.yml)
+[![Lint](https://img.shields.io/github/actions/workflow/status/PascaleBeier/bootstrap-validate/lint.yml?branch=main&label=lint)](https://github.com/PascaleBeier/bootstrap-validate/actions/workflows/lint.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/PascaleBeier/bootstrap-validate/docs.yml?branch=main&label=docs)](https://github.com/PascaleBeier/bootstrap-validate/actions/workflows/docs.yml)
+[![GitHub Actions Security](https://img.shields.io/github/actions/workflow/status/PascaleBeier/bootstrap-validate/actions-security.yml?branch=main&label=actions%20security)](https://github.com/PascaleBeier/bootstrap-validate/actions/workflows/actions-security.yml)
+[![Release](https://img.shields.io/github/v/release/PascaleBeier/bootstrap-validate?label=release)](https://github.com/PascaleBeier/bootstrap-validate/releases)
+[![npm](https://img.shields.io/npm/v/bootstrap-validate?label=npm)](https://www.npmjs.com/package/bootstrap-validate)
+[![Downloads](https://img.shields.io/npm/dt/bootstrap-validate)](https://www.npmjs.com/package/bootstrap-validate)
+[![License](https://img.shields.io/github/license/PascaleBeier/bootstrap-validate)](LICENSE.md)
 
 > A simple Form Validation Utility for Bootstrap 3, Bootstrap 4 for Humans.
 

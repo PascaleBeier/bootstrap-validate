@@ -1,0 +1,22 @@
+---
+import { versions } from "../lib/site.js";
+
+const { currentVersion } = Astro.props;
+---
+
+<nav class="version-switcher" aria-label="Documentation versions">
+  <span>Version</span>
+  <div>
+    {
+      versions.map((version) => (
+        <a
+          href={`/${version.slug}/`}
+          aria-current={version.slug === currentVersion ? "page" : undefined}
+        >
+          <strong>{version.label}</strong>
+          <small>{version.bootstrap}</small>
+        </a>
+      ))
+    }
+  </div>
+</nav>

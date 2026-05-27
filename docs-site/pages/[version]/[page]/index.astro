@@ -1,0 +1,26 @@
+---
+import DocPage from "../../../components/DocPage.astro";
+import ContentPage from "../../../components/ContentPage.astro";
+import { contentPagePaths } from "../../../lib/page-paths.js";
+import {
+  getVersion,
+  pageDefinitions,
+} from "../../../lib/site.js";
+
+export function getStaticPaths() {
+  return contentPagePaths();
+}
+
+const { versionSlug, page } = Astro.props;
+const version = getVersion(versionSlug);
+const pageDefinition = pageDefinitions[page];
+---
+
+<DocPage
+  title={`${pageDefinition.label} (${version.label})`}
+  description={pageDefinition.description}
+  versionSlug={versionSlug}
+  canonicalPath={`/${versionSlug}/${page}/`}
+>
+  <ContentPage page={page} version={version} />
+</DocPage>

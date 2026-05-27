@@ -1,0 +1,349 @@
+[
+  {
+    "name": "min",
+    "order": 0,
+    "since": "1.0.0",
+    "description": "Require a given minimum character count.",
+    "error": "Enter at least 20 characters!",
+    "example": "20",
+    "params": [
+      {
+        "name": "min",
+        "description": "number: Number of minimum characters."
+      }
+    ],
+    "signature": "min(input, min)",
+    "source": "(input, min) =>\n    /**\n     * @since 1.0.0\n     * @example 20\n     * @error Enter at least 20 characters!\n     * @param min number: Number of minimum characters.\n     * @description Require a given minimum character count.\n     */\n    gte(input.value.length, parseInt(min))",
+    "usage": "bootstrapValidate('#input', 'min:20:Enter at least 20 characters!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "max",
+    "order": 1,
+    "since": "1.0.0",
+    "description": "Maximum character count required.",
+    "error": "Please dont enter more than 42 characters!",
+    "example": "42",
+    "params": [
+      {
+        "name": "max",
+        "description": "number: Number of maximum characters."
+      }
+    ],
+    "signature": "max(input, max)",
+    "source": "(input, max) =>\n    /**\n     * @since 1.0.0\n     * @example 42\n     * @error Please dont enter more than 42 characters!\n     * @param max number: Number of maximum characters.\n     * @description Maximum character count required.\n     */\n    lte(input.value.length, parseInt(max))",
+    "usage": "bootstrapValidate('#input', 'max:42:Please dont enter more than 42 characters!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "email",
+    "order": 2,
+    "since": "1.0.3",
+    "description": "Require a valid E-Mail Address.",
+    "error": "Enter a valid email address",
+    "example": "",
+    "params": [],
+    "signature": "email(input)",
+    "source": "(input) =>\n    /**\n     * @since 1.0.3\n     * @error Enter a valid email address\n     * @description Require a valid E-Mail Address.\n     */\n    /^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/.test(\n      input.value\n    )",
+    "usage": "bootstrapValidate('#input', 'email:Enter a valid email address')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "required",
+    "order": 3,
+    "since": "1.0.7",
+    "description": "Require a field to be filled out.",
+    "error": "Please fill out this field!",
+    "example": "",
+    "params": [],
+    "signature": "required(input)",
+    "source": "(input) =>\n    /**\n     * @since 1.0.7\n     * @error Please fill out this field!\n     * @description Require a field to be filled out.\n     */\n    input.value.length && input.value.length > 0",
+    "usage": "bootstrapValidate('#input', 'required:Please fill out this field!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "url",
+    "order": 4,
+    "since": "1.0.10",
+    "description": "Require a valid URL.",
+    "error": "Please enter a valid URL!",
+    "example": "",
+    "params": [],
+    "signature": "url(input)",
+    "source": "(input) =>\n    /**\n     * @since 1.0.10\n     * @error Please enter a valid URL!\n     * @description Require a valid URL.\n     */\n    /^(?:(?:https?|ftp):\\/\\/)(?:\\S+(?::\\S*)?@)?(?:(?!(?:10|127)(?:\\.\\d{1,3}){3})(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))\\.?)(?::\\d{2,5})?(?:[/?#]\\S*)?$/i.test(\n      input.value\n    )",
+    "usage": "bootstrapValidate('#input', 'url:Please enter a valid URL!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "integer",
+    "order": 5,
+    "since": "1.0.10",
+    "description": "Require a valid integer.",
+    "error": "Please fill out this input field!",
+    "example": "",
+    "params": [],
+    "signature": "integer(input)",
+    "source": "(input) =>\n    /**\n     * @since 1.0.10\n     * @error Please fill out this input field!\n     * @description Require a valid integer.\n     */\n    isInteger(Number(input.value))",
+    "usage": "bootstrapValidate('#input', 'integer:Please fill out this input field!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "numeric",
+    "order": 6,
+    "since": "1.0.10",
+    "description": "Require a valid numeric input.",
+    "error": "Please only enter numeric characters!",
+    "example": "",
+    "params": [],
+    "signature": "numeric(input)",
+    "source": "(input) =>\n    /**\n     * @since 1.0.10\n     * @description Require a valid numeric input.\n     * @error Please only enter numeric characters!\n     */\n    isFinite(Number(input.value))",
+    "usage": "bootstrapValidate('#input', 'numeric:Please only enter numeric characters!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "alphanum",
+    "order": 7,
+    "since": "1.0.10",
+    "description": "Require alphanumeric input, e.g. 0-9 and a-Z.",
+    "error": "Please only enter alphanumeric characters!",
+    "example": "",
+    "params": [],
+    "signature": "alphanum(input)",
+    "source": "(input) =>\n    /**\n     * @since 1.0.10\n     * @error Please only enter alphanumeric characters!\n     * @description Require alphanumeric input, e.g. 0-9 and a-Z.\n     */\n    /^[a-z0-9]+$/i.test(input.value)",
+    "usage": "bootstrapValidate('#input', 'alphanum:Please only enter alphanumeric characters!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "ISO8601",
+    "order": 8,
+    "since": "v2.1.0",
+    "description": "Validate user input against ISO 8601 Format.",
+    "error": "Your input does not match the wanted format YYYY-MM-DD",
+    "example": "",
+    "params": [],
+    "signature": "ISO8601(input)",
+    "source": "(input) =>\n    /**\n     * @since v2.1.0\n     * @error Your input does not match the wanted format YYYY-MM-DD\n     * @description Validate user input against ISO 8601 Format.\n     */\n    /^\\d{4}-([0]\\d|1[0-2])-([0-2]\\d|3[01])$/.test(input.value)",
+    "usage": "bootstrapValidate('#input', 'ISO8601:Your input does not match the wanted format YYYY-MM-DD')",
+    "major": 2,
+    "versions": [
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "regex",
+    "order": 9,
+    "since": "v2.1.0",
+    "description": "Test a Regular Expression against an input value",
+    "error": "Please fulfill my regex",
+    "example": "^[a-z]+$",
+    "params": [
+      {
+        "name": "regex",
+        "description": "regex: Regex to validate"
+      }
+    ],
+    "signature": "regex(input, regex)",
+    "source": "(input, regex) =>\n    /**\n     * @since v2.1.0\n     * @example ^[a-z]+$\n     * @param regex regex: Regex to validate\n     * @error Please fulfill my regex\n     * @description Test a Regular Expression against an input value\n     */\n    new RegExp(regex).test(input.value)",
+    "usage": "bootstrapValidate('#input', 'regex:^[a-z]+$:Please fulfill my regex')",
+    "major": 2,
+    "versions": [
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "divisible",
+    "order": 10,
+    "since": "v2.1.0",
+    "description": "Test if input number can be divided by given number and the result is an exact whole number.",
+    "error": "15 is not divisible by 4.",
+    "example": "15",
+    "params": [
+      {
+        "name": "number",
+        "description": "Number: Number to Test"
+      }
+    ],
+    "signature": "divisible(input, number)",
+    "source": "(input, number) => {\n    /**\n     * @since v2.1.0\n     * @example 15\n     * @param number Number: Number to Test\n     * @error 15 is not divisible by 4.\n     * @description Test if input number can be divided by given number and the result is an exact whole number.\n     */\n    let lDivisible = false;\n    const lNumber = Number(input.value);\n    if (isFinite(lNumber)) {\n      lDivisible =\n        new Big(lNumber).mod(new Big(Number(number))).toString() === \"0\";\n    }\n\n    return lDivisible;\n  }",
+    "usage": "bootstrapValidate('#input', 'divisible:15:15 is not divisible by 4.')",
+    "major": 2,
+    "versions": [
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "contains",
+    "order": 11,
+    "since": "1.0.11",
+    "description": "Require the input to contain a given string.",
+    "error": "Your text needs to contain something!",
+    "example": "something",
+    "params": [
+      {
+        "name": "string",
+        "description": "string: String to appear in the Input Element"
+      }
+    ],
+    "signature": "contains(input, string)",
+    "source": "(input, string) =>\n    /**\n     * @since 1.0.11\n     * @param string string: String to appear in the Input Element\n     * @description Require the input to contain a given string.\n     * @example something\n     * @error Your text needs to contain something!\n     */\n    input.value.includes(string)",
+    "usage": "bootstrapValidate('#input', 'contains:something:Your text needs to contain something!')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "startsWith",
+    "order": 12,
+    "since": "1.1.0",
+    "description": "Require the input value to start with a given string.",
+    "error": "Your phone number needs to start with +49",
+    "example": "+49",
+    "params": [
+      {
+        "name": "string",
+        "description": "string: String the input value should start with"
+      }
+    ],
+    "signature": "startsWith(input, string)",
+    "source": "(input, string) =>\n    /**\n     * @since 1.1.0\n     * @param string string: String the input value should start with\n     * @example +49\n     * @error Your phone number needs to start with +49\n     * @description Require the input value to start with a given string.\n     */\n    startsWith(input.value, string)",
+    "usage": "bootstrapValidate('#input', 'startsWith:+49:Your phone number needs to start with +49')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "endsWith",
+    "order": 13,
+    "since": "1.1.0",
+    "description": "Require the input value to end with a given string.",
+    "error": "Your Input needs to end with UCV",
+    "example": "UCV",
+    "params": [
+      {
+        "name": "string",
+        "description": "string: String the input value should end with"
+      }
+    ],
+    "signature": "endsWith(input, string)",
+    "source": "(input, string) =>\n    /**\n     * @since 1.1.0\n     * @example UCV\n     * @error Your Input needs to end with UCV\n     * @param string string: String the input value should end with\n     * @description Require the input value to end with a given string.\n     */\n    endsWith(input.value, string)",
+    "usage": "bootstrapValidate('#input', 'endsWith:UCV:Your Input needs to end with UCV')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "matches",
+    "order": 14,
+    "since": "1.1.0",
+    "description": "Require the input value to match the given inputs value. Like bootstrapValidate's first Parameter, you can pass a selector or Element.",
+    "error": "Your passwords should match",
+    "example": "#passwordConfirm",
+    "params": [
+      {
+        "name": "matchingInput",
+        "description": "string: The input element to match against"
+      }
+    ],
+    "signature": "matches(input, matchingInput)",
+    "source": "(input, matchingInput) => {\n    /**\n     * @since 1.1.0\n     * @example #passwordConfirm\n     * @error Your passwords should match\n     * @param matchingInput string: The input element to match against\n     * @description Require the input value to match the given inputs value. Like bootstrapValidate's first Parameter, you can pass a selector or Element.\n     */\n    let lMatchingInput = matchingInput;\n\n    if (typeof lMatchingInput.nodeType === \"undefined\") {\n      lMatchingInput = document.querySelector(matchingInput);\n    }\n\n    return input.value === lMatchingInput.value;\n  }",
+    "usage": "bootstrapValidate('#input', 'matches:#passwordConfirm:Your passwords should match')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "alpha",
+    "order": 15,
+    "since": "1.1.0",
+    "description": "Validate only alphabetic characters - a-z, A-Z.",
+    "error": "You can only input alphabetic characters",
+    "example": "",
+    "params": [],
+    "signature": "alpha(input)",
+    "source": "(input) =>\n    /**\n     * @since 1.1.0\n     * @error You can only input alphabetic characters\n     * @description Validate only alphabetic characters - a-z, A-Z.\n     */\n    isString(input.value) && /^[a-z]+$/i.test(input.value)",
+    "usage": "bootstrapValidate('#input', 'alpha:You can only input alphabetic characters')",
+    "major": 1,
+    "versions": [
+      "v1",
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "inArray",
+    "order": 16,
+    "since": "2.2.0",
+    "description": "Validate if user input is in given array. Similar to contains, but with an array.",
+    "error": "Your input must be any of (ABC, DEF, GHI)",
+    "example": "(ABC, DEF, GHI)",
+    "params": [
+      {
+        "name": "string",
+        "description": "string: Array String (abc, def, ghi)"
+      }
+    ],
+    "signature": "inArray(input, string)",
+    "source": "(input, string) => {\n    /**\n     * @since 2.2.0\n     * @example (ABC, DEF, GHI)\n     * @param string string: Array String (abc, def, ghi)\n     * @error Your input must be any of (ABC, DEF, GHI)\n     * @description Validate if user input is in given array. Similar to contains, but with an array.\n     */\n    const { value } = input;\n    const array = split(string.replace(\"(\", \"\").replace(\")\", \"\").trim(), \",\");\n\n    return array.includes(value);\n  }",
+    "usage": "bootstrapValidate('#input', 'inArray:(ABC, DEF, GHI):Your input must be any of (ABC, DEF, GHI)')",
+    "major": 2,
+    "versions": [
+      "v2",
+      "v3"
+    ]
+  }
+]

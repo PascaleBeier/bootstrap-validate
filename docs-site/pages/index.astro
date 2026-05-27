@@ -1,0 +1,38 @@
+---
+import DocPage from "../components/DocPage.astro";
+import { versions } from "../lib/site.js";
+---
+
+<DocPage
+  title="bootstrap-validate"
+  description="A simple form validation utility for Bootstrap."
+  canonicalPath="/"
+>
+  <p>
+    bootstrap-validate adds small, declarative validation rules to Bootstrap
+    forms.
+  </p>
+
+  <pre><code>{`bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
+
+  <h2>Choose a Version</h2>
+  <ul class="version-links">
+    {
+      versions.map((version) => (
+        <li>
+          <a href={`/${version.slug}/`}>
+            {version.label}: {version.bootstrap}
+          </a>{" "}
+          <span>({version.status.toLowerCase()})</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2>Links</h2>
+  <ul class="project-links">
+    <li><a href="https://github.com/PascaleBeier/bootstrap-validate">GitHub repository</a></li>
+    <li><a href="https://www.npmjs.com/package/bootstrap-validate">npm package</a></li>
+    <li><a href="/privacy/">Privacy</a></li>
+  </ul>
+</DocPage>

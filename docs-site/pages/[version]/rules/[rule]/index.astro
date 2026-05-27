@@ -1,0 +1,26 @@
+---
+import DocPage from "../../../../components/DocPage.astro";
+import RuleDetail from "../../../../components/RuleDetail.astro";
+import rules from "../../../../generated/rules.json";
+import { getVersion, getVersionRules } from "../../../../lib/site.js";
+import { ruleDetailPaths } from "../../../../lib/page-paths.js";
+
+export function getStaticPaths() {
+  return ruleDetailPaths();
+}
+
+const { versionSlug, ruleName } = Astro.props;
+const version = getVersion(versionSlug);
+const rule = getVersionRules(rules, versionSlug).find(
+  (candidate) => candidate.name === ruleName
+);
+---
+
+<DocPage
+  title={`${rule.name} rule (${version.label})`}
+  description={rule.description}
+  versionSlug={versionSlug}
+  canonicalPath={`/${versionSlug}/rules/${rule.name}/`}
+>
+  <RuleDetail rule={rule} version={version} />
+</DocPage>

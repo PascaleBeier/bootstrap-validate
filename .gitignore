@@ -1,4 +1,6 @@
 coverage
+.astro
+docs
 .idea
 node_modules
 yarn-error.log

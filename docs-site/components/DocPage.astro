@@ -1,0 +1,52 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import VersionSwitcher from "./VersionSwitcher.astro";
+import rules from "../generated/rules.json";
+import {
+  canonicalHead,
+  getVersionRules,
+  sidebarFor,
+} from "../lib/site.js";
+
+const {
+  title,
+  description,
+  versionSlug,
+  canonicalPath,
+  template = "doc",
+  sidebar = true,
+} = Astro.props;
+
+const pageRules = versionSlug ? getVersionRules(rules, versionSlug) : [];
+const sidebarItems =
+  sidebar && versionSlug
+    ? sidebarFor(versionSlug, pageRules)
+    : sidebar
+      ? [
+          {
+            label: "Project",
+            items: [
+              { label: "Home", link: "/" },
+              { label: "About", link: "/about/" },
+              { label: "Privacy", link: "/privacy/" },
+              { label: "v2 Docs", link: "/v2/" },
+              { label: "v3 Preview", link: "/v3/" },
+            ],
+          },
+        ]
+      : [];
+---
+
+<StarlightPage
+  frontmatter={{
+    title,
+    description,
+    template,
+    editUrl: false,
+    head: canonicalPath ? canonicalHead(canonicalPath) : [],
+  }}
+  sidebar={sidebarItems}
+>
+  {versionSlug && <VersionSwitcher currentVersion={versionSlug} />}
+  <slot />
+</StarlightPage>

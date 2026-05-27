@@ -1,0 +1,50 @@
+---
+const { rules, version } = Astro.props;
+---
+
+<section class="rule-filter" aria-label="Rule search">
+  <label for="rule-filter">Filter rules</label>
+  <input
+    id="rule-filter"
+    type="search"
+    placeholder="Search by rule name, option, or description"
+    data-rule-filter
+  />
+</section>
+
+<div class="rule-list" data-rule-grid>
+  {
+    rules.map((rule) => (
+      <article
+        id={rule.name}
+        data-rule-card
+        data-rule-search={`${rule.name} ${rule.description} ${rule.params
+          .map((param) => `${param.name} ${param.description}`)
+          .join(" ")}`.toLowerCase()}
+      >
+        <h2>
+          <a href={`/${version.slug}/rules/${rule.name}/`}>{rule.name}</a>
+        </h2>
+        <p>{rule.description}</p>
+        <p class="rule-meta">
+          <span>Since {rule.since}</span>
+          <span>{rule.params.length} option{rule.params.length === 1 ? "" : "s"}</span>
+        </p>
+        <pre><code>{rule.usage}</code></pre>
+        <p><a href={`/${version.slug}/rules/${rule.name}/`}>Open rule reference</a></p>
+      </article>
+    ))
+  }
+</div>
+
+<script>
+  const filter = document.querySelector("[data-rule-filter]");
+  const cards = Array.from(document.querySelectorAll("[data-rule-card]"));
+  filter?.addEventListener("input", () => {
+    const query = filter.value.trim().toLowerCase();
+    for (const card of cards) {
+      const text = card.getAttribute("data-rule-search") ?? "";
+      card.toggleAttribute("hidden", Boolean(query) && !text.includes(query));
+    }
+  });
+</script>

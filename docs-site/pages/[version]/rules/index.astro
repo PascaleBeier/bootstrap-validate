@@ -1,0 +1,25 @@
+---
+import DocPage from "../../../components/DocPage.astro";
+import RuleIndex from "../../../components/RuleIndex.astro";
+import rules from "../../../generated/rules.json";
+import { getVersion, getVersionRules } from "../../../lib/site.js";
+import { ruleIndexPaths } from "../../../lib/page-paths.js";
+
+export function getStaticPaths() {
+  return ruleIndexPaths();
+}
+
+const { versionSlug } = Astro.props;
+const version = getVersion(versionSlug);
+const pageRules = getVersionRules(rules, versionSlug);
+---
+
+<DocPage
+  title={`Rules (${version.label})`}
+  description={`Validation rule reference for ${version.bootstrap}.`}
+  versionSlug={versionSlug}
+  canonicalPath={`/${versionSlug}/rules/`}
+>
+  <p>Use these rules as the second argument to <code>bootstrapValidate()</code>.</p>
+  <RuleIndex rules={pageRules} version={version} />
+</DocPage>

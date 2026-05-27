@@ -1,0 +1,112 @@
+---
+const { page, version } = Astro.props;
+---
+
+{
+  page === "installation" && (
+    <>
+      <h2>Install the package</h2>
+      <p>
+        bootstrap-validate can be used from npm or as a browser script. The
+        library exposes one function: <code>bootstrapValidate()</code>.
+      </p>
+
+      <h2>Package Managers</h2>
+      <pre><code>{`npm install bootstrap-validate`}</code></pre>
+
+      <h2>Modern CDN</h2>
+      <p>
+        Prefer a maintained npm CDN for browser-only usage. Pin a version when
+        you need reproducible builds.
+      </p>
+      <pre><code>{`<script src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2/dist/bootstrap-validate.js"></script>`}</code></pre>
+
+      <h2>Bundlers</h2>
+      <pre><code>{`import bootstrapValidate from 'bootstrap-validate';
+
+bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
+
+      {version.slug === "v3" && (
+        <p>
+          Version 3 is planned for Bootstrap 5. Until it is released, use the
+          stable v2 package for production Bootstrap 4 projects.
+        </p>
+      )}
+    </>
+  )
+}
+
+{
+  page === "usage" && (
+    <>
+      <h2>Use bootstrapValidate()</h2>
+      <p>
+        The API is intentionally small. Pass an input selector or element, a
+        rule string, and optionally a callback.
+      </p>
+
+      <h2>The Function</h2>
+      <pre><code>{`bootstrapValidate('#myInput', 'required:Please fill out this field!', function (isValid) {
+  if (isValid) {
+    console.log('Element is valid');
+  }
+});`}</code></pre>
+
+      <h2>Selectors and Elements</h2>
+      <p>
+        The first argument works like <code>document.querySelector()</code>. You
+        can pass an id, class, attribute selector, DOM element, or an array of
+        selectors/elements.
+      </p>
+      <pre><code>{`bootstrapValidate(['#firstName', '#lastName'], 'max:20:Enter no more than 20 characters');`}</code></pre>
+
+      <h2>Rules and Options</h2>
+      <p>
+        Separate multiple rules with <code>|</code>. Separate rule options with
+        <code>:</code>. The final option is the error message.
+      </p>
+      <pre><code>{`bootstrapValidate('#email', 'required:Required|email:Enter a valid email');`}</code></pre>
+
+      <h2>Rule Reference</h2>
+      <p>Browse the available validation rules and copy ready-to-use examples.</p>
+      <p>
+        <a href={`/${version.slug}/rules/`}>Browse rules</a>
+      </p>
+    </>
+  )
+}
+
+{
+  page === "download" && (
+    <>
+      <h2>Download and archives</h2>
+      <p>
+        Download archived releases from GitHub or install the package from npm.
+      </p>
+
+      <h2>Latest Stable Package</h2>
+      <pre><code>{`npm install bootstrap-validate`}</code></pre>
+
+      <h2>GitHub Releases</h2>
+      <p>
+        Release archives are available from the GitHub repository. Prefer pinned
+        versions for production sites.
+      </p>
+      <ul>
+        <li>
+          <a href="https://github.com/PascaleBeier/bootstrap-validate/releases">
+            All GitHub releases
+          </a>
+        </li>
+        <li>
+          <a href="https://www.npmjs.com/package/bootstrap-validate">
+            npm package
+          </a>
+        </li>
+      </ul>
+
+      <h2>CDN</h2>
+      <pre><code>{`<script src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2/dist/bootstrap-validate.js"></script>`}</code></pre>
+    </>
+  )
+}

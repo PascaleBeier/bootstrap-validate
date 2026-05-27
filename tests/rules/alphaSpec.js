@@ -1,6 +1,4 @@
-/**
- * @jest-environment jsdom
- */
+import { describe, expect, it } from "vitest";
 
 import rules from "../../src/rules";
 

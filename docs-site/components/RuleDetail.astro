@@ -1,0 +1,73 @@
+---
+const { rule, version } = Astro.props;
+const hasOptions = rule.params.length > 0;
+---
+
+<p>{rule.description}</p>
+
+<dl class="rule-detail-meta">
+  <dt>Since</dt>
+  <dd>{rule.since}</dd>
+  <dt>Signature</dt>
+  <dd><code>{rule.signature}</code></dd>
+  <dt>Options</dt>
+  <dd>{rule.params.length}</dd>
+</dl>
+
+<h2>Usage</h2>
+<div class="copy-snippet">
+  <pre><code>{rule.usage}</code></pre>
+  <button type="button" data-copy={rule.usage}>Copy</button>
+</div>
+
+<h2>Options</h2>
+{
+  hasOptions ? (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rule.params.map((param, index) => (
+          <tr>
+            <td>
+              <code>{param.name}</code>
+            </td>
+            <td>{param.description}</td>
+            <td>{index === 0 ? <code>{rule.example}</code> : ""}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) : (
+    <p>
+      This rule only needs an error message after the rule name, for example{" "}
+      <code>{rule.name}:{rule.error}</code>.
+    </p>
+  )
+}
+
+<h2>Example</h2>
+<p>Try a value such as <code>{rule.example || "hello@example.com"}</code>.</p>
+<p>Error message: <code>{rule.error}</code></p>
+
+<h2>Source</h2>
+<pre class="rule-source"><code>{rule.source}</code></pre>
+
+<script>
+  for (const button of document.querySelectorAll("[data-copy]")) {
+    button.addEventListener("click", async () => {
+      const text = button.getAttribute("data-copy") ?? "";
+      await navigator.clipboard?.writeText(text);
+      const original = button.textContent;
+      button.textContent = "Copied";
+      setTimeout(() => {
+        button.textContent = original;
+      }, 1200);
+    });
+  }
+</script>
