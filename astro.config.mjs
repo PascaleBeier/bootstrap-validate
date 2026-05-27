@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightVersions from "starlight-versions";
@@ -6,6 +7,18 @@ export default defineConfig({
   site: "https://bootstrap-validate.js.org",
   srcDir: "docs-site",
   outDir: "docs",
+  vite: {
+    resolve: {
+      alias: {
+        "starlight-versions/overrides/PageTitle.astro": fileURLToPath(
+          new URL("./docs-site/components/PageTitle.astro", import.meta.url),
+        ),
+        "starlight-versions/overrides/Banner.astro": fileURLToPath(
+          new URL("./docs-site/components/Banner.astro", import.meta.url),
+        ),
+      },
+    },
+  },
   build: {
     format: "directory",
   },
@@ -40,8 +53,6 @@ export default defineConfig({
       ],
       components: {
         Footer: "./docs-site/components/Footer.astro",
-        PageTitle: "@astrojs/starlight/components/PageTitle.astro",
-        Banner: "@astrojs/starlight/components/Banner.astro",
       },
       plugins: [
         starlightVersions({
