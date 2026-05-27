@@ -297,7 +297,7 @@
       }
     ],
     "signature": "matches(input, matchingInput)",
-    "source": "/**\n * @since 1.1.0\n * @example #passwordConfirm\n * @error Your passwords should match\n * @param matchingInput string: The input element to match against\n * @description Require the input value to match the given inputs value. Like bootstrapValidate's first Parameter, you can pass a selector or Element.\n */\nexport default function matches(input: RuleInput, matchingInput: string | number | RuleInput) {\n  let lMatchingInput = matchingInput;\n\n  if (typeof lMatchingInput !== \"object\" || typeof lMatchingInput.nodeType === \"undefined\") {\n    lMatchingInput = document.querySelector(String(matchingInput)) as RuleInput;\n  }\n\n  return input.value === lMatchingInput.value;\n}",
+    "source": "/**\n * @since 1.1.0\n * @example #passwordConfirm\n * @error Your passwords should match\n * @param matchingInput string: The input element to match against\n * @description Require the input value to match the given inputs value. Like bootstrapValidate's first Parameter, you can pass a selector or Element.\n */\nexport default function matches(input: RuleInput, matchingInput: string | number | RuleInput) {\n  let resolvedInput: RuleInput | null;\n\n  if (typeof matchingInput === \"object\" && typeof matchingInput.nodeType !== \"undefined\") {\n    resolvedInput = matchingInput;\n  } else {\n    resolvedInput = document.querySelector(String(matchingInput)) as RuleInput | null;\n  }\n\n  return Boolean(resolvedInput) && input.value === resolvedInput?.value;\n}",
     "usage": "bootstrapValidate('#input', 'matches:#passwordConfirm:Your passwords should match')",
     "major": 1,
     "versions": [
@@ -340,6 +340,71 @@
     "signature": "inArray(input, string)",
     "source": "/**\n * @since 2.2.0\n * @example (ABC, DEF, GHI)\n * @param string string: Array String (abc, def, ghi)\n * @error Your input must be any of (ABC, DEF, GHI)\n * @description Validate if user input is in given array. Similar to contains, but with an array.\n */\nexport default function inArray(input: RuleInput, string: RuleOption) {\n  const { value } = input;\n  const array = split(String(string).replace(\"(\", \"\").replace(\")\", \"\").trim(), \",\");\n\n  return array.includes(value);\n}",
     "usage": "bootstrapValidate('#input', 'inArray:(ABC, DEF, GHI):Your input must be any of (ABC, DEF, GHI)')",
+    "major": 2,
+    "versions": [
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "requiredUnless",
+    "order": 17,
+    "since": "2.3.0",
+    "description": "Require a field unless another field already has a value.",
+    "error": "Enter at least one email address",
+    "example": "#secondaryEmail",
+    "params": [
+      {
+        "name": "otherInput",
+        "description": "string: Selector for the field that can satisfy the requirement."
+      }
+    ],
+    "signature": "requiredUnless(input, otherInput)",
+    "source": "/**\n * @since 2.3.0\n * @example #secondaryEmail\n * @error Enter at least one email address\n * @param otherInput string: Selector for the field that can satisfy the requirement.\n * @description Require a field unless another field already has a value.\n */\nexport default function requiredUnless(input: RuleInput, otherInput: RuleOption) {\n  const resolvedInput = document.querySelector(String(otherInput)) as RuleInput | null;\n  return Boolean(input.value.length || resolvedInput?.value.length);\n}",
+    "usage": "bootstrapValidate('#input', 'requiredUnless:#secondaryEmail:Enter at least one email address')",
+    "major": 2,
+    "versions": [
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "text",
+    "order": 18,
+    "since": "2.3.0",
+    "description": "Require Latin letters, accented Latin letters, spaces, apostrophes, and hyphens.",
+    "error": "Enter letters only",
+    "example": "",
+    "params": [],
+    "signature": "text(input)",
+    "source": "/**\n * @since 2.3.0\n * @error Enter letters only\n * @description Require Latin letters, accented Latin letters, spaces, apostrophes, and hyphens.\n */\nexport default function text(input: RuleInput) {\n  return /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/.test(input.value);\n}",
+    "usage": "bootstrapValidate('#input', 'text:Enter letters only')",
+    "major": 2,
+    "versions": [
+      "v2",
+      "v3"
+    ]
+  },
+  {
+    "name": "between",
+    "order": 19,
+    "since": "2.3.0",
+    "description": "Require a numeric value between two inclusive bounds.",
+    "error": "Enter a number between 18 and 65",
+    "example": "18:65",
+    "params": [
+      {
+        "name": "min",
+        "description": "number: Inclusive minimum value."
+      },
+      {
+        "name": "max",
+        "description": "number: Inclusive maximum value."
+      }
+    ],
+    "signature": "between(input, min, max)",
+    "source": "/**\n * @since 2.3.0\n * @example 18:65\n * @error Enter a number between 18 and 65\n * @param min number: Inclusive minimum value.\n * @param max number: Inclusive maximum value.\n * @description Require a numeric value between two inclusive bounds.\n */\nexport default function between(input: RuleInput, min: RuleOption, max: RuleOption) {\n  const value = Number(input.value);\n  const minimum = Number(min);\n  const maximum = Number(max);\n\n  if (!isFinite(value) || !isFinite(minimum) || !isFinite(maximum)) return false;\n\n  const number = new Big(value);\n  return number.gte(minimum) && number.lte(maximum);\n}",
+    "usage": "bootstrapValidate('#input', 'between:18:65:Enter a number between 18 and 65')",
     "major": 2,
     "versions": [
       "v2",

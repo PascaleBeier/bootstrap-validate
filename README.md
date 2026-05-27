@@ -8,16 +8,17 @@
 [![Downloads](https://img.shields.io/npm/dt/bootstrap-validate)](https://www.npmjs.com/package/bootstrap-validate)
 [![License](https://img.shields.io/github/license/PascaleBeier/bootstrap-validate)](LICENSE.md)
 
-> A simple Form Validation Utility for Bootstrap 3, Bootstrap 4 for Humans.
+> A simple Form Validation Utility for Bootstrap 3 and Bootstrap 4 for Humans.
 
 [![Demo](.github/images/demo.gif)](#)
 
 ## Supported Versions
 
-| bootstrap-validate Version | Bootstrap Version | Documentation                |
------------------------------|-------------------|-------------------------------
+| bootstrap-validate Version | Bootstrap Version | Documentation |
+| --- | --- | --- |
 | v1 | Bootstrap 3 | [v1 Download + Docs](https://bootstrap-validate.js.org/v1) |
 | v2 | Bootstrap 4 | [v2 Download + Docs](https://bootstrap-validate.js.org/v2) |
+| v3 | Bootstrap 5 | Planned refactor |
 
 ## Documentation
 
@@ -32,7 +33,7 @@ $ npm i bootstrap-validate
 Include the bootstrap-validate.js script:
 
 ```html
-<script defer="defer" src="bootstrap-validate.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2.3.0/dist/bootstrap-validate.js"></script>
 ```
 
 We want the `#name` to be not longer than 30 characters!
@@ -61,14 +62,29 @@ bootstrapValidate('#email', 'email:Enter a valid email address');
 </script>
 ```
 
+Validate before submit by keeping the returned handles:
+
+```js
+const validators = [
+  bootstrapValidate('#email', 'required:Email required|email:Enter a valid email'),
+  bootstrapValidate('#password', 'required:Password required'),
+];
+
+document.querySelector('#account').addEventListener('submit', (event) => {
+  const isValid = validators.map((validator) => validator.validate()).every(Boolean);
+  if (!isValid) event.preventDefault();
+});
+```
+
 ## More Features!
 
 See the v2 Documentation on <https://bootstrap-validate.js.org/v2/> to
-see all available validation features, examples, and usage with module bundlers.
+see all available validation features, examples, regex escaping, select/select2
+usage, synchronous custom rules, and usage with module bundlers.
 
 ## Examples
 
-See [examples/](Examples) for real-world usage.
+See the documentation examples for real-world usage.
 
 ## Download
 

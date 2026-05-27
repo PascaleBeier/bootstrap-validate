@@ -20,6 +20,9 @@ const pageRules = getVersionRules(rules, versionSlug);
   versionSlug={versionSlug}
   canonicalPath={`/${versionSlug}/rules/`}
 >
-  <p>Use these rules as the second argument to <code>bootstrapValidate()</code>.</p>
+  <p>
+    Use these rules as the second argument to <code>bootstrapValidate()</code>.
+    Empty optional fields pass non-required rules in v2.3.0 and later.
+  </p>
   <RuleIndex rules={pageRules} version={version} />
 </DocPage>

@@ -14,8 +14,8 @@ export const versions = [
     label: "v2",
     title: "Version 2",
     bootstrap: "Bootstrap 4",
-    status: "Stable",
-    note: "For Bootstrap 4 projects.",
+    status: "Final",
+    note: "Final Bootstrap 4 line. Version 2.3.0 closes the long-standing v2 issue set.",
   },
   {
     slug: "v3",
@@ -23,7 +23,7 @@ export const versions = [
     title: "Version 3",
     bootstrap: "Bootstrap 5",
     status: "Upcoming",
-    note: "Planned support for Bootstrap 5.",
+    note: "Planned complete refactor for Bootstrap 5.",
   },
 ];
 
