@@ -1,9 +1,11 @@
 import { CLASS_ERROR, CLASS_HELP_BLOCK, ELEMENT_HELP_BLOCK } from "./constants";
 
-export default function errors(input, rule, isValid, text) {
+export default function errors(input: HTMLElement, rule: string, isValid: unknown, text: string) {
   const specificErrorClass = `has-error-${rule}`;
   const formGroup = input.closest(".form-group") || input.parentNode;
-  let specificHelpBlock = formGroup.querySelector(`.${specificErrorClass}`);
+  if (!formGroup) return;
+
+  let specificHelpBlock = formGroup.querySelector<HTMLElement>(`.${specificErrorClass}`);
 
   if (isValid) {
     // Element is valid, continue
@@ -20,7 +22,7 @@ export default function errors(input, rule, isValid, text) {
       specificHelpBlock.style.display = "inline-block";
     } else {
       specificHelpBlock = document.createElement(ELEMENT_HELP_BLOCK);
-      input.parentNode.appendChild(specificHelpBlock);
+      input.parentNode?.appendChild(specificHelpBlock);
       specificHelpBlock.style.display = "inline-block";
       specificHelpBlock.classList.add(CLASS_HELP_BLOCK, specificErrorClass);
       specificHelpBlock.innerHTML = text;

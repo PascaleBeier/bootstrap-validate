@@ -5,12 +5,20 @@
   "sideEffects": false,
   "files": [
     "dist/",
-    "src/",
     "CHANGELOG.md"
   ],
   "homepage": "https://bootstrap-validate.js.org",
-  "main": "dist/bootstrap-validate.js",
-  "module": "src/bootstrap-validate.js",
+  "main": "./dist/bootstrap-validate.js",
+  "module": "./dist/bootstrap-validate.mjs",
+  "types": "./dist/bootstrap-validate.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/bootstrap-validate.d.ts",
+      "import": "./dist/bootstrap-validate.mjs",
+      "require": "./dist/bootstrap-validate.js",
+      "default": "./dist/bootstrap-validate.js"
+    }
+  },
   "repository": "git@github.com:PascaleBeier/bootstrap-validate.git",
   "author": "Pascale Beier <mail@pascalebeier.de>",
   "keywords": [
@@ -28,10 +36,10 @@
   ],
   "license": "MIT",
   "scripts": {
-    "dev": "webpack -w",
-    "build": "webpack",
-    "check-style": "oxlint --vitest-plugin webpack.config.js src/ docs-site/ tests/ && oxfmt --check webpack.config.js \"src/**/*.js\" \"!src/rules.js\" \"docs-site/**/*.js\" \"tests/**/*.js\"",
-    "fix-style": "oxlint --fix --vitest-plugin webpack.config.js src/ docs-site/ tests/ && oxfmt --write webpack.config.js \"src/**/*.js\" \"!src/rules.js\" \"docs-site/**/*.js\" \"tests/**/*.js\"",
+    "dev": "vite build --watch",
+    "build": "vite build && tsc --project tsconfig.json && node scripts/clean-dist.mjs",
+    "check-style": "oxlint --vitest-plugin astro.config.mjs vite.config.mjs vitest.config.mjs scripts/ src/ docs-site/ tests/ && oxfmt --check astro.config.mjs vite.config.mjs vitest.config.mjs \"scripts/**/*.mjs\" \"src/**/*.ts\" \"!src/rules.ts\" \"docs-site/**/*.js\" \"tests/**/*.js\"",
+    "fix-style": "oxlint --fix --vitest-plugin astro.config.mjs vite.config.mjs vitest.config.mjs scripts/ src/ docs-site/ tests/ && oxfmt --write astro.config.mjs vite.config.mjs vitest.config.mjs \"scripts/**/*.mjs\" \"src/**/*.ts\" \"!src/rules.ts\" \"docs-site/**/*.js\" \"tests/**/*.js\"",
     "test": "npm run test-unit",
     "test-unit": "vitest run",
     "package-check": "node scripts/verify-package.mjs",
@@ -45,25 +53,21 @@
   },
   "devDependencies": {
     "@astrojs/starlight": "^0.39.2",
-    "@babel/core": "7.17.5",
-    "@babel/parser": "^7.28.5",
-    "@babel/plugin-transform-runtime": "7.17.0",
-    "@babel/preset-env": "7.16.11",
+    "@types/big.js": "^7.0.0",
+    "@types/lodash": "^4.17.24",
     "@vitest/coverage-v8": "^4.1.7",
     "astro": "^6.3.8",
     "astro-expressive-code": "^0.42.0",
-    "babel-loader": "8.2.3",
     "comment-parser": "^1.4.7",
     "jsdom": "^29.1.1",
     "oxfmt": "^0.52.0",
     "oxlint": "^1.67.0",
     "starlight-versions": "^0.9.0",
-    "vitest": "^4.1.7",
-    "webpack": "5.70.0",
-    "webpack-cli": "4.9.2"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.3",
+    "vitest": "^4.1.7"
   },
   "dependencies": {
-    "@babel/runtime": "7.17.2",
     "big.js": "6.1.1",
     "lodash": "4.17.21"
   }

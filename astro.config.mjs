@@ -29,8 +29,7 @@ export default defineConfig({
         "A simple form validation utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5.",
       customCss: ["./docs-site/styles/docs.css"],
       editLink: {
-        baseUrl:
-          "https://github.com/PascaleBeier/bootstrap-validate/edit/main/",
+        baseUrl: "https://github.com/PascaleBeier/bootstrap-validate/edit/main/",
       },
       social: [
         {

@@ -44,7 +44,7 @@ async function readAllHtmlFiles(directory) {
       if (entry.isDirectory()) return readAllHtmlFiles(filePath);
       if (entry.isFile() && entry.name.endsWith(".html")) return [filePath];
       return [];
-    })
+    }),
   );
   return files.flat();
 }

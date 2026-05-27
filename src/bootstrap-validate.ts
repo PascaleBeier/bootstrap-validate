@@ -3,22 +3,35 @@ import flatten from "lodash/flatten";
 import rules from "./rules";
 import errors from "./errors";
 import { SEPARATOR_OPTION, SEPARATOR_RULE, LISTENER } from "./constants";
+import type { RuleOption } from "./rules";
 
-export default function bootstrapValidate(input, string, callback) {
+type RuleInput = HTMLInputElement | HTMLTextAreaElement;
+type ValidationTarget = RuleInput | string;
+type CallableRule = (input: RuleInput, ...options: RuleOption[]) => unknown;
+
+function resolveInput(input: ValidationTarget): RuleInput {
+  return typeof input === "string" ? (document.querySelector(input) as RuleInput) : input;
+}
+
+export default function bootstrapValidate(
+  input: ValidationTarget | ValidationTarget[],
+  string: string,
+  callback?: (isValid: unknown) => void,
+) {
   // Normalize the input parameter to a flat array.
   flatten([input]).forEach((element) => {
     // Check for either element or selector.
-    element = element.nodeType ? element : document.querySelector(element);
+    const resolvedElement = resolveInput(element as ValidationTarget);
 
-    element.addEventListener(LISTENER, () => {
+    resolvedElement.addEventListener(LISTENER, () => {
       // Let's extract the rules off of the given rule argument.
       string.split(SEPARATOR_RULE).forEach((rule) => {
         // get an array of [rule, option1, ...]
-        let options = rule.split(SEPARATOR_OPTION);
+        let options: RuleOption[] = rule.split(SEPARATOR_OPTION);
         // Take rule name from options.
-        const ruleName = options.shift();
+        const ruleName = options.shift() as keyof typeof rules;
         // Take Error Text from options.
-        const errorText = options.pop();
+        const errorText = String(options.pop());
         // Sometimes, we need to take special care of options.
         // Allow the use of the colon in the regex options.
         if (ruleName === "regex") {
@@ -27,10 +40,11 @@ export default function bootstrapValidate(input, string, callback) {
         }
 
         // invoke the rule, returning boolean
-        const validity = rules[ruleName](element, ...options);
+        const ruleFunction = rules[ruleName] as CallableRule;
+        const validity = ruleFunction(resolvedElement, ...options);
 
         // DOM Manipulations to toggle errors.
-        errors(element, ruleName, validity, errorText);
+        errors(resolvedElement, ruleName, validity, errorText);
 
         // optionally invoke the callback.
         if (isFunction(callback)) callback(validity);

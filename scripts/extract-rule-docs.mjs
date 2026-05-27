@@ -1,23 +1,29 @@
-import { parse } from "@babel/parser";
 import fs from "node:fs/promises";
 import path from "node:path";
+import ts from "typescript";
 
 const root = process.cwd();
-const rulesPath = path.join(root, "src/rules.js");
+const rulesPath = path.join(root, "src/rules/index.ts");
 const outputPath = path.join(root, "docs-site/generated/rules.json");
 
-const source = await fs.readFile(rulesPath, "utf8");
-const ast = parse(source, {
-  sourceType: "module",
-  plugins: ["jsx"],
-  ranges: true,
-});
+async function readSourceFile(filePath) {
+  const source = await fs.readFile(filePath, "utf8");
+  return {
+    source,
+    sourceFile: ts.createSourceFile(
+      filePath,
+      source,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TS,
+    ),
+  };
+}
 
 function getNodeName(node) {
   if (!node) return "";
-  if (node.type === "Identifier") return node.name;
-  if (node.type === "StringLiteral") return node.value;
-  if (node.type === "NumericLiteral") return String(node.value);
+  if (ts.isIdentifier(node)) return node.text;
+  if (ts.isStringLiteral(node) || ts.isNumericLiteral(node)) return node.text;
   return "";
 }
 
@@ -85,14 +91,80 @@ function buildUsage(name, tags) {
   return `bootstrapValidate('#input', '${[name, ...options].join(":")}')`;
 }
 
-function findRulesObject(program) {
-  const exportDefault = program.body.find(
-    (node) => node.type === "ExportDefaultDeclaration"
-  );
-  if (exportDefault?.declaration?.type === "ObjectExpression") {
-    return exportDefault.declaration;
+function getImportMap(file) {
+  const imports = new Map();
+
+  for (const statement of file.statements) {
+    if (!ts.isImportDeclaration(statement)) continue;
+    if (!ts.isStringLiteral(statement.moduleSpecifier)) continue;
+
+    const defaultImport = statement.importClause?.name;
+    if (!defaultImport) continue;
+
+    imports.set(defaultImport.text, statement.moduleSpecifier.text);
   }
-  throw new Error("Expected src/rules.js to export a default object.");
+
+  return imports;
+}
+
+function findRulesObject(file) {
+  let rulesObject = null;
+
+  for (const statement of file.statements) {
+    if (ts.isVariableStatement(statement) && statement.declarationList.declarations.length === 1) {
+      const declaration = statement.declarationList.declarations[0];
+      if (
+        ts.isIdentifier(declaration.name) &&
+        declaration.name.text === "rules" &&
+        declaration.initializer &&
+        ts.isObjectLiteralExpression(declaration.initializer)
+      ) {
+        rulesObject = declaration.initializer;
+      }
+    }
+  }
+
+  if (rulesObject) return rulesObject;
+
+  throw new Error("Expected src/rules/index.ts to define a rules object.");
+}
+
+function getRuleOrder(rulesObject, imports) {
+  return rulesObject.properties.map((property) => {
+    if (ts.isShorthandPropertyAssignment(property) && imports.has(property.name.text)) {
+      return {
+        name: property.name.text,
+        modulePath: imports.get(property.name.text),
+      };
+    }
+
+    if (ts.isPropertyAssignment(property) && ts.isIdentifier(property.initializer)) {
+      return {
+        name: getNodeName(property.name),
+        modulePath: imports.get(property.initializer.text),
+      };
+    }
+
+    throw new Error("Expected the rules object to contain imported rule functions only.");
+  });
+}
+
+function resolveRulePath(modulePath) {
+  if (!modulePath) throw new Error("Missing rule import path.");
+  return path.join(path.dirname(rulesPath), `${modulePath}.ts`);
+}
+
+function findDefaultExportedFunction(file) {
+  for (const statement of file.statements) {
+    if (!ts.isFunctionDeclaration(statement)) continue;
+
+    const isDefaultExport = statement.modifiers?.some(
+      (modifier) => modifier.kind === ts.SyntaxKind.DefaultKeyword,
+    );
+    if (isDefaultExport) return statement;
+  }
+
+  throw new Error(`Expected ${path.relative(root, file.fileName)} to default export a function.`);
 }
 
 function validateRule(rule) {
@@ -106,13 +178,15 @@ function validateRule(rule) {
   }
 }
 
-const rulesObject = findRulesObject(ast.program);
-const rules = rulesObject.properties
-  .filter((property) => property.type === "ObjectProperty")
-  .map((property, index) => {
-    const name = getNodeName(property.key);
-    const value = property.value;
-    const functionSource = source.slice(value.start, value.end).trim();
+const { sourceFile } = await readSourceFile(rulesPath);
+const imports = getImportMap(sourceFile);
+const rulesObject = findRulesObject(sourceFile);
+const rules = await Promise.all(
+  getRuleOrder(rulesObject, imports).map(async ({ name, modulePath }, index) => {
+    const rulePath = resolveRulePath(modulePath);
+    const { source, sourceFile } = await readSourceFile(rulePath);
+    const value = findDefaultExportedFunction(sourceFile);
+    const functionSource = source.slice(value.getFullStart(), value.getEnd()).trim();
     const docblock = functionSource.match(/\/\*\*[\s\S]*?\*\//)?.[0];
     if (!docblock) {
       throw new Error(`${name} is missing a JSDoc docblock.`);
@@ -121,7 +195,7 @@ const rules = rulesObject.properties
     const tags = parseDocblock(docblock);
     const params = tags.param ?? [];
     const signatureParams =
-      value.params?.map((param) => getNodeName(param)).filter(Boolean) ?? [];
+      value.parameters?.map((param) => getNodeName(param.name)).filter(Boolean) ?? [];
     const rule = {
       name,
       order: index,
@@ -144,10 +218,11 @@ const rules = rulesObject.properties
 
     validateRule(rule);
     return rule;
-  });
+  }),
+);
 
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
 await fs.writeFile(`${outputPath}.tmp`, `${JSON.stringify(rules, null, 2)}\n`);
 await fs.rename(`${outputPath}.tmp`, outputPath);
 
-console.log(`Generated ${path.relative(root, outputPath)} from src/rules.js.`);
+console.log(`Generated ${path.relative(root, outputPath)} from src/rules/.`);

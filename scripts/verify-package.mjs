@@ -4,12 +4,10 @@ const expectedFiles = new Set([
   "CHANGELOG.md",
   "LICENSE.md",
   "README.md",
+  "dist/bootstrap-validate.d.ts",
   "dist/bootstrap-validate.js",
+  "dist/bootstrap-validate.mjs",
   "package.json",
-  "src/bootstrap-validate.js",
-  "src/constants.js",
-  "src/errors.js",
-  "src/rules.js",
 ]);
 
 const output = execFileSync("npm", ["pack", "--dry-run", "--json"], {
