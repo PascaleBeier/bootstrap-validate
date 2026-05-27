@@ -1,0 +1,38 @@
+{
+  "sidebar": [
+    {
+      "label": "v1 (Bootstrap 3)",
+      "items": [
+        { "label": "Overview", "link": "/" },
+        { "label": "Installation", "link": "/installation/" },
+        { "label": "Usage", "link": "/usage/" },
+        {
+          "label": "Rules",
+          "items": [
+            { "label": "All rules", "link": "/rules/" },
+            { "label": "min", "link": "/rules/min/" },
+            { "label": "max", "link": "/rules/max/" },
+            { "label": "email", "link": "/rules/email/" },
+            { "label": "required", "link": "/rules/required/" },
+            { "label": "url", "link": "/rules/url/" },
+            { "label": "integer", "link": "/rules/integer/" },
+            { "label": "numeric", "link": "/rules/numeric/" },
+            { "label": "alphanum", "link": "/rules/alphanum/" },
+            { "label": "contains", "link": "/rules/contains/" },
+            { "label": "startsWith", "link": "/rules/startsWith/" },
+            { "label": "endsWith", "link": "/rules/endsWith/" },
+            { "label": "matches", "link": "/rules/matches/" },
+            { "label": "alpha", "link": "/rules/alpha/" }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Project",
+      "items": [
+        { "label": "About", "link": "https://bootstrap-validate.js.org/about/" },
+        { "label": "Privacy", "link": "https://bootstrap-validate.js.org/privacy/" }
+      ]
+    }
+  ]
+}

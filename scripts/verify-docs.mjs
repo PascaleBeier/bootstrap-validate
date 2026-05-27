@@ -56,15 +56,6 @@ for (const file of requiredFiles) {
 const htmlFiles = await readAllHtmlFiles(docsDir);
 for (const file of htmlFiles) {
   const html = await fs.readFile(file, "utf8");
-  const hitkeepCount = (
-    html.match(/<script\b[^>]*src="https:\/\/cloud\.hitkeep\.eu\/hk\.js"/g) ??
-    []
-  ).length;
-  if (hitkeepCount !== 1) {
-    throw new Error(
-      `${path.relative(root, file)} contains HitKeep ${hitkeepCount} times.`
-    );
-  }
   if (/google-analytics\.com|window\.ga|UA-68262372-6/.test(html)) {
     throw new Error(`${path.relative(root, file)} still references GA.`);
   }

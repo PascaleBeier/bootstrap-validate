@@ -45,6 +45,7 @@
     "@babel/preset-env": "7.16.11",
     "@vitest/coverage-v8": "^4.1.7",
     "astro": "^6.3.8",
+    "astro-expressive-code": "^0.42.0",
     "babel-loader": "8.2.3",
     "comment-parser": "^1.4.7",
     "jsdom": "^29.1.1",

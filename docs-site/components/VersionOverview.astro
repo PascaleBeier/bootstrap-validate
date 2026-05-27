@@ -1,4 +1,6 @@
 ---
+import { Code } from "astro-expressive-code/components";
+
 const { version, rules } = Astro.props;
 ---
 
@@ -7,10 +9,13 @@ const { version, rules } = Astro.props;
 <h2>Quick Start</h2>
 <p>Include the script, select an input, and attach a rule string.</p>
 
-<pre><code>{`<script src="bootstrap-validate.js"></script>
+<Code
+  code={`<script src="bootstrap-validate.js"></script>
 <script>
 bootstrapValidate('#email', 'email:Enter a valid email address');
-</script>`}</code></pre>
+</script>`}
+  lang="html"
+/>
 
 <h2>Contents</h2>
 <ul class="quick-links">

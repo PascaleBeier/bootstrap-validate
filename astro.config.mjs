@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightVersions from "starlight-versions";
 
 export default defineConfig({
   site: "https://bootstrap-validate.js.org",
@@ -25,9 +26,36 @@ export default defineConfig({
           href: "https://github.com/PascaleBeier/bootstrap-validate",
         },
       ],
+      sidebar: [
+        {
+          label: "Project",
+          items: [
+            { label: "Home", link: "/" },
+            { label: "About", link: "/about/" },
+            { label: "Privacy", link: "/privacy/" },
+            { label: "v2 Docs", link: "/v2/" },
+            { label: "v3 Preview", link: "/v3/" },
+          ],
+        },
+      ],
       components: {
         Footer: "./docs-site/components/Footer.astro",
+        PageTitle: "@astrojs/starlight/components/PageTitle.astro",
+        Banner: "@astrojs/starlight/components/Banner.astro",
       },
+      plugins: [
+        starlightVersions({
+          current: {
+            label: "Project",
+            redirect: "root",
+          },
+          versions: [
+            { slug: "v3", label: "v3", redirect: "same-page" },
+            { slug: "v2", label: "v2", redirect: "same-page" },
+            { slug: "v1", label: "v1", redirect: "same-page" },
+          ],
+        }),
+      ],
       head: [
         {
           tag: "script",

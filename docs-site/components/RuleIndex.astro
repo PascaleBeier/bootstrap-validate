@@ -1,4 +1,6 @@
 ---
+import { Code } from "astro-expressive-code/components";
+
 const { rules, version } = Astro.props;
 ---
 
@@ -30,7 +32,7 @@ const { rules, version } = Astro.props;
           <span>Since {rule.since}</span>
           <span>{rule.params.length} option{rule.params.length === 1 ? "" : "s"}</span>
         </p>
-        <pre><code>{rule.usage}</code></pre>
+        <Code code={rule.usage} lang="js" meta={`title="${rule.name}"`} />
         <p><a href={`/${version.slug}/rules/${rule.name}/`}>Open rule reference</a></p>
       </article>
     ))

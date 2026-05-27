@@ -1,4 +1,6 @@
 ---
+import { Code } from "astro-expressive-code/components";
+
 const { page, version } = Astro.props;
 ---
 
@@ -12,19 +14,25 @@ const { page, version } = Astro.props;
       </p>
 
       <h2>Package Managers</h2>
-      <pre><code>{`npm install bootstrap-validate`}</code></pre>
+      <Code code="npm install bootstrap-validate" lang="bash" />
 
       <h2>Modern CDN</h2>
       <p>
         Prefer a maintained npm CDN for browser-only usage. Pin a version when
         you need reproducible builds.
       </p>
-      <pre><code>{`<script src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2/dist/bootstrap-validate.js"></script>`}</code></pre>
+      <Code
+        code={`<script src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2/dist/bootstrap-validate.js"></script>`}
+        lang="html"
+      />
 
       <h2>Bundlers</h2>
-      <pre><code>{`import bootstrapValidate from 'bootstrap-validate';
+      <Code
+        code={`import bootstrapValidate from 'bootstrap-validate';
 
-bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
+bootstrapValidate('#email', 'email:Enter a valid email address');`}
+        lang="js"
+      />
 
       {version.slug === "v3" && (
         <p>
@@ -46,11 +54,14 @@ bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
       </p>
 
       <h2>The Function</h2>
-      <pre><code>{`bootstrapValidate('#myInput', 'required:Please fill out this field!', function (isValid) {
+      <Code
+        code={`bootstrapValidate('#myInput', 'required:Please fill out this field!', function (isValid) {
   if (isValid) {
     console.log('Element is valid');
   }
-});`}</code></pre>
+});`}
+        lang="js"
+      />
 
       <h2>Selectors and Elements</h2>
       <p>
@@ -58,14 +69,20 @@ bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
         can pass an id, class, attribute selector, DOM element, or an array of
         selectors/elements.
       </p>
-      <pre><code>{`bootstrapValidate(['#firstName', '#lastName'], 'max:20:Enter no more than 20 characters');`}</code></pre>
+      <Code
+        code={`bootstrapValidate(['#firstName', '#lastName'], 'max:20:Enter no more than 20 characters');`}
+        lang="js"
+      />
 
       <h2>Rules and Options</h2>
       <p>
         Separate multiple rules with <code>|</code>. Separate rule options with
         <code>:</code>. The final option is the error message.
       </p>
-      <pre><code>{`bootstrapValidate('#email', 'required:Required|email:Enter a valid email');`}</code></pre>
+      <Code
+        code={`bootstrapValidate('#email', 'required:Required|email:Enter a valid email');`}
+        lang="js"
+      />
 
       <h2>Rule Reference</h2>
       <p>Browse the available validation rules and copy ready-to-use examples.</p>
@@ -85,7 +102,7 @@ bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
       </p>
 
       <h2>Latest Stable Package</h2>
-      <pre><code>{`npm install bootstrap-validate`}</code></pre>
+      <Code code="npm install bootstrap-validate" lang="bash" />
 
       <h2>GitHub Releases</h2>
       <p>
@@ -106,7 +123,10 @@ bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
       </ul>
 
       <h2>CDN</h2>
-      <pre><code>{`<script src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2/dist/bootstrap-validate.js"></script>`}</code></pre>
+      <Code
+        code={`<script src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2/dist/bootstrap-validate.js"></script>`}
+        lang="html"
+      />
     </>
   )
 }

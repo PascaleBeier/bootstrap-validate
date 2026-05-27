@@ -1,0 +1,43 @@
+{
+  "sidebar": [
+    {
+      "label": "v2 (Bootstrap 4)",
+      "items": [
+        { "label": "Overview", "link": "/" },
+        { "label": "Installation", "link": "/installation/" },
+        { "label": "Usage", "link": "/usage/" },
+        { "label": "Download", "link": "/download/" },
+        {
+          "label": "Rules",
+          "items": [
+            { "label": "All rules", "link": "/rules/" },
+            { "label": "min", "link": "/rules/min/" },
+            { "label": "max", "link": "/rules/max/" },
+            { "label": "email", "link": "/rules/email/" },
+            { "label": "required", "link": "/rules/required/" },
+            { "label": "url", "link": "/rules/url/" },
+            { "label": "integer", "link": "/rules/integer/" },
+            { "label": "numeric", "link": "/rules/numeric/" },
+            { "label": "alphanum", "link": "/rules/alphanum/" },
+            { "label": "ISO8601", "link": "/rules/ISO8601/" },
+            { "label": "regex", "link": "/rules/regex/" },
+            { "label": "divisible", "link": "/rules/divisible/" },
+            { "label": "contains", "link": "/rules/contains/" },
+            { "label": "startsWith", "link": "/rules/startsWith/" },
+            { "label": "endsWith", "link": "/rules/endsWith/" },
+            { "label": "matches", "link": "/rules/matches/" },
+            { "label": "alpha", "link": "/rules/alpha/" },
+            { "label": "inArray", "link": "/rules/inArray/" }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Project",
+      "items": [
+        { "label": "About", "link": "https://bootstrap-validate.js.org/about/" },
+        { "label": "Privacy", "link": "https://bootstrap-validate.js.org/privacy/" }
+      ]
+    }
+  ]
+}

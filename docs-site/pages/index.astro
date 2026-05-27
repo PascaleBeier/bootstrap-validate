@@ -1,4 +1,5 @@
 ---
+import { Code } from "astro-expressive-code/components";
 import DocPage from "../components/DocPage.astro";
 import { versions } from "../lib/site.js";
 ---
@@ -13,7 +14,10 @@ import { versions } from "../lib/site.js";
     forms.
   </p>
 
-  <pre><code>{`bootstrapValidate('#email', 'email:Enter a valid email address');`}</code></pre>
+  <Code
+    code={`bootstrapValidate('#email', 'email:Enter a valid email address');`}
+    lang="js"
+  />
 
   <h2>Choose a Version</h2>
   <ul class="version-links">

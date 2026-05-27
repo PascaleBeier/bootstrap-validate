@@ -1,0 +1,117 @@
+---
+const { rule, version } = Astro.props;
+
+const previewId = `rule-preview-${version.slug}-${rule.name}`.replace(
+  /[^a-zA-Z0-9_-]/g,
+  "-",
+);
+const matchId = `${previewId}-match`;
+
+function getOption(param, index) {
+  if (rule.name === "matches") return `#${matchId}`;
+  if (index === 0 && rule.example) return rule.example;
+  return param.name;
+}
+
+function getInitialValue() {
+  switch (rule.name) {
+    case "alpha":
+      return "Pascal";
+    case "alphanum":
+      return "Pascal123";
+    case "contains":
+      return rule.example;
+    case "divisible":
+      return String(Number(rule.example || 1) * 2);
+    case "email":
+      return "hello@example.com";
+    case "endsWith":
+      return `Hello ${rule.example}`;
+    case "inArray":
+      return "ABC";
+    case "integer":
+      return "42";
+    case "ISO8601":
+      return "2026-05-27";
+    case "matches":
+      return "secret";
+    case "max":
+      return "Short value";
+    case "min":
+      return "a".repeat(Number(rule.example || 1));
+    case "numeric":
+      return "42.5";
+    case "regex":
+      return "abc";
+    case "required":
+      return "Filled value";
+    case "startsWith":
+      return `${rule.example} 123456`;
+    case "url":
+      return "https://example.com";
+    default:
+      return rule.example || "Example";
+  }
+}
+
+const validationRule = [
+  rule.name,
+  ...rule.params.map((param, index) => getOption(param, index)),
+  rule.error,
+].join(":");
+---
+
+<section class="rule-preview" data-rule-preview>
+  <h2>Live Example</h2>
+  <div class="rule-preview-field">
+    <label for={previewId}>Value</label>
+    <input
+      id={previewId}
+      type="text"
+      value={getInitialValue()}
+      data-preview-input
+      data-preview-rule={validationRule}
+    />
+  </div>
+  {
+    rule.name === "matches" && (
+      <div class="rule-preview-field">
+        <label for={matchId}>Match against</label>
+        <input id={matchId} type="text" value="secret" data-preview-match />
+      </div>
+    )
+  }
+  <p class="rule-preview-status" data-preview-status>Checking...</p>
+</section>
+
+<script>
+  import bootstrapValidate from "../../src/bootstrap-validate.js";
+
+  function initializeRulePreviews() {
+    for (const preview of document.querySelectorAll("[data-rule-preview]")) {
+      if (preview.hasAttribute("data-preview-ready")) continue;
+      preview.setAttribute("data-preview-ready", "");
+
+      const input = preview.querySelector("[data-preview-input]");
+      const match = preview.querySelector("[data-preview-match]");
+      const status = preview.querySelector("[data-preview-status]");
+      if (!(input instanceof HTMLInputElement) || !status) continue;
+
+      const rule = input.getAttribute("data-preview-rule") ?? "";
+      bootstrapValidate(input, rule, (isValid) => {
+        status.textContent = isValid ? "Valid" : "Invalid";
+        status.toggleAttribute("data-valid", Boolean(isValid));
+      });
+
+      const validate = () => {
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+
+      match?.addEventListener("input", validate);
+      validate();
+    }
+  }
+
+  initializeRulePreviews();
+  document.addEventListener("astro:page-load", initializeRulePreviews);
+</script>
