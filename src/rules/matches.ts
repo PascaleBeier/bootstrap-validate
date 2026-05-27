@@ -8,11 +8,13 @@ import type { RuleInput } from "./types";
  * @description Require the input value to match the given inputs value. Like bootstrapValidate's first Parameter, you can pass a selector or Element.
  */
 export default function matches(input: RuleInput, matchingInput: string | number | RuleInput) {
-  let lMatchingInput = matchingInput;
+  let resolvedInput: RuleInput | null;
 
-  if (typeof lMatchingInput !== "object" || typeof lMatchingInput.nodeType === "undefined") {
-    lMatchingInput = document.querySelector(String(matchingInput)) as RuleInput;
+  if (typeof matchingInput === "object" && typeof matchingInput.nodeType !== "undefined") {
+    resolvedInput = matchingInput;
+  } else {
+    resolvedInput = document.querySelector(String(matchingInput)) as RuleInput | null;
   }
 
-  return input.value === lMatchingInput.value;
+  return Boolean(resolvedInput) && input.value === resolvedInput?.value;
 }
