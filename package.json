@@ -3,6 +3,11 @@
   "description": "A simple Form Validation Utility for Bootstrap 3, Bootstrap 4, and Bootstrap 5 for Humans.",
   "version": "v2.2.6",
   "sideEffects": false,
+  "files": [
+    "dist/",
+    "src/",
+    "CHANGELOG.md"
+  ],
   "homepage": "https://bootstrap-validate.js.org",
   "main": "dist/bootstrap-validate.js",
   "module": "src/bootstrap-validate.js",
@@ -29,6 +34,7 @@
     "fix-style": "oxlint --fix --vitest-plugin webpack.config.js src/ docs-site/ tests/ && oxfmt --write webpack.config.js \"src/**/*.js\" \"!src/rules.js\" \"docs-site/**/*.js\" \"tests/**/*.js\"",
     "test": "npm run test-unit",
     "test-unit": "vitest run",
+    "package-check": "node scripts/verify-package.mjs",
     "coverage-unit": "vitest run --coverage",
     "docs": "npm run docs-build",
     "docs-generate": "node scripts/extract-rule-docs.mjs",

@@ -29,6 +29,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - run: npm run package-check
       - name: Create release
         run: gh release create "${GITHUB_REF_NAME}" dist/bootstrap-validate.js --title "Release ${GITHUB_REF_NAME}" --generate-notes
         env:
